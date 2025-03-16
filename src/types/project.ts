@@ -1,18 +1,16 @@
-import { LucideIcon } from 'lucide-react';
+export type ProjectCategory = 'all' | 'data-analysis' | 'web-development' | 'python' | 'sql' | 'machine-learning';
 
 export interface Project {
+  id: number;
   title: string;
   description: string;
-  tags: string[];
-  icon: JSX.Element;
-  category: string;
+  objective: string;
+  technologies: string[];
   highlights: string[];
-  links: {
-    demo?: string;
-    github?: string;
-  };
-}
-
-export interface ProjectsData {
-  [key: string]: Project[];
+  role: string;
+  category: ProjectCategory[];
+  image: string;
+  featured?: boolean;
+  githubUrl?: string;
+  demoUrl?: string;
 }

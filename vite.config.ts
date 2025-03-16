@@ -3,24 +3,19 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  optimizeDeps: {
+    exclude: ['lucide-react'],
+  },
   build: {
-    target: 'esnext',
-    outDir: 'dist',
-    assetsDir: 'assets',
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor': ['react', 'react-dom', 'react-router-dom'],
-          'animations': ['framer-motion', 'kute.js'],
-          'icons': ['lucide-react']
-        }
-      }
+          react: ['react', 'react-dom'],
+          framer: ['framer-motion'],
+          lucide: ['lucide-react'],
+        },
+      },
     },
-    chunkSizeWarningLimit: 1000
+    chunkSizeWarningLimit: 1000,
   },
-  server: {
-    port: 5173,
-    strictPort: true,
-    host: true
-  }
 });

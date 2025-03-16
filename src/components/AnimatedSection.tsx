@@ -1,14 +1,13 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import React from 'react';
 
 interface AnimatedSectionProps {
   children: React.ReactNode;
   className?: string;
-  delay?: number;
 }
 
-const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children, className = '', delay = 0 }) => {
+const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children, className }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -19,7 +18,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({ children, className =
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.6, delay }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
       className={className}
     >
       {children}
