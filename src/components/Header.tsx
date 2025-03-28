@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const headerOffset = 80; // Adjust based on header height
+      const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -39,11 +39,13 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md ${
-      isScrolled 
-        ? 'bg-white/90 dark:bg-gray-900/90 shadow-lg py-2' 
-        : 'bg-transparent py-4'
-    }`}>
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md ${
+        isScrolled 
+          ? 'bg-white/90 dark:bg-gray-900/90 shadow-lg py-2' 
+          : 'bg-transparent py-4'
+      }`}
+    >
       <div className="container mx-auto px-4 md:px-6">
         <nav className="flex items-center justify-between">
           <div className="flex items-center">
@@ -52,39 +54,25 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
               <Code size={20} className="inline-block" />
             </div>
             <div className="text-lg md:text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 text-transparent bg-clip-text">
-              <span className="cursor-pointer" onClick={() => scrollToSection('hero')}>Tobin Zolkowski</span>
+              <button 
+                onClick={() => scrollToSection('hero')}
+                className="focus:outline-none"
+                aria-label="Scroll to top"
+              >
+                Tobin Zolkowski
+              </button>
             </div>
           </div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('about')} 
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              About
-            </button>
-            <button 
-              onClick={() => scrollToSection('projects')} 
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              Projects
-            </button>
-            <button 
-              onClick={() => scrollToSection('skills')} 
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              Skills
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')} 
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-            >
-              Contact
-            </button>
+            <NavButton onClick={() => scrollToSection('about')} label="About" />
+            <NavButton onClick={() => scrollToSection('projects')} label="Projects" />
+            <NavButton onClick={() => scrollToSection('skills')} label="Skills" />
+            <NavButton onClick={() => scrollToSection('contact')} label="Contact" />
             <button 
               onClick={toggleTheme} 
-              className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+              className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
               aria-label="Toggle theme"
             >
               {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
@@ -95,13 +83,13 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
           <div className="md:hidden flex items-center space-x-2">
             <button 
               onClick={toggleTheme} 
-              className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+              className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
               aria-label="Toggle theme"
             >
               {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
             </button>
             <button 
-              className="text-gray-700 dark:text-gray-300 focus:outline-none"
+              className="text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 p-2 rounded-lg"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -119,35 +107,46 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
       >
         <div className="bg-white dark:bg-gray-800 shadow-lg">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            <button 
-              onClick={() => scrollToSection('about')} 
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 text-left"
-            >
-              About
-            </button>
-            <button 
-              onClick={() => scrollToSection('projects')} 
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 text-left"
-            >
-              Projects
-            </button>
-            <button 
-              onClick={() => scrollToSection('skills')} 
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 text-left"
-            >
-              Skills
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')} 
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-2 text-left"
-            >
-              Contact
-            </button>
+            <MobileNavButton onClick={() => scrollToSection('about')} label="About" />
+            <MobileNavButton onClick={() => scrollToSection('projects')} label="Projects" />
+            <MobileNavButton onClick={() => scrollToSection('skills')} label="Skills" />
+            <MobileNavButton onClick={() => scrollToSection('contact')} label="Contact" />
           </div>
         </div>
       </div>
+
+      {/* Overlay for mobile menu */}
+      {isMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
     </header>
   );
 };
+
+interface NavButtonProps {
+  onClick: () => void;
+  label: string;
+}
+
+const NavButton: React.FC<NavButtonProps> = ({ onClick, label }) => (
+  <button 
+    onClick={onClick} 
+    className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 rounded-lg px-3 py-2"
+  >
+    {label}
+  </button>
+);
+
+const MobileNavButton: React.FC<NavButtonProps> = ({ onClick, label }) => (
+  <button 
+    onClick={onClick} 
+    className="w-full text-left text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 rounded-lg px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700"
+  >
+    {label}
+  </button>
+);
 
 export default Header;

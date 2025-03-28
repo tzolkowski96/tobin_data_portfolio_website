@@ -1,3 +1,166 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Base styles */
+:root {
+  color-scheme: light dark;
+  --vh: 1vh;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  height: 100%;
+}
+
+body {
+  @apply antialiased text-gray-900 dark:text-white bg-white dark:bg-gray-900;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
+}
+
+/* Fix iOS height issues */
+.min-h-screen {
+  min-height: 100vh; /* Fallback */
+  min-height: calc(var(--vh) * 100);
+}
+
+.h-screen {
+  height: 100vh; /* Fallback */
+  height: calc(var(--vh) * 100);
+}
+
+/* iOS-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen,
+  .h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+
+  .mobile-text-adjust {
+    font-size: 16px !important;
+  }
+
+  .mobile-padding {
+    @apply py-16;
+  }
+
+  .mobile-section {
+    @apply px-4 py-12;
+  }
+}
+
+/* Better touch interactions */
+@media (hover: none) {
+  .mobile-button {
+    @apply active:scale-95 transition-transform;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  a, button {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-height: 44px;
+    padding: 12px;
+  }
+}
+
+/* Form improvements */
+input, select, textarea {
+  @apply appearance-none;
+  font-size: 16px !important;
+}
+
+/* Safe area insets */
+.safe-area-inset {
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Modal improvements */
+.modal-mobile {
+  @apply max-h-[calc(100vh-env(safe-area-inset-top,0px)-env(safe-area-inset-bottom,0px))];
+  margin-bottom: env(safe-area-inset-bottom, 0px);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Improved scrolling */
+.smooth-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Dark mode */
+.dark {
+  color-scheme: dark;
+}
+
+/* Container */
+.container {
+  @apply mx-auto;
+  max-width: 1280px;
+}
+
+/* Mobile navigation */
+.mobile-nav {
+  height: calc(100vh - env(safe-area-inset-bottom, 0px));
+  @apply fixed inset-x-0 top-0 z-50;
+}
+
+/* Selection color */
+::selection {
+  @apply bg-blue-500/20;
+}
+
+/* Mobile typography */
+@media (max-width: 640px) {
+  h1 {
+    @apply text-2xl sm:text-3xl font-bold leading-tight;
+  }
+  
+  h2 {
+    @apply text-xl sm:text-2xl font-bold leading-tight;
+  }
+  
+  p {
+    @apply text-base leading-relaxed;
+  }
+}
+
+/* Mobile grid */
+.mobile-grid {
+  @apply grid grid-cols-1 gap-4;
+}
+
+/* Fix notched devices */
+@supports (padding: max(0px)) {
+  .notch-padding {
+    padding-left: max(env(safe-area-inset-left), 1rem);
+    padding-right: max(env(safe-area-inset-right), 1rem);
+  }
+}
+
+/* Prevent zoom on input focus */
+@media screen and (max-width: 640px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  textarea {
+    @apply text-base;
+    font-size: 16px !important;
+  }
+}
