@@ -26,13 +26,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
         className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700 flex flex-col h-full"
       >
         {/* Image Container */}
-        <div className="relative h-48 sm:h-56 overflow-hidden flex-shrink-0">
+        <div 
+          className="relative h-48 sm:h-56 overflow-hidden flex-shrink-0 cursor-pointer"
+          onClick={openModal}
+        >
           <motion.img 
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.3 }}
             src={project.image} 
             alt={project.title} 
             className="w-full h-full object-cover"
+            loading="lazy"
           />
           {project.featured && (
             <div className="absolute top-2 right-2 px-3 py-1 bg-yellow-500/80 text-white text-xs font-medium rounded-full flex items-center backdrop-blur-sm">
@@ -87,7 +91,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                 {project.technologies.length > 3 && (
                   <button
                     onClick={openModal}
-                    className="px-2 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600"
+                    className="px-2 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 min-h-[28px]"
                   >
                     +{project.technologies.length - 3} more
                   </button>
@@ -115,7 +119,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                 ))}
                 {project.highlights.length > 3 && (
                   <li 
-                    className="text-sm text-blue-600 dark:text-blue-400 cursor-pointer hover:text-blue-700 dark:hover:text-blue-300 pl-3.5"
+                    className="text-sm text-blue-600 dark:text-blue-400 cursor-pointer hover:text-blue-700 dark:hover:text-blue-300 pl-3.5 min-h-[28px]"
                     onClick={openModal}
                   >
                     +{project.highlights.length - 3} more highlights
@@ -125,13 +129,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
             </div>
             
             {/* Links Section */}
-            <div className="flex items-center gap-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+            <div className="flex items-center gap-3 sm:gap-4 pt-4 border-t border-gray-100 dark:border-gray-700">
               {project.githubUrl && (
                 <a 
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-sm"
+                  className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-sm min-h-[44px] mobile-button"
                 >
                   View Code <ExternalLink size={16} className="ml-1" />
                 </a>
@@ -141,11 +145,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 font-medium text-sm"
+                  className="inline-flex items-center text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 font-medium text-sm min-h-[44px] mobile-button"
                 >
                   Live Demo <ExternalLink size={16} className="ml-1" />
                 </a>
               )}
+              <button
+                onClick={openModal} 
+                className="ml-auto inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 font-medium text-sm min-h-[44px] mobile-button"
+              >
+                Details
+              </button>
             </div>
           </div>
         </div>
@@ -170,7 +180,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
             >
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 p-2"
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center mobile-button"
                 aria-label="Close modal"
               >
                 <X size={24} />
@@ -180,6 +190,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-4">
                   {project.title}
                 </h3>
+                
+                {/* Image in modal for mobile */}
+                <div className="mb-6 sm:hidden rounded-lg overflow-hidden">
+                  <img src={project.image} alt={project.title} className="w-full h-auto" />
+                </div>
                 
                 <div className="mb-6">
                   <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Description</h4>
@@ -218,7 +233,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                      className="inline-flex items-center px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors mobile-button min-h-[48px]"
                     >
                       View Code <ExternalLink size={16} className="ml-2" />
                     </a>
@@ -228,7 +243,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-6 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                      className="inline-flex items-center px-6 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors mobile-button min-h-[48px]"
                     >
                       Live Demo <ExternalLink size={16} className="ml-2" />
                     </a>

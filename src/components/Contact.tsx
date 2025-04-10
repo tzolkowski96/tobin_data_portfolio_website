@@ -32,7 +32,7 @@ const Contact = () => {
   };
   
   return (
-    <section id="contact" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-800">
+    <section id="contact" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-800 safe-area-inset">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Get In Touch</h2>
@@ -44,7 +44,7 @@ const Contact = () => {
         
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="md:col-span-1">
+            <div className="md:col-span-1 order-2 md:order-1">
               <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 h-full">
                 <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-6">Contact Information</h3>
                 
@@ -88,7 +88,7 @@ const Contact = () => {
                 
                 <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
                   <h4 className="text-lg font-medium text-gray-800 dark:text-white mb-4">Connect with me</h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-2 gap-4">
                     <SocialLink
                       href="https://www.linkedin.com/in/tobin-zolkowski-844873200/"
                       icon={
@@ -132,7 +132,7 @@ const Contact = () => {
               </div>
             </div>
             
-            <div className="md:col-span-2">
+            <div className="md:col-span-2 order-1 md:order-2">
               <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 h-full">
                 <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-6">Send Me a Message</h3>
                 
@@ -150,7 +150,7 @@ const Contact = () => {
                     <p className="text-lg font-medium">{formStatus.message}</p>
                     <button 
                       onClick={() => setFormStatus(null)}
-                      className="mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                      className="mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors min-h-[44px] mobile-button"
                     >
                       Send Another Message
                     </button>
@@ -172,9 +172,11 @@ const Contact = () => {
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-base"
                           required
                           placeholder="John Doe"
+                          inputMode="text"
+                          autoComplete="name"
                         />
                       </div>
                       
@@ -188,9 +190,11 @@ const Contact = () => {
                           name="email"
                           value={formData.email}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-base"
                           required
                           placeholder="john@example.com"
+                          inputMode="email"
+                          autoComplete="email"
                         />
                       </div>
                     </div>
@@ -204,7 +208,7 @@ const Contact = () => {
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-base"
                         required
                       >
                         <option value="">Select a subject</option>
@@ -225,7 +229,7 @@ const Contact = () => {
                         value={formData.message}
                         onChange={handleChange}
                         rows={6}
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
+                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-base"
                         required
                         placeholder="Your message here..."
                       ></textarea>
@@ -233,7 +237,7 @@ const Contact = () => {
                     
                     <button
                       type="submit"
-                      className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center"
+                      className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center min-h-[48px] mobile-button"
                     >
                       <Send size={18} className="mr-2" />
                       Send Message
@@ -260,7 +264,7 @@ const SocialLink: React.FC<SocialLinkProps> = ({ href, icon, label }) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="bg-gray-100 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 p-3 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center justify-center"
+    className="bg-gray-100 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 p-3 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center justify-center min-h-[44px] min-w-[44px] mobile-button"
     aria-label={label}
   >
     {icon}

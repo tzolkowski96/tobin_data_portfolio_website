@@ -213,7 +213,7 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-16 md:py-24 bg-white dark:bg-gray-900">
+    <section id="skills" className="py-16 md:py-24 bg-white dark:bg-gray-900 safe-area-inset">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -237,19 +237,19 @@ const Skills = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 md:mb-16"
         >
           {technicalMetrics.map((metric, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className={`${colorClasses[metric.color].bg} rounded-xl p-6 shadow-lg transform transition-all duration-300 hover:scale-105`}
+              className={`${colorClasses[metric.color].bg} rounded-xl p-5 sm:p-6 shadow-lg transform transition-all duration-300 hover:scale-105`}
             >
               <div className="flex items-center mb-4">
-                <div className={`p-3 rounded-lg ${colorClasses[metric.color].bg} ${colorClasses[metric.color].text} mr-3`}>
+                <div className={`p-2 sm:p-3 rounded-lg ${colorClasses[metric.color].bg} ${colorClasses[metric.color].text} mr-3`}>
                   {metric.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-white">{metric.skill}</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-white">{metric.skill}</h3>
               </div>
               <div className="relative pt-1">
                 <div className="flex mb-2 items-center justify-between">
@@ -281,31 +281,32 @@ const Skills = () => {
         </motion.div>
 
         {/* Skill Categories */}
-        <div className="mb-16">
+        <div className="mb-12 md:mb-16">
           <motion.div 
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-6"
           >
             {skillCategories.map((category) => (
               <motion.div
                 key={category.id}
                 variants={itemVariants}
-                className={`${colorClasses[category.color].bg} rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105`}
+                className={`${colorClasses[category.color].bg} rounded-xl p-5 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105`}
                 onClick={() => setSelectedCategory(selectedCategory === category.id ? null : category.id)}
               >
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
                   <div className="flex items-center">
-                    <div className={`p-3 rounded-lg ${colorClasses[category.color].bg} ${colorClasses[category.color].text} mr-3`}>
+                    <div className={`p-2 sm:p-3 rounded-lg ${colorClasses[category.color].bg} ${colorClasses[category.color].text} mr-3`}>
                       {category.icon}
                     </div>
-                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">{category.title}</h3>
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-white pr-2">{category.title}</h3>
                   </div>
                   <motion.div
                     animate={{ rotate: selectedCategory === category.id ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
+                    className="flex-shrink-0"
                   >
                     <ChevronDown className="text-gray-500" size={20} />
                   </motion.div>
@@ -318,7 +319,7 @@ const Skills = () => {
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="space-y-4"
+                      className="space-y-3 sm:space-y-4"
                     >
                       {category.skills.map((skill, index) => (
                         <motion.div
@@ -326,16 +327,16 @@ const Skills = () => {
                           initial={{ x: -20, opacity: 0 }}
                           animate={{ x: 0, opacity: 1 }}
                           transition={{ delay: index * 0.1 }}
-                          className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm"
+                          className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm"
                         >
                           <div className="flex flex-wrap justify-between items-center mb-2 gap-2">
-                            <span className="font-medium text-gray-800 dark:text-white">{skill.name}</span>
+                            <span className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">{skill.name}</span>
                             <span className={`px-2 py-1 text-xs font-medium rounded-full ${colorClasses[category.color].bg} ${colorClasses[category.color].text}`}>
                               {skill.level}
                             </span>
                           </div>
-                          <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{skill.description}</p>
-                          <div className="flex flex-wrap gap-2">
+                          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-3">{skill.description}</p>
+                          <div className="flex flex-wrap gap-1.5 sm:gap-2">
                             {skill.tools.map((tool, toolIndex) => (
                               <span
                                 key={toolIndex}
@@ -361,20 +362,20 @@ const Skills = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
         >
           {specializations.map((spec, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
               whileHover={{ y: -4 }}
-              className={`bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border-t-4 ${colorClasses[spec.color].border}`}
+              className={`bg-white dark:bg-gray-800 rounded-xl p-5 sm:p-6 shadow-md hover:shadow-xl transition-all duration-300 border-t-4 ${colorClasses[spec.color].border}`}
             >
-              <div className={`inline-flex p-3 rounded-lg ${colorClasses[spec.color].bg} ${colorClasses[spec.color].text} mb-4`}>
+              <div className={`inline-flex p-2 sm:p-3 rounded-lg ${colorClasses[spec.color].bg} ${colorClasses[spec.color].text} mb-3 sm:mb-4`}>
                 {spec.icon}
               </div>
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">{spec.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">{spec.description}</p>
+              <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-white mb-1 sm:mb-2">{spec.title}</h3>
+              <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm">{spec.description}</p>
             </motion.div>
           ))}
         </motion.div>

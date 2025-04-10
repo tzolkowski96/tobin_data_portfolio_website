@@ -105,7 +105,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen pt-20 pb-12 md:pt-32 md:pb-24 flex items-center safe-area-inset">
+    <section id="hero" className="relative min-h-screen pt-20 pb-12 md:pt-32 md:pb-24 flex items-center safe-area-inset notch-padding">
       <canvas ref={canvasRef} className="absolute inset-0 z-0" />
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-0">
@@ -123,7 +123,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white mb-4 md:mb-6"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white mb-4 md:mb-6 mobile-text-adjust"
             >
               Transforming <span className="bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 text-transparent bg-clip-text">Complex Data</span> into Actionable Insights
             </motion.h1>
@@ -145,13 +145,13 @@ const Hero = () => {
             >
               <button 
                 onClick={scrollToProjects}
-                className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center mobile-button"
+                className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center mobile-button min-h-[48px] sm:min-h-0"
               >
                 View Projects <ChevronDown className="ml-2" size={18} />
               </button>
               <button 
                 onClick={scrollToContact}
-                className="w-full sm:w-auto bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-blue-600 dark:text-blue-400 font-medium py-3 px-6 rounded-lg border border-blue-600 dark:border-blue-400 transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center mobile-button"
+                className="w-full sm:w-auto bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-blue-600 dark:text-blue-400 font-medium py-3 px-6 rounded-lg border border-blue-600 dark:border-blue-400 transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center mobile-button min-h-[48px] sm:min-h-0"
               >
                 Get in Touch <ArrowRight className="ml-2" size={18} />
               </button>
@@ -171,6 +171,7 @@ const Hero = () => {
                     src="/profile.jpg" 
                     alt="Tobin Zolkowski" 
                     className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
+                    loading="eager"
                   />
                 </div>
               </div>
@@ -192,6 +193,17 @@ const Hero = () => {
             onClick={scrollToProjects}
             className="p-2 rounded-full bg-white dark:bg-gray-800 shadow-md text-blue-600 dark:text-blue-400 mobile-button"
             aria-label="Scroll down"
+          >
+            <ChevronDown size={24} />
+          </button>
+        </div>
+        
+        {/* Mobile scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce block md:hidden">
+          <button 
+            onClick={scrollToProjects}
+            className="p-3 rounded-full bg-white dark:bg-gray-800 shadow-md text-blue-600 dark:text-blue-400 mobile-button"
+            aria-label="Scroll down to projects"
           >
             <ChevronDown size={24} />
           </button>
