@@ -65,7 +65,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-800" ref={projectsRef}>
+    <section id="projects" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-800 block sm:block" ref={projectsRef}>
       <div className="container mx-auto px-4 md:px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

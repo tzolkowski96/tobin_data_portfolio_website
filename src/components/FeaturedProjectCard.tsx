@@ -20,7 +20,7 @@ const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ project, form
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700 flex flex-col md:flex-row"
+        className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700 flex flex-col md:flex-row sm:flex-col"
       >
         <div className="md:w-2/5 h-48 sm:h-56 md:h-auto relative overflow-hidden">
           <motion.img 

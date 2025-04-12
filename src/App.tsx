@@ -96,13 +96,13 @@ function App() {
           </AnimatedSection>
         </Suspense>
         
-        <Suspense fallback={<div className="py-16 md:py-24"><div className="container mx-auto px-4 grid gap-8"><SkillSkeleton /></div></div>}>
+        <Suspense fallback={<div className="py-16 md:py-24 px-4 sm:px-6"><div className="container mx-auto grid gap-8"><SkillSkeleton /></div></div>}>
           <AnimatedSection>
             <Skills />
           </AnimatedSection>
         </Suspense>
         
-        <Suspense fallback={<div className="py-16 md:py-24"><div className="container mx-auto px-4"><SkillSkeleton /></div></div>}>
+        <Suspense fallback={<div className="py-16 md:py-24 px-4 sm:px-6"><div className="container mx-auto"><SkillSkeleton /></div></div>}>
           <AnimatedSection>
             <Contact />
           </AnimatedSection>

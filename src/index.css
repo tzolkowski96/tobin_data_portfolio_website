@@ -58,6 +58,26 @@ body {
   .mobile-section {
     @apply px-4 py-12;
   }
+
+  .header {
+    @apply text-center;
+  }
+
+  .footer {
+    @apply text-sm px-4;
+  }
+
+  .hero-section {
+    @apply py-8 px-4;
+  }
+
+  .project-card {
+    @apply flex flex-col items-center;
+  }
+
+  .contact-form {
+    @apply px-4 py-6;
+  }
 }
 
 /* Better touch interactions */
