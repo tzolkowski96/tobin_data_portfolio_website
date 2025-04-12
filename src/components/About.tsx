@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { BookOpen, Award, Briefcase, Languages, AlignCenterVertical as Certificate, Calendar, MapPin, ExternalLink } from 'lucide-react';
 import ProfessionalJourney from './ProfessionalJourney';
 
@@ -8,50 +9,57 @@ const About = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">About Me</h2>
+          <p className="text-gray-600 dark:text-gray-300 text-base md:text-lg max-w-2xl mx-auto mb-6">
+            I am a passionate data professional with a strong foundation in data analysis, machine learning, and ETL processes. With experience across healthcare, telecoms, and higher education, I thrive on transforming complex data into actionable insights.
+          </p>
           <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mx-auto"></div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          <div className="md:col-span-1">
-            <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-5 sm:p-6 h-full transform transition-transform hover:scale-105 shadow-md hover:shadow-xl">
-              <div className="flex items-center mb-4">
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white p-2.5 sm:p-3 rounded-lg mr-3 sm:mr-4">
-                  <BookOpen size={22} className="sm:w-6 sm:h-6" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">Education</h3>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="md:col-span-1 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-5 sm:p-6 h-full transform transition-transform hover:scale-105 shadow-md hover:shadow-xl"
+          >
+            <div className="flex items-center mb-4">
+              <div className="bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white p-2.5 sm:p-3 rounded-lg mr-3 sm:mr-4">
+                <BookOpen size={22} className="sm:w-6 sm:h-6" />
               </div>
-              <ul className="space-y-3 sm:space-y-4">
-                <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
-                  <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">Master of Science - MS, Information Science</p>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">University of Wisconsin-Madison</p>
-                  <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center mt-1">
-                    <Calendar size={12} className="mr-1" /> August 2020 - December 2022
-                  </p>
-                </li>
-                <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
-                  <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">Bachelor of Arts - BA, International Studies</p>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">University of Wisconsin-Madison</p>
-                  <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center mt-1">
-                    <Calendar size={12} className="mr-1" /> August 2018 - May 2020
-                  </p>
-                </li>
-                <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
-                  <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">Communication Science (2 years)</p>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Rochester Institute of Technology</p>
-                  <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center mt-1">
-                    <Calendar size={12} className="mr-1" /> August 2016 - May 2018
-                  </p>
-                </li>
-                <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
-                  <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">High School Diploma</p>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Jakarta Intercultural School</p>
-                  <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center mt-1">
-                    <Calendar size={12} className="mr-1" /> August 2012 - May 2016
-                  </p>
-                </li>
-              </ul>
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">Education</h3>
             </div>
-          </div>
+            <ul className="space-y-3 sm:space-y-4">
+              <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">Master of Science - MS, Information Science</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">University of Wisconsin-Madison</p>
+                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center mt-1">
+                  <Calendar size={12} className="mr-1" /> August 2020 - December 2022
+                </p>
+              </li>
+              <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
+                <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">Bachelor of Arts - BA, International Studies</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">University of Wisconsin-Madison</p>
+                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center mt-1">
+                  <Calendar size={12} className="mr-1" /> August 2018 - May 2020
+                </p>
+              </li>
+              <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
+                <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">Communication Science (2 years)</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Rochester Institute of Technology</p>
+                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center mt-1">
+                  <Calendar size={12} className="mr-1" /> August 2016 - May 2018
+                </p>
+              </li>
+              <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
+                <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">High School Diploma</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Jakarta Intercultural School</p>
+                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center mt-1">
+                  <Calendar size={12} className="mr-1" /> August 2012 - May 2016
+                </p>
+              </li>
+            </ul>
+          </motion.div>
           
           <div className="md:col-span-1">
             <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-5 sm:p-6 h-full transform transition-transform hover:scale-105 shadow-md hover:shadow-xl">

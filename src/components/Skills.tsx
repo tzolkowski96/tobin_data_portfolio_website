@@ -225,10 +225,10 @@ const Skills = () => {
             Technical Skills
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Skills & Competencies</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mx-auto mb-4"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-6">
             Focused on data engineering and analytics, with growing experience in machine learning and enterprise solutions. Continuously learning and expanding my skillset in healthcare data management.
           </p>
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mx-auto mb-4"></div>
         </motion.div>
 
         {/* Technical Metrics */}

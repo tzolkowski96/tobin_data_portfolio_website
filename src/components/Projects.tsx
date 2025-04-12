@@ -118,6 +118,9 @@ const Projects = () => {
             className="text-center mb-8"
           >
             <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">All Projects</h2>
+            <p className="text-gray-600 dark:text-gray-300 text-base md:text-lg max-w-2xl mx-auto mb-6">
+              Browse through a diverse range of projects showcasing my expertise in data analysis, machine learning, and web development. Each project reflects my dedication to solving real-world problems with innovative solutions.
+            </p>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mx-auto"></div>
           </motion.div>
 
@@ -200,12 +203,20 @@ const Projects = () => {
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 {filteredProjects.slice(0, visibleProjects).map((project, index) => (
-                  <ProjectCard 
-                    key={project.id} 
-                    project={project}
-                    formatCategoryName={formatCategoryName}
-                    index={index}
-                  />
+                  <motion.div 
+                    key={project.id}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transform transition-transform hover:scale-105"
+                  >
+                    <ProjectCard 
+                      project={project}
+                      formatCategoryName={formatCategoryName}
+                      index={index}
+                    />
+                  </motion.div>
                 ))}
               </div>
               
