@@ -23,6 +23,21 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    if (isMenuOpen) {
+      const handleClickOutside = (e: MouseEvent) => {
+        const target = e.target as HTMLElement;
+        if (!target.closest('#mobile-menu-container') && !target.closest('#mobile-menu-button')) {
+          setIsMenuOpen(false);
+        }
+      };
+      
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [isMenuOpen]);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -88,9 +103,11 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
             {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
           </button>
           <button 
+            id="mobile-menu-button"
             className="text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 p-2 rounded-lg"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -99,25 +116,26 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
       
       {/* Mobile Navigation */}
       <div 
-        className={`md:hidden fixed inset-x-0 top-[60px] transition-transform duration-300 transform bg-white dark:bg-gray-800 shadow-lg ${
-          isMenuOpen ? 'translate-y-0' : '-translate-y-full'
+        id="mobile-menu-container"
+        className={`md:hidden fixed inset-x-0 top-[60px] transition-all duration-300 transform bg-white dark:bg-gray-800 shadow-lg z-40 ${
+          isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
         }`}
+        aria-hidden={!isMenuOpen}
       >
-        <div className="bg-white dark:bg-gray-800 shadow-lg">
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            <MobileNavButton onClick={() => scrollToSection('about')} label="About" />
-            <MobileNavButton onClick={() => scrollToSection('projects')} label="Projects" />
-            <MobileNavButton onClick={() => scrollToSection('skills')} label="Skills" />
-            <MobileNavButton onClick={() => scrollToSection('contact')} label="Contact" />
-          </div>
+        <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+          <MobileNavButton onClick={() => scrollToSection('about')} label="About" />
+          <MobileNavButton onClick={() => scrollToSection('projects')} label="Projects" />
+          <MobileNavButton onClick={() => scrollToSection('skills')} label="Skills" />
+          <MobileNavButton onClick={() => scrollToSection('contact')} label="Contact" />
         </div>
       </div>
 
-      {/* Overlay for mobile menu */}
+      {/* Backdrop for mobile menu */}
       {isMenuOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
           onClick={() => setIsMenuOpen(false)}
+          aria-hidden="true"
         />
       )}
     </header>

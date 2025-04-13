@@ -11,31 +11,22 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, index }) => {
   const [showModal, setShowModal] = useState(false);
-  const [hoveredHighlight, setHoveredHighlight] = useState<string | null>(null);
 
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
 
   return (
     <>
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700 flex flex-col h-full"
-      >
+      <div className="flex flex-col h-full bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700">
         {/* Image Container */}
         <div 
           className="relative h-48 sm:h-56 overflow-hidden flex-shrink-0 cursor-pointer"
           onClick={openModal}
         >
-          <motion.img 
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.3 }}
+          <img 
             src={project.image} 
             alt={project.title} 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
             loading="lazy"
           />
           {project.featured && (
@@ -61,7 +52,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
           
           {/* Title */}
           <h3 
-            className="text-lg font-bold text-gray-800 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2 cursor-pointer"
+            className="text-lg font-bold text-gray-800 dark:text-white mb-2 hover:text-blue-600 dark:hover:text-blue-400 transition-colors line-clamp-2 cursor-pointer"
             onClick={openModal}
           >
             {project.title}
@@ -83,7 +74,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                 {project.technologies.slice(0, 3).map((tech, index) => (
                   <span 
                     key={index}
-                    className="px-2 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                    className="px-2 py-1.5 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
                   >
                     {tech}
                   </span>
@@ -91,7 +82,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                 {project.technologies.length > 3 && (
                   <button
                     onClick={openModal}
-                    className="px-2 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 min-h-[28px]"
+                    className="px-2 py-1.5 text-xs font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600"
                   >
                     +{project.technologies.length - 3} more
                   </button>
@@ -103,12 +94,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
             <div>
               <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">Highlights:</h4>
               <ul className="space-y-2">
-                {project.highlights.slice(0, 3).map((highlight, index) => (
+                {project.highlights.slice(0, 2).map((highlight, index) => (
                   <li 
                     key={index}
-                    className="relative group/highlight cursor-pointer flex items-start"
-                    onMouseEnter={() => setHoveredHighlight(highlight)}
-                    onMouseLeave={() => setHoveredHighlight(null)}
+                    className="relative cursor-pointer flex items-start"
                     onClick={openModal}
                   >
                     <span className="w-1.5 h-1.5 mt-1.5 mr-2 bg-blue-500 rounded-full flex-shrink-0" />
@@ -117,12 +106,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                     </span>
                   </li>
                 ))}
-                {project.highlights.length > 3 && (
+                {project.highlights.length > 2 && (
                   <li 
-                    className="text-sm text-blue-600 dark:text-blue-400 cursor-pointer hover:text-blue-700 dark:hover:text-blue-300 pl-3.5 min-h-[28px]"
+                    className="text-sm text-blue-600 dark:text-blue-400 cursor-pointer hover:text-blue-700 dark:hover:text-blue-300 pl-3.5"
                     onClick={openModal}
                   >
-                    +{project.highlights.length - 3} more highlights
+                    +{project.highlights.length - 2} more highlights
                   </li>
                 )}
               </ul>
@@ -135,7 +124,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-sm min-h-[44px] mobile-button"
+                  className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium text-sm py-2"
                 >
                   View Code <ExternalLink size={16} className="ml-1" />
                 </a>
@@ -145,21 +134,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 font-medium text-sm min-h-[44px] mobile-button"
+                  className="inline-flex items-center text-green-600 dark:text-green-400 hover:text-green-800 dark:hover:text-green-300 font-medium text-sm py-2"
                 >
                   Live Demo <ExternalLink size={16} className="ml-1" />
                 </a>
               )}
               <button
                 onClick={openModal} 
-                className="ml-auto inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 font-medium text-sm min-h-[44px] mobile-button"
+                className="ml-auto inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 font-medium text-sm py-2"
               >
                 Details
               </button>
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Modal */}
       <AnimatePresence>
@@ -176,11 +165,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto relative modal-mobile"
+              className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 w-full max-w-2xl max-h-[85vh] overflow-y-auto relative"
             >
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 p-2 min-h-[44px] min-w-[44px] flex items-center justify-center mobile-button"
+                className="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 p-2"
                 aria-label="Close modal"
               >
                 <X size={24} />
@@ -192,22 +181,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                 </h3>
                 
                 {/* Image in modal for mobile */}
-                <div className="mb-6 sm:hidden rounded-lg overflow-hidden">
+                <div className="mb-5 sm:mb-6 rounded-lg overflow-hidden">
                   <img src={project.image} alt={project.title} className="w-full h-auto" />
                 </div>
                 
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Description</h4>
-                  <p className="text-gray-600 dark:text-gray-300">{project.description}</p>
+                <div className="mb-5 sm:mb-6">
+                  <h4 className="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Description</h4>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">{project.description}</p>
                 </div>
 
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Technologies</h4>
+                <div className="mb-5 sm:mb-6">
+                  <h4 className="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Technologies</h4>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, index) => (
                       <span
                         key={index}
-                        className="px-3 py-1.5 text-sm font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                        className="px-3 py-1.5 text-xs sm:text-sm font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
                       >
                         {tech}
                       </span>
@@ -215,11 +204,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                   </div>
                 </div>
 
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Highlights</h4>
+                <div className="mb-5 sm:mb-6">
+                  <h4 className="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Highlights</h4>
                   <ul className="space-y-2">
                     {project.highlights.map((highlight, index) => (
-                      <li key={index} className="flex items-start text-gray-600 dark:text-gray-300">
+                      <li key={index} className="flex items-start text-gray-600 dark:text-gray-300 text-sm sm:text-base">
                         <span className="w-1.5 h-1.5 mt-2 mr-2 bg-blue-500 rounded-full flex-shrink-0" />
                         <span>{highlight}</span>
                       </li>
@@ -227,13 +216,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                   </ul>
                 </div>
 
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-3 sm:gap-4">
                   {project.githubUrl && (
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors mobile-button min-h-[48px]"
+                      className="inline-flex items-center px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base"
                     >
                       View Code <ExternalLink size={16} className="ml-2" />
                     </a>
@@ -243,7 +232,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, formatCategoryName, 
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-6 py-2.5 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors mobile-button min-h-[48px]"
+                      className="inline-flex items-center px-4 sm:px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base"
                     >
                       Live Demo <ExternalLink size={16} className="ml-2" />
                     </a>

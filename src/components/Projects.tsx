@@ -65,7 +65,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-800 block sm:block" ref={projectsRef}>
+    <section id="projects" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-800" ref={projectsRef}>
       <div className="container mx-auto px-4 md:px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -149,6 +149,7 @@ const Projects = () => {
               <button 
                 onClick={toggleFilters}
                 className="w-full md:hidden flex items-center justify-between px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-200 mb-4"
+                aria-expanded={isFilterOpen}
               >
                 <span className="flex items-center">
                   <Filter size={18} className="mr-2" />
@@ -208,8 +209,8 @@ const Projects = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transform transition-transform hover:scale-105"
+                    transition={{ duration: 0.3, delay: Math.min(index * 0.1, 0.5) }}
+                    className="h-full bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transform transition-transform hover:scale-105"
                   >
                     <ProjectCard 
                       project={project}

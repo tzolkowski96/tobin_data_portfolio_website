@@ -20,9 +20,9 @@ const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ project, form
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700 flex flex-col md:flex-row sm:flex-col"
+        className="group bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 border border-gray-200 dark:border-gray-700 flex flex-col md:flex-row"
       >
-        <div className="md:w-2/5 h-48 sm:h-56 md:h-auto relative overflow-hidden">
+        <div className="w-full md:w-2/5 h-48 sm:h-56 md:h-auto relative overflow-hidden">
           <motion.img 
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.3 }}
@@ -35,7 +35,7 @@ const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ project, form
           </div>
         </div>
         
-        <div className="md:w-3/5 p-4 sm:p-6 flex flex-col">
+        <div className="w-full md:w-3/5 p-4 sm:p-6 flex flex-col">
           <div className="mb-auto">
             <div className="flex flex-wrap gap-2 mb-3">
               {project.category.map((cat) => (
@@ -143,29 +143,30 @@ const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ project, form
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
+              className="bg-white dark:bg-gray-800 rounded-xl p-5 sm:p-6 max-w-2xl w-full max-h-[80vh] overflow-y-auto relative"
             >
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                className="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                aria-label="Close modal"
               >
                 <X size={24} />
               </button>
 
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">{project.title}</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-4 pr-8">{project.title}</h3>
               
-              <div className="mb-6">
-                <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Description</h4>
-                <p className="text-gray-600 dark:text-gray-300">{project.description}</p>
+              <div className="mb-5 sm:mb-6">
+                <h4 className="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Description</h4>
+                <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">{project.description}</p>
               </div>
 
-              <div className="mb-6">
-                <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Technologies</h4>
+              <div className="mb-5 sm:mb-6">
+                <h4 className="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Technologies</h4>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-2 py-1 text-sm font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                      className="px-2 py-1 text-xs sm:text-sm font-medium rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
                     >
                       {tech}
                     </span>
@@ -173,22 +174,22 @@ const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ project, form
                 </div>
               </div>
 
-              <div className="mb-6">
-                <h4 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Highlights</h4>
-                <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
+              <div className="mb-5 sm:mb-6">
+                <h4 className="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Highlights</h4>
+                <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 text-sm sm:text-base space-y-1 sm:space-y-2">
                   {project.highlights.map((highlight, index) => (
                     <li key={index}>{highlight}</li>
                   ))}
                 </ul>
               </div>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-3 sm:gap-4">
                 {project.githubUrl && (
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="inline-flex items-center px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base"
                   >
                     View Code <ExternalLink size={16} className="ml-2" />
                   </a>
@@ -198,7 +199,7 @@ const FeaturedProjectCard: React.FC<FeaturedProjectCardProps> = ({ project, form
                     href={project.demoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                    className="inline-flex items-center px-3 sm:px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm sm:text-base"
                   >
                     Live Demo <ExternalLink size={16} className="ml-2" />
                   </a>
