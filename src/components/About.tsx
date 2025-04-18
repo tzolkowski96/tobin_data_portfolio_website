@@ -1,252 +1,330 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { BookOpen, Award, Briefcase, Languages, AlignCenterVertical as Certificate, Calendar, MapPin, ExternalLink } from 'lucide-react';
-import ProfessionalJourney from './ProfessionalJourney';
+import React, { useState } from 'react';
+import { BookOpen, Award, Code, ArrowUpRight, ChevronDown, ChevronUp, Lightbulb, GraduationCap, Workflow } from 'lucide-react';
 
-const About = () => {
+const About: React.FC = () => {
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  
+  const toggleSection = (section: string) => {
+    setExpandedSection(expandedSection === section ? null : section);
+  };
+  
   return (
-    <section id="about" className="py-16 md:py-24 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-8 md:mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">About Me</h2>
-          <p className="text-gray-600 dark:text-gray-300 text-base md:text-lg max-w-2xl mx-auto mb-6">
-            I am a passionate data professional with a strong foundation in data analysis, machine learning, and ETL processes. With experience across healthcare, telecoms, and higher education, I thrive on transforming complex data into actionable insights.
+    <section id="about" className="py-20 bg-gradient-secondary">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">About Me</h2>
+          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
+          <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-pretty">
+            A data enthusiast focused on analysis, SQL, and machine learning. With a growth mindset and 
+            commitment to continuous learning, I leverage data to drive insights and solve problems.
           </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mx-auto"></div>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="md:col-span-1 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-5 sm:p-6 h-full transform transition-transform hover:scale-105 shadow-md hover:shadow-xl"
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div 
+            className="enhanced-card p-8 bg-blue-50 dark:bg-blue-900/20 transform transition-all duration-500 hover:translate-y-[-5px]"
+            tabIndex={0}
           >
-            <div className="flex items-center mb-4">
-              <div className="bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white p-2.5 sm:p-3 rounded-lg mr-3 sm:mr-4">
-                <BookOpen size={22} className="sm:w-6 sm:h-6" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">Education</h3>
+            <div className="mb-4 text-blue-600 dark:text-blue-400">
+              <GraduationCap size={32} aria-hidden="true" />
             </div>
-            <ul className="space-y-3 sm:space-y-4">
-              <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">Master of Science - MS, Information Science</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">University of Wisconsin-Madison</p>
-                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center mt-1">
-                  <Calendar size={12} className="mr-1" /> August 2020 - December 2022
-                </p>
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Education</h3>
+            <ul className="text-gray-600 dark:text-gray-300 space-y-4">
+              <li className="bg-white/50 dark:bg-gray-800/50 p-3 rounded-lg">
+                <div className="flex items-center">
+                  <div className="mr-3 bg-blue-100 dark:bg-blue-900/50 rounded-full p-2">
+                    <BookOpen size={18} className="text-blue-700 dark:text-blue-300" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <strong className="block text-gray-800 dark:text-gray-100">Master's in Information Science</strong>
+                    <p className="text-sm">University of Wisconsin-Madison</p>
+                  </div>
+                </div>
               </li>
-              <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
-                <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">Bachelor of Arts - BA, International Studies</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">University of Wisconsin-Madison</p>
-                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center mt-1">
-                  <Calendar size={12} className="mr-1" /> August 2018 - May 2020
-                </p>
+              <li className="bg-white/50 dark:bg-gray-800/50 p-3 rounded-lg">
+                <div className="flex items-center">
+                  <div className="mr-3 bg-blue-100 dark:bg-blue-900/50 rounded-full p-2">
+                    <BookOpen size={18} className="text-blue-700 dark:text-blue-300" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <strong className="block text-gray-800 dark:text-gray-100">Bachelor's in International Studies</strong>
+                    <p className="text-sm">University of Wisconsin-Madison</p>
+                  </div>
+                </div>
               </li>
-              <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
-                <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">Communication Science (2 years)</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">Rochester Institute of Technology</p>
-                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center mt-1">
-                  <Calendar size={12} className="mr-1" /> August 2016 - May 2018
-                </p>
-              </li>
-              <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
-                <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">High School Diploma</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">Jakarta Intercultural School</p>
-                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm flex items-center mt-1">
-                  <Calendar size={12} className="mr-1" /> August 2012 - May 2016
-                </p>
+              <li className="bg-white/50 dark:bg-gray-800/50 p-3 rounded-lg">
+                <div className="flex items-center">
+                  <div className="mr-3 bg-blue-100 dark:bg-blue-900/50 rounded-full p-2">
+                    <BookOpen size={18} className="text-blue-700 dark:text-blue-300" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <strong className="block text-gray-800 dark:text-gray-100">Communication Science Studies</strong>
+                    <p className="text-sm">Rochester Institute of Technology (2 years)</p>
+                  </div>
+                </div>
               </li>
             </ul>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-1 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-5 sm:p-6 h-full transform transition-transform hover:scale-105 shadow-md hover:shadow-xl"
+          </div>
+
+          <div 
+            className="enhanced-card p-8 bg-indigo-50 dark:bg-indigo-900/20 transform transition-all duration-500 hover:translate-y-[-5px]"
+            tabIndex={0}
           >
-            <div className="flex items-center mb-4">
-              <div className="bg-gradient-to-r from-indigo-600 to-indigo-700 dark:from-indigo-500 dark:to-indigo-600 text-white p-2.5 sm:p-3 rounded-lg mr-3 sm:mr-4">
-                <Award size={22} className="sm:w-6 sm:h-6" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">Key Highlights</h3>
+            <div className="mb-4 text-indigo-600 dark:text-indigo-400">
+              <Award size={32} aria-hidden="true" />
             </div>
-            <ul className="space-y-2 sm:space-y-3">
-              <li className="flex items-start bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
-                <span className="text-indigo-600 dark:text-indigo-400 mr-2 flex-shrink-0">🔬</span>
-                <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">Strong foundation in data analysis and machine learning</p>
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Certifications</h3>
+            <ul className="text-gray-600 dark:text-gray-300 space-y-4">
+              <li className="bg-white/50 dark:bg-gray-800/50 p-3 rounded-lg">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-start flex-1">
+                    <div className="mr-3 bg-indigo-100 dark:bg-indigo-900/50 rounded-full p-2">
+                      <Award size={18} className="text-indigo-700 dark:text-indigo-300" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <strong className="block text-gray-800 dark:text-gray-100">Google Advanced Data Analytics</strong>
+                      <p className="text-sm">Coursera - 2023</p>
+                    </div>
+                  </div>
+                  <a 
+                    href="https://www.coursera.org/account/accomplishments/specialization/certificate/A8Z4GGXNDYQY" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 inline-flex p-1 hover:bg-blue-50 dark:hover:bg-blue-900/50 rounded-full transition-colors"
+                    aria-label="View Google Advanced Data Analytics certificate"
+                    title="View certificate"
+                  >
+                    <ArrowUpRight size={16} />
+                  </a>
+                </div>
               </li>
-              <li className="flex items-start bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
-                <span className="text-indigo-600 dark:text-indigo-400 mr-2 flex-shrink-0">🐍</span>
-                <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">Growing proficiency in Python, SQL, and data visualization</p>
+              <li className="bg-white/50 dark:bg-gray-800/50 p-3 rounded-lg">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-start flex-1">
+                    <div className="mr-3 bg-indigo-100 dark:bg-indigo-900/50 rounded-full p-2">
+                      <Award size={18} className="text-indigo-700 dark:text-indigo-300" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <strong className="block text-gray-800 dark:text-gray-100">Data Analyst in Tableau Track</strong>
+                      <p className="text-sm">DataCamp - 2022-2023</p>
+                    </div>
+                  </div>
+                  <a 
+                    href="https://www.datacamp.com/completed/statement-of-accomplishment/track/91a2d7ba601b5a8fe3cfe1d0b59fb1ac0b78afa8" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 inline-flex p-1 hover:bg-blue-50 dark:hover:bg-blue-900/50 rounded-full transition-colors"
+                    aria-label="View Data Analyst in Tableau certificate"
+                    title="View certificate"
+                  >
+                    <ArrowUpRight size={16} />
+                  </a>
+                </div>
               </li>
-              <li className="flex items-start bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
-                <span className="text-indigo-600 dark:text-indigo-400 mr-2 flex-shrink-0">📊</span>
-                <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">Completed several impactful data-driven projects</p>
-              </li>
-              <li className="flex items-start bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
-                <span className="text-indigo-600 dark:text-indigo-400 mr-2 flex-shrink-0">💡</span>
-                <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">Experience across healthcare, telecoms, and higher education</p>
-              </li>
-              <li className="flex items-start bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm">
-                <span className="text-indigo-600 dark:text-indigo-400 mr-2 flex-shrink-0">🔧</span>
-                <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">Developing skills in data pipelines and ETL processes</p>
+              <li className="bg-white/50 dark:bg-gray-800/50 p-3 rounded-lg">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-start flex-1">
+                    <div className="mr-3 bg-indigo-100 dark:bg-indigo-900/50 rounded-full p-2">
+                      <Award size={18} className="text-indigo-700 dark:text-indigo-300" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <strong className="block text-gray-800 dark:text-gray-100">Data Analyst in SQL Track</strong>
+                      <p className="text-sm">DataCamp - 2022-2023</p>
+                    </div>
+                  </div>
+                  <a 
+                    href="https://www.datacamp.com/completed/statement-of-accomplishment/track/d33a33e25d3aca10ae9433080651ae16f35cb32d" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 inline-flex p-1 hover:bg-blue-50 dark:hover:bg-blue-900/50 rounded-full transition-colors"
+                    aria-label="View Data Analyst in SQL certificate"
+                    title="View certificate"
+                  >
+                    <ArrowUpRight size={16} />
+                  </a>
+                </div>
               </li>
             </ul>
-          </motion.div>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="md:col-span-1 bg-green-50 dark:bg-green-900/20 rounded-xl p-5 sm:p-6 h-full transform transition-transform hover:scale-105 shadow-md hover:shadow-xl"
+          </div>
+
+          <div 
+            className="enhanced-card p-8 bg-teal-50 dark:bg-teal-900/20 transform transition-all duration-500 hover:translate-y-[-5px]"
+            tabIndex={0}
           >
-            <div className="flex items-center mb-4">
-              <div className="bg-gradient-to-r from-green-600 to-green-700 dark:from-green-500 dark:to-green-600 text-white p-2.5 sm:p-3 rounded-lg mr-3 sm:mr-4">
-                <Briefcase size={22} className="sm:w-6 sm:h-6" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">Professional Interests</h3>
+            <div className="mb-4 text-teal-600 dark:text-teal-400">
+              <Code size={32} aria-hidden="true" />
             </div>
-            <p className="text-gray-700 dark:text-gray-300 mb-4 text-sm sm:text-base">
-              I am a passionate data professional with a strong foundation in data analysis and machine learning. I am open to a variety of roles including:
+            <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Key Strengths</h3>
+            <ul className="text-gray-600 dark:text-gray-300 space-y-4">
+              <li className="bg-white/50 dark:bg-gray-800/50 p-3 rounded-lg">
+                <div className="flex items-center">
+                  <div className="mr-3 bg-teal-100 dark:bg-teal-900/50 rounded-full p-2">
+                    <Workflow size={18} className="text-teal-700 dark:text-teal-300" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <strong className="block text-gray-800 dark:text-gray-100">Data Analysis & Visualization</strong>
+                    <p className="text-sm">Python, SQL, Tableau, and Looker</p>
+                  </div>
+                </div>
+              </li>
+              <li className="bg-white/50 dark:bg-gray-800/50 p-3 rounded-lg">
+                <div className="flex items-center">
+                  <div className="mr-3 bg-teal-100 dark:bg-teal-900/50 rounded-full p-2">
+                    <Workflow size={18} className="text-teal-700 dark:text-teal-300" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <strong className="block text-gray-800 dark:text-gray-100">Machine Learning Applications</strong>
+                    <p className="text-sm">Classification, Clustering for business problems</p>
+                  </div>
+                </div>
+              </li>
+              <li className="bg-white/50 dark:bg-gray-800/50 p-3 rounded-lg">
+                <div className="flex items-center">
+                  <div className="mr-3 bg-teal-100 dark:bg-teal-900/50 rounded-full p-2">
+                    <Workflow size={18} className="text-teal-700 dark:text-teal-300" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <strong className="block text-gray-800 dark:text-gray-100">Data Engineering Fundamentals</strong>
+                    <p className="text-sm">ETL processes and database optimization</p>
+                  </div>
+                </div>
+              </li>
+              <li className="bg-white/50 dark:bg-gray-800/50 p-3 rounded-lg">
+                <div className="flex items-center">
+                  <div className="mr-3 bg-teal-100 dark:bg-teal-900/50 rounded-full p-2">
+                    <Workflow size={18} className="text-teal-700 dark:text-teal-300" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <strong className="block text-gray-800 dark:text-gray-100">SQL Development</strong>
+                    <p className="text-sm">Querying, optimization, stored procedures</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-md mb-10 transform transition-all duration-500 hover:shadow-lg border border-gray-100 dark:border-gray-700">
+          <div className="flex items-center justify-between cursor-pointer" 
+            onClick={() => toggleSection('journey')}
+            onKeyDown={(e) => e.key === 'Enter' && toggleSection('journey')}
+            tabIndex={0}
+            role="button"
+            aria-expanded={expandedSection === 'journey'}
+            aria-controls="journey-content"
+          >
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">My Journey in Tech</h3>
+            {expandedSection === 'journey' ? 
+              <ChevronUp className="text-blue-600 dark:text-blue-400" aria-hidden="true" /> : 
+              <ChevronDown className="text-blue-600 dark:text-blue-400" aria-hidden="true" />
+            }
+          </div>
+          
+          <div 
+            id="journey-content" 
+            className={`mt-4 text-gray-600 dark:text-gray-300 space-y-4 transition-all duration-300 overflow-hidden ${
+              expandedSection === 'journey' ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+            }`}
+          >
+            <p>
+              My path into data science wasn't traditional. Starting with Communication Science at RIT, 
+              I later transferred to UW-Madison for International Studies. It was during my undergraduate 
+              years I discovered a passion for data analysis, initially through class projects and 
+              self-exploration with Excel.
             </p>
-            <div className="grid grid-cols-2 gap-2">
-              <div className="bg-white dark:bg-gray-800 px-3 py-2 sm:px-4 rounded-lg shadow-sm text-gray-800 dark:text-white font-medium transform transition-transform hover:translate-x-2 text-sm sm:text-base">Data Analyst</div>
-              <div className="bg-white dark:bg-gray-800 px-3 py-2 sm:px-4 rounded-lg shadow-sm text-gray-800 dark:text-white font-medium transform transition-transform hover:translate-x-2 text-sm sm:text-base">Data Engineer</div>
-              <div className="bg-white dark:bg-gray-800 px-3 py-2 sm:px-4 rounded-lg shadow-sm text-gray-800 dark:text-white font-medium transform transition-transform hover:translate-x-2 text-sm sm:text-base">Integration Engineer</div>
-              <div className="bg-white dark:bg-gray-800 px-3 py-2 sm:px-4 rounded-lg shadow-sm text-gray-800 dark:text-white font-medium transform transition-transform hover:translate-x-2 text-sm sm:text-base">Data Manager</div>
-              <div className="bg-white dark:bg-gray-800 px-3 py-2 sm:px-4 rounded-lg shadow-sm text-gray-800 dark:text-white font-medium transform transition-transform hover:translate-x-2 text-sm sm:text-base">Healthcare Analyst</div>
-              <div className="bg-white dark:bg-gray-800 px-3 py-2 sm:px-4 rounded-lg shadow-sm text-gray-800 dark:text-white font-medium transform transition-transform hover:translate-x-2 text-sm sm:text-base">Data Specialist</div>
-              <div className="bg-white dark:bg-gray-800 px-3 py-2 sm:px-4 rounded-lg shadow-sm text-gray-800 dark:text-white font-medium transform transition-transform hover:translate-x-2 text-sm sm:text-base col-span-2">Administrative/Management Roles</div>
-            </div>
-          </motion.div>
+            <p>
+              This interest grew, leading me to teach myself SQL and eventually pursue a Master's in 
+              Information Science at UW-Madison, which formalized my skills. Real growth came from 
+              hands-on projects: predicting employee churn (achieving 98% accuracy), analyzing student 
+              performance data, and building a complex crypto market data pipeline with web scraping 
+              and automated reporting.
+            </p>
+            <p>
+              My focus shifted towards data engineering as I found building efficient data processing 
+              systems deeply satisfying, especially when handling large datasets like the 7.7 million 
+              records in the Traffic Accident Analytics project. SQL, particularly CTEs and window 
+              functions, became a favorite tool.
+            </p>
+            <p>
+              My diverse background offers a unique perspective, helping translate technical results 
+              into actionable business strategies. I embrace AI tools to accelerate learning and tackle 
+              complex challenges faster. This unconventional journey has shaped my problem-solving approach, 
+              blending technical expertise with a strong understanding of context and communication.
+            </p>
+            <blockquote className="italic border-l-4 border-blue-600 pl-4 py-2 my-4 dark:border-blue-500 bg-blue-50/50 dark:bg-blue-900/20 rounded-r-lg">
+              "The journey continues. I'm currently deepening my skills in Tableau, Excel, and PostgreSQL. 
+              The constant learning and problem-solving are what I love about this field."
+            </blockquote>
+          </div>
         </div>
-        
-        <div className="mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-purple-50 dark:bg-purple-900/20 rounded-xl p-5 sm:p-6 shadow-md hover:shadow-xl transform transition-transform hover:scale-105"
+
+        {/* Learning Journey & Approach Section */}
+        <div className="bg-indigo-50 dark:bg-indigo-900/20 rounded-xl p-8 shadow-md transform transition-all duration-500 hover:shadow-lg border border-indigo-100 dark:border-indigo-900/50">
+          <div className="flex items-center justify-between cursor-pointer" 
+            onClick={() => toggleSection('learning')}
+            onKeyDown={(e) => e.key === 'Enter' && toggleSection('learning')}
+            tabIndex={0}
+            role="button"
+            aria-expanded={expandedSection === 'learning'}
+            aria-controls="learning-content"
           >
-            <div className="flex items-center mb-4">
-              <div className="bg-gradient-to-r from-purple-600 to-purple-700 dark:from-purple-500 dark:to-purple-600 text-white p-2.5 sm:p-3 rounded-lg mr-3 sm:mr-4">
-                <Certificate size={22} className="sm:w-6 sm:h-6" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">Certifications</h3>
-            </div>
-            <ul className="space-y-3 sm:space-y-4">
-              <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
-                <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">Google Advanced Data Analytics</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">Coursera, 2023</p>
-                <div className="flex flex-wrap items-center justify-between mt-2 gap-2">
-                  <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">ID: A8Z4GGXNDYQY</p>
-                  <a 
-                    href="https://www.coursera.org/account/accomplishments/specialization/certificate/A8Z4GGXNDYQY"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 text-xs sm:text-sm flex items-center py-1"
-                  >
-                    View Certificate <ExternalLink size={12} className="ml-1" />
-                  </a>
-                </div>
-              </li>
-              <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
-                <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">Data Analyst in Tableau Track</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">DataCamp, 2022-2023</p>
-                <div className="flex flex-wrap items-center justify-between mt-2 gap-2">
-                  <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">ID: 91a2d7ba601b5a8f</p>
-                  <a 
-                    href="https://www.datacamp.com/completed/statement-of-accomplishment/track/91a2d7ba601b5a8fe3cfe1d0b59fb1ac0b78afa8"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 text-xs sm:text-sm flex items-center py-1"
-                  >
-                    View Certificate <ExternalLink size={12} className="ml-1" />
-                  </a>
-                </div>
-              </li>
-              <li className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
-                <p className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">Data Analyst in SQL Track</p>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">DataCamp, 2022-2023</p>
-                <div className="flex flex-wrap items-center justify-between mt-2 gap-2">
-                  <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">ID: d33a33e25d3aca10</p>
-                  <a 
-                    href="https://www.datacamp.com/completed/statement-of-accomplishment/track/d33a33e25d3aca10ae9433080651ae16f35cb32d"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 text-xs sm:text-sm flex items-center py-1"
-                  >
-                    View Certificate <ExternalLink size={12} className="ml-1" />
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </motion.div>
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 flex items-center">
+              <Lightbulb className="mr-2 text-indigo-600 dark:text-indigo-400" size={24} aria-hidden="true" />
+              Learning Journey & Approach
+            </h3>
+            {expandedSection === 'learning' ? 
+              <ChevronUp className="text-indigo-600 dark:text-indigo-400" aria-hidden="true" /> : 
+              <ChevronDown className="text-indigo-600 dark:text-indigo-400" aria-hidden="true" />
+            }
+          </div>
           
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-amber-50 dark:bg-amber-900/20 rounded-xl p-5 sm:p-6 shadow-md hover:shadow-xl transform transition-transform hover:scale-105"
+          <div 
+            id="learning-content" 
+            className={`mt-4 text-gray-600 dark:text-gray-300 transition-all duration-300 overflow-hidden ${
+              expandedSection === 'learning' ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+            }`}
           >
-            <div className="flex items-center mb-4">
-              <div className="bg-gradient-to-r from-amber-600 to-amber-700 dark:from-amber-500 dark:to-amber-600 text-white p-2.5 sm:p-3 rounded-lg mr-3 sm:mr-4">
-                <Languages size={22} className="sm:w-6 sm:h-6" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">Languages</h3>
+            <blockquote className="italic mb-6 bg-white/50 dark:bg-gray-800/50 p-4 rounded-lg shadow-sm text-pretty">
+              "I believe in continuous learning and practical application. Each project represents both a learning opportunity and a chance to solve real-world problems with data."
+            </blockquote>
+            
+            <p className="mb-6">
+              As someone actively developing my skills, I focus on projects that challenge me to grow while delivering practical value. 
+              I embrace transparency in my learning journey, utilizing online resources, courses, and AI assistance to tackle complex problems, 
+              always aiming to deepen my understanding and capabilities.
+            </p>
+            
+            <div className="mt-6 bg-white/70 dark:bg-gray-800/70 p-5 rounded-lg shadow-sm">
+              <p className="font-medium mb-2 text-gray-800 dark:text-gray-200">I'm particularly interested in:</p>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <div className="bg-indigo-100 dark:bg-indigo-900/50 p-1 rounded-full mr-3 mt-1">
+                    <div className="w-2 h-2 bg-indigo-600 dark:bg-indigo-400 rounded-full"></div>
+                  </div>
+                  <span>Strengthening my foundation in <strong className="text-indigo-700 dark:text-indigo-300">statistics</strong> and mathematical concepts</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-indigo-100 dark:bg-indigo-900/50 p-1 rounded-full mr-3 mt-1">
+                    <div className="w-2 h-2 bg-indigo-600 dark:bg-indigo-400 rounded-full"></div>
+                  </div>
+                  <span>Developing more advanced <strong className="text-indigo-700 dark:text-indigo-300">machine learning</strong> skills (e.g., deep learning, NLP)</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-indigo-100 dark:bg-indigo-900/50 p-1 rounded-full mr-3 mt-1">
+                    <div className="w-2 h-2 bg-indigo-600 dark:bg-indigo-400 rounded-full"></div>
+                  </div>
+                  <span>Creating sophisticated <strong className="text-indigo-700 dark:text-indigo-300">data pipelines</strong> and <strong className="text-indigo-700 dark:text-indigo-300">ETL processes</strong></span>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-indigo-100 dark:bg-indigo-900/50 p-1 rounded-full mr-3 mt-1">
+                    <div className="w-2 h-2 bg-indigo-600 dark:bg-indigo-400 rounded-full"></div>
+                  </div>
+                  <span>Contributing to <strong className="text-indigo-700 dark:text-indigo-300">open-source data projects</strong></span>
+                </li>
+              </ul>
             </div>
-            <div className="space-y-3 sm:space-y-4">
-              <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">English</span>
-                  <span className="bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 px-2 py-1 rounded text-xs sm:text-sm">Fluent</span>
-                </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 sm:h-2">
-                  <div className="bg-gradient-to-r from-amber-500 to-amber-600 dark:from-amber-400 dark:to-amber-500 h-1.5 sm:h-2 rounded-full" style={{ width: '100%' }}></div>
-                </div>
-              </div>
-              
-              <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">American Sign Language (ASL)</span>
-                  <span className="bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 px-2 py-1 rounded text-xs sm:text-sm">Native</span>
-                </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 sm:h-2">
-                  <div className="bg-gradient-to-r from-amber-500 to-amber-600 dark:from-amber-400 dark:to-amber-500 h-1.5 sm:h-2 rounded-full" style={{ width: '100%' }}></div>
-                </div>
-              </div>
-              
-              <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">French & Spanish</span>
-                  <span className="bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 px-2 py-1 rounded text-xs sm:text-sm">Conversational</span>
-                </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 sm:h-2">
-                  <div className="bg-gradient-to-r from-amber-500 to-amber-600 dark:from-amber-400 dark:to-amber-500 h-1.5 sm:h-2 rounded-full" style={{ width: '70%' }}></div>
-                </div>
-              </div>
-              
-              <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-sm">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-medium text-gray-800 dark:text-white text-sm sm:text-base">Italian</span>
-                  <span className="bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 px-2 py-1 rounded text-xs sm:text-sm">Basic</span>
-                </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 sm:h-2">
-                  <div className="bg-gradient-to-r from-amber-500 to-amber-600 dark:from-amber-400 dark:to-amber-500 h-1.5 sm:h-2 rounded-full" style={{ width: '30%' }}></div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          </div>
         </div>
-        
-        <ProfessionalJourney />
       </div>
     </section>
   );

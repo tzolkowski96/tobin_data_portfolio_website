@@ -1,279 +1,540 @@
-import React, { useState, useRef } from 'react';
-import { Search, X, Filter, Star, ArrowRight } from 'lucide-react';
-import { ProjectCategory } from '../types/project';
-import { projects } from '../data/projects';
-import ProjectCard from './ProjectCard';
-import FeaturedProjectCard from './FeaturedProjectCard';
-import UpcomingProjects from './UpcomingProjects';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { Github, ExternalLink, Code, Database, BarChart2, ChevronDown, ChevronUp, Tag, Calendar, Clock, Brain, LineChart, BarChart, FileSpreadsheet, Briefcase } from 'lucide-react';
 
-const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState<ProjectCategory>('all');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [visibleProjects, setVisibleProjects] = useState(6);
-  const projectsRef = useRef<HTMLDivElement>(null);
-  const allProjectsRef = useRef<HTMLDivElement>(null);
+interface ProjectDetailsType {
+  id: number;
+  title: string;
+  description: string;
+  longDescription: string[];
+  image: string;
+  tags: string[];
+  technologies: string[];
+  links: {
+    github?: string;
+    live?: string;
+  };
+  date: string;
+  duration: string;
+  category: string;
+  icon: React.ReactNode;
+}
+
+const Projects: React.FC = () => {
+  const [expandedProject, setExpandedProject] = useState<number | null>(null);
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const projectsToShow = 6;
   
-  const featuredProjects = projects.filter(project => project.featured);
+  const toggleExpand = (id: number) => {
+    setExpandedProject(expandedProject === id ? null : id);
+  };
   
-  const handleCategoryChange = (category: ProjectCategory) => {
-    setActiveCategory(category);
-    setVisibleProjects(6);
-    if (allProjectsRef.current) {
-      allProjectsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const projects: ProjectDetailsType[] = [
+    {
+      id: 1,
+      title: "Employee Churn Prediction",
+      description: "Machine learning model predicting employee turnover with 98% accuracy using Python, scikit-learn, and pandas.",
+      longDescription: [
+        "Implemented a comprehensive employee churn prediction model using Random Forest, Logistic Regression, and Gradient Boosting algorithms.",
+        "Performed extensive data cleaning and preprocessing on HR dataset including handling missing values, outlier detection, and feature engineering.",
+        "Conducted feature importance analysis to identify key churn drivers (overtime, project count, satisfaction).",
+        "Achieved 98% accuracy on test data, providing actionable insights for HR department retention strategies.",
+        "Developed interactive dashboard for HR managers to visualize churn risk for current employees.",
+        "Provided actionable HR recommendations based on model findings."
+      ],
+      image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Machine Learning", "Python", "Data Analysis", "Classification"],
+      technologies: ["Python", "Pandas", "Scikit-Learn", "XGBoost", "Matplotlib", "Seaborn"],
+      links: {
+        github: "https://github.com/tzolkowski96/Employee-Churn-Prediction",
+        live: "https://tzolkowski96.github.io/Salifort-Motors-Project/"
+      },
+      date: "2023",
+      duration: "3 months",
+      category: "Data Analysis & Machine Learning",
+      icon: <Brain size={24} className="text-indigo-600 dark:text-indigo-400" aria-hidden="true" />
+    },
+    {
+      id: 2,
+      title: "Traffic Accident Analytics Engine",
+      description: "Analysis of 7.7M US traffic accident records to identify patterns and risk factors through interactive visualizations.",
+      longDescription: [
+        "Analyzed 7.7M US traffic accident records for public safety insights using Python and advanced analytics techniques.",
+        "Performed statistical validation using chi-square tests and ANOVA analysis.",
+        "Implemented Random Forest models for severity prediction, achieving 78% accuracy.",
+        "Developed a scalable pipeline that processed data across 49 states efficiently.",
+        "Created interactive dashboards with geospatial visualizations using Folium.",
+        "Optimized memory usage, achieving a 3.25% reduction in resource consumption.",
+        "Identified significant patterns in accident occurrence and severity based on time, location, and weather conditions."
+      ],
+      image: "https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Big Data", "Geospatial Analysis", "Machine Learning", "Python"],
+      technologies: ["Python", "NumPy", "Pandas", "Scikit-learn", "SciPy", "Matplotlib", "Seaborn", "Folium"],
+      links: {
+        github: "https://github.com/tzolkowski96/us_accidents_analysis"
+      },
+      date: "2022",
+      duration: "4 months",
+      category: "Data Analysis & Machine Learning",
+      icon: <LineChart size={24} className="text-blue-600 dark:text-blue-400" aria-hidden="true" />
+    },
+    {
+      id: 3,
+      title: "UFood Customer Analysis",
+      description: "Marketing analytics for a food delivery app through customer segmentation, campaign analysis, and behavior mapping.",
+      longDescription: [
+        "Optimized marketing strategies for a food delivery app using comprehensive customer data analysis.",
+        "Implemented K-means clustering to create actionable customer segments for targeted marketing.",
+        "Conducted A/B testing to measure campaign effectiveness and optimize messaging.",
+        "Created detailed customer journey maps to identify key touchpoints and improvement opportunities.",
+        "Developed recommendations to increase Customer Lifetime Value (CLV) based on data findings.",
+        "Analyzed product preferences and purchasing patterns to guide menu optimization.",
+        "Designed a complete marketing strategy framework based on analytical insights."
+      ],
+      image: "https://images.pexels.com/photos/4393021/pexels-photo-4393021.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Marketing Analytics", "Customer Segmentation", "A/B Testing", "Python"],
+      technologies: ["Python", "Pandas", "Scikit-learn", "Matplotlib", "Seaborn", "SciPy"],
+      links: {
+        github: "https://github.com/tzolkowski96/ufood_analysis",
+        live: "https://tzolkowski96.github.io/analyst-builder-food-marketing-project/"
+      },
+      date: "2023",
+      duration: "3 months",
+      category: "Data Analysis & Machine Learning",
+      icon: <BarChart size={24} className="text-purple-600 dark:text-purple-400" aria-hidden="true" />
+    },
+    {
+      id: 4,
+      title: "World Life Expectancy Analysis",
+      description: "SQL-based analysis of global life expectancy data covering 183 countries over 15 years with advanced data cleaning techniques.",
+      longDescription: [
+        "Cleaned and analyzed global life expectancy data (2.9k records, 183 countries, 15 years) using advanced SQL techniques.",
+        "Achieved 93.41% data quality through rigorous cleaning processes and validation.",
+        "Identified a 12.36 year development gap in life expectancy between developed and developing nations.",
+        "Quantified COVID-19 impact (-4.75% in 2020) and subsequent recovery (+5.91%).",
+        "Implemented advanced window functions for prioritized deduplication and time-series analysis.",
+        "Applied comprehensive data quality management techniques to ensure analytical integrity.",
+        "Correlated life expectancy with socioeconomic factors across different regions and development statuses."
+      ],
+      image: "https://images.pexels.com/photos/3902882/pexels-photo-3902882.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["SQL", "Data Cleaning", "Time-Series Analysis", "Global Health"],
+      technologies: ["MySQL 8.0", "MySQL Workbench", "CTEs", "Window Functions", "Stored Procedures"],
+      links: {
+        github: "https://github.com/tzolkowski96/world_life_expectancy"
+      },
+      date: "2023",
+      duration: "2 months",
+      category: "SQL Projects",
+      icon: <Database size={24} className="text-green-600 dark:text-green-400" aria-hidden="true" />
+    },
+    {
+      id: 5,
+      title: "US Household Income Analysis",
+      description: "Comprehensive SQL analysis of US household income data across 50 states, revealing economic insights and regional disparities.",
+      longDescription: [
+        "Extracted economic insights from US demographic data (32k+ records, 50 states) using advanced SQL techniques.",
+        "Developed a weighted quality scoring system, achieving an overall data quality score of 9.62/10.",
+        "Identified a 30% regional income gap between Northeast and Southeast regions.",
+        "Analyzed wealth concentration patterns using mean/median income ratios to identify inequality hotspots.",
+        "Created a reusable data quality assessment framework for future projects.",
+        "Optimized query performance, reducing execution time from 68.5s to 21.9s through indexing and query restructuring.",
+        "Mapped economic prosperity gradients across different geographic regions.",
+        "Provided targeted economic development recommendations based on data findings."
+      ],
+      image: "https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["SQL", "Economic Analysis", "Data Quality", "Statistical Analysis"],
+      technologies: ["MySQL 8.0+", "MySQL Workbench", "Window Functions", "CTEs", "Stored Procedures", "Performance Optimization"],
+      links: {
+        github: "https://github.com/tzolkowski96/us-household-income-analysis"
+      },
+      date: "2022",
+      duration: "3 months",
+      category: "SQL Projects",
+      icon: <Database size={24} className="text-teal-600 dark:text-teal-400" aria-hidden="true" />
+    },
+    {
+      id: 6,
+      title: "Portuguese Students Education Analysis",
+      description: "Educational data mining project to identify factors influencing student performance and provide intervention recommendations.",
+      longDescription: [
+        "Identified factors influencing student academic performance through comprehensive data analysis.",
+        "Developed predictive models to identify at-risk students with high accuracy.",
+        "Discovered parental education level as the strongest predictor of student performance.",
+        "Identified optimal study patterns and behaviors correlated with academic success.",
+        "Provided detailed intervention recommendations for educators and administrators.",
+        "Created visualizations highlighting key relationships between socioeconomic factors and academic outcomes.",
+        "Designed a framework for early intervention based on predictive analytics."
+      ],
+      image: "https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Educational Analytics", "Machine Learning", "Python", "Statistical Analysis"],
+      technologies: ["Python", "Pandas", "Scikit-learn", "Matplotlib", "Seaborn"],
+      links: {
+        github: "https://github.com/tzolkowski96/portuguese-students-higher-education-analysis",
+        live: "https://tzolkowski96.github.io/student-education-analysis/"
+      },
+      date: "2022",
+      duration: "2 months",
+      category: "Data Analysis & Machine Learning",
+      icon: <Brain size={24} className="text-blue-600 dark:text-blue-400" aria-hidden="true" />
+    },
+    {
+      id: 7,
+      title: "Web Data Insights Explorer",
+      description: "Versatile web scraping and analysis tool with NLP capabilities for non-technical users.",
+      longDescription: [
+        "Developed a versatile tool for non-technical users to extract, analyze, and visualize web data.",
+        "Implemented pattern-based extraction using regex and BeautifulSoup for flexible data collection.",
+        "Integrated NLP sentiment analysis capabilities using NLTK for text processing.",
+        "Created multi-format visualization options including charts, wordclouds, and interactive plots.",
+        "Built with ethical scraping principles, respecting robots.txt and implementing rate limiting.",
+        "Designed an intuitive interface allowing users to configure extractions without coding knowledge.",
+        "Packaged as a Flask web application with a clean, responsive UI."
+      ],
+      image: "https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["Web Scraping", "NLP", "Data Visualization", "Flask"],
+      technologies: ["Python", "Flask", "BeautifulSoup", "Pandas", "NLTK", "Matplotlib", "Seaborn", "WordCloud"],
+      links: {
+        github: "https://github.com/tzolkowski96/advanced_web_scraping_toolkit"
+      },
+      date: "2023",
+      duration: "4 months",
+      category: "Web Development & Applications",
+      icon: <Code size={24} className="text-orange-600 dark:text-orange-400" aria-hidden="true" />
+    },
+    {
+      id: 8,
+      title: "Global Population Insights",
+      description: "Interactive web platform for visualizing and analyzing global population trends and demographic patterns.",
+      longDescription: [
+        "Designed and built an interactive platform for global population trend visualization and analysis.",
+        "Created dynamic, interactive visualizations using Plotly.js for intuitive data exploration.",
+        "Implemented comparative analysis tools allowing users to examine multiple countries or regions simultaneously.",
+        "Developed projection models to visualize future population trends based on current data.",
+        "Included policy recommendations based on demographic analysis and research.",
+        "Featured case studies highlighting significant demographic shifts and their implications.",
+        "Built a responsive web interface accessible across devices and screen sizes."
+      ],
+      image: "https://images.pexels.com/photos/41949/earth-earth-at-night-night-lights-41949.jpeg?auto=compress&cs=tinysrgb&w=800",
+      tags: ["JavaScript", "Data Visualization", "Web Development", "Demographics"],
+      technologies: ["HTML", "CSS", "JavaScript", "Plotly.js"],
+      links: {
+        github: "https://github.com/tzolkowski96/global-population-insights",
+        live: "https://tzolkowski96.github.io/global-population-insights/"
+      },
+      date: "2023",
+      duration: "3 months",
+      category: "Web Development & Applications",
+      icon: <LineChart size={24} className="text-yellow-600 dark:text-yellow-400" aria-hidden="true" />
+    },
+  ];
+  
+  const upcomingProjects = [
+    {
+      title: "Excel Analytics Dashboard",
+      description: "Advanced Excel dashboard for business metrics visualization.",
+      status: "Coming Soon",
+      category: "Data Analysis & Visualization",
+      icon: <FileSpreadsheet size={20} className="text-green-600 dark:text-green-400" aria-hidden="true" />
+    },
+    {
+      title: "Tableau Interactive Dashboards",
+      description: "Collection of interactive Tableau dashboards for various business domains.",
+      status: "Coming Soon",
+      category: "Data Visualization",
+      icon: <BarChart size={20} className="text-blue-600 dark:text-blue-400" aria-hidden="true" />
+    },
+    {
+      title: "Power BI Reports",
+      description: "Comprehensive Power BI reporting suite for business intelligence.",
+      status: "In Progress",
+      category: "Business Intelligence",
+      icon: <Briefcase size={20} className="text-purple-600 dark:text-purple-400" aria-hidden="true" />
+    },
+    {
+      title: "Data Engineering Pipeline",
+      description: "End-to-end data engineering pipeline for big data processing.",
+      status: "Planning Phase",
+      category: "Data Engineering",
+      icon: <Database size={20} className="text-orange-600 dark:text-orange-400" aria-hidden="true" />
     }
-  };
-
-  const handleViewAllProjects = () => {
-    setActiveCategory('all');
-    setVisibleProjects(6);
-    if (allProjectsRef.current) {
-      allProjectsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
-
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
-    setVisibleProjects(6);
-  };
-
-  const clearSearch = () => {
-    setSearchTerm('');
-  };
-
-  const toggleFilters = () => {
-    setIsFilterOpen(!isFilterOpen);
-  };
-
-  const loadMore = () => {
-    setVisibleProjects(prev => prev + 6);
-  };
-
-  const filteredProjects = projects.filter(project => {
-    const matchesCategory = activeCategory === 'all' || project.category.includes(activeCategory);
-    const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          project.technologies.some(tech => tech.toLowerCase().includes(searchTerm.toLowerCase()));
-    return matchesCategory && matchesSearch;
-  });
-
-  const formatCategoryName = (category: string) => {
-    return category.split('-')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-  };
+  ];
+  
+  // Get unique categories from projects
+  const categories = Array.from(new Set(projects.map(project => project.category)));
+  
+  // Filter projects based on active category
+  const filteredProjects = activeCategory 
+    ? projects.filter(project => project.category === activeCategory) 
+    : projects;
+  
+  const visibleProjects = showAllProjects ? filteredProjects : filteredProjects.slice(0, projectsToShow);
+  
+  const ProjectTechTag: React.FC<{ tech: string }> = ({ tech }) => (
+    <span className="bg-blue-50 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 px-2 py-1 rounded text-xs inline-flex items-center m-1 leading-none">
+      {tech}
+    </span>
+  );
+  
+  const ProjectCategoryTag: React.FC<{ tag: string }> = ({ tag }) => (
+    <span className="bg-indigo-50 dark:bg-indigo-900/30 text-indigo-800 dark:text-indigo-300 px-2 py-1 rounded text-xs inline-flex items-center m-1 leading-none">
+      {tag}
+    </span>
+  );
 
   return (
-    <section id="projects" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-800" ref={projectsRef}>
-      <div className="container mx-auto px-4 md:px-6">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <span className="inline-block px-4 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium mb-4">
-            Portfolio Showcase
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Featured Projects</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mx-auto mb-4"></div>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Explore my collection of data analysis, machine learning, and development projects. Each project demonstrates my commitment to delivering impactful solutions and continuous learning.
+    <section id="projects" className="py-20 bg-gradient-secondary">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">Featured Projects</h2>
+          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
+          <p className="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 text-pretty">
+            A selection of my data analysis, machine learning, and visualization projects. Each project demonstrates
+            my approach to solving complex problems using data-driven methods.
           </p>
-        </motion.div>
-        
-        {/* Featured Projects */}
-        <div className="mb-16">
-          <div className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
-            <h3 className="text-2xl font-bold text-gray-800 dark:text-white flex items-center">
-              <Star className="mr-2 text-yellow-500" size={24} />
-              Featured Projects
-            </h3>
-            <button 
-              onClick={handleViewAllProjects}
-              className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium flex items-center whitespace-nowrap"
-            >
-              View All Projects <ArrowRight size={16} className="ml-1" />
-            </button>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {featuredProjects.map((project) => (
-              <FeaturedProjectCard 
-                key={project.id} 
-                project={project}
-                formatCategoryName={formatCategoryName}
-              />
-            ))}
-          </div>
         </div>
         
-        {/* All Projects Section */}
-        <div ref={allProjectsRef}>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-8"
+        {/* Category filter pills */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8 opacity-0 animate-fadeIn" style={{animationDelay: '0.2s'}}>
+          <button
+            onClick={() => setActiveCategory(null)}
+            className={`px-4 py-2 rounded-full flex items-center transition-all duration-300 shadow-sm ${
+              activeCategory === null 
+                ? 'bg-blue-600 text-white scale-105 shadow-md' 
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+            }`}
+            aria-pressed={activeCategory === null}
           >
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">All Projects</h2>
-            <p className="text-gray-600 dark:text-gray-300 text-base md:text-lg max-w-2xl mx-auto mb-6">
-              Browse through a diverse range of projects showcasing my expertise in data analysis, machine learning, and web development. Each project reflects my dedication to solving real-world problems with innovative solutions.
-            </p>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mx-auto"></div>
-          </motion.div>
-
-          {/* Search and Filter */}
-          <div className="mb-8 space-y-4">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search projects..."
-                value={searchTerm}
-                onChange={handleSearch}
-                className="w-full pl-10 pr-10 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-              />
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500" size={18} />
-              {searchTerm && (
-                <button 
-                  onClick={clearSearch}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300"
-                >
-                  <X size={18} />
-                </button>
-              )}
-            </div>
-            
-            <div>
-              <button 
-                onClick={toggleFilters}
-                className="w-full md:hidden flex items-center justify-between px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-200 mb-4"
-                aria-expanded={isFilterOpen}
-              >
-                <span className="flex items-center">
-                  <Filter size={18} className="mr-2" />
-                  Filter by Category
-                </span>
-                <span>{isFilterOpen ? '−' : '+'}</span>
-              </button>
-              
-              <div className={`md:flex gap-2 flex-wrap ${isFilterOpen ? 'grid grid-cols-2 gap-2' : 'hidden md:flex'}`}>
-                <CategoryButton
-                  category="all"
-                  active={activeCategory === 'all'}
-                  onClick={() => handleCategoryChange('all')}
-                  label="All Projects"
-                />
-                <CategoryButton
-                  category="data-analysis"
-                  active={activeCategory === 'data-analysis'}
-                  onClick={() => handleCategoryChange('data-analysis')}
-                  label="Data Analysis"
-                />
-                <CategoryButton
-                  category="machine-learning"
-                  active={activeCategory === 'machine-learning'}
-                  onClick={() => handleCategoryChange('machine-learning')}
-                  label="Machine Learning"
-                />
-                <CategoryButton
-                  category="web-development"
-                  active={activeCategory === 'web-development'}
-                  onClick={() => handleCategoryChange('web-development')}
-                  label="Web Development"
-                />
-                <CategoryButton
-                  category="python"
-                  active={activeCategory === 'python'}
-                  onClick={() => handleCategoryChange('python')}
-                  label="Python"
-                />
-                <CategoryButton
-                  category="sql"
-                  active={activeCategory === 'sql'}
-                  onClick={() => handleCategoryChange('sql')}
-                  label="SQL"
-                />
-              </div>
-            </div>
-          </div>
+            <span>All Projects</span>
+          </button>
           
-          {/* Projects Grid */}
-          {filteredProjects.length > 0 ? (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                {filteredProjects.slice(0, visibleProjects).map((project, index) => (
-                  <motion.div 
-                    key={project.id}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: Math.min(index * 0.1, 0.5) }}
-                    className="h-full bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transform transition-transform hover:scale-105"
-                  >
-                    <ProjectCard 
-                      project={project}
-                      formatCategoryName={formatCategoryName}
-                      index={index}
-                    />
-                  </motion.div>
-                ))}
+          {categories.map((category, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveCategory(category)}
+              className={`px-4 py-2 rounded-full flex items-center transition-all duration-300 shadow-sm ${
+                activeCategory === category 
+                  ? 'bg-blue-600 text-white scale-105 shadow-md' 
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+              }`}
+              aria-pressed={activeCategory === category}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {visibleProjects.map(project => (
+            <div 
+              key={project.id} 
+              className={`enhanced-card overflow-hidden transform transition-all duration-500 hover:shadow-lg flex flex-col h-full ${
+                expandedProject === project.id ? 'scale-100 z-10' : 'hover:-translate-y-2'
+              }`}
+            >
+              <div className="h-52 overflow-hidden relative">
+                <img 
+                  src={project.image} 
+                  alt={`${project.title} project`} 
+                  className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                  <div className="p-4">
+                    <div className="flex flex-wrap gap-1 mb-2">
+                      {project.tags.slice(0, 3).map((tag, idx) => (
+                        <ProjectCategoryTag key={idx} tag={tag} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
               
-              {filteredProjects.length > visibleProjects && (
-                <div className="mt-12 text-center">
+              <div className="p-6 flex-grow flex flex-col">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 flex items-center">
+                    <span className="mr-2">{project.icon}</span>
+                    {project.title}
+                  </h3>
+                </div>
+                
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  {project.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-1 mb-4">
+                  {project.technologies.slice(0, 5).map((tech, idx) => (
+                    <ProjectTechTag key={idx} tech={tech} />
+                  ))}
+                  {project.technologies.length > 5 && (
+                    <span className="text-gray-500 text-xs">+{project.technologies.length - 5} more</span>
+                  )}
+                </div>
+                
+                {/* Project timeline/info */}
+                <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-4">
+                  <Calendar size={14} className="mr-1" aria-hidden="true" />
+                  <span className="mr-3">{project.date}</span>
+                  <Clock size={14} className="mr-1" aria-hidden="true" />
+                  <span>{project.duration}</span>
+                </div>
+                
+                {/* Expanded content */}
+                {expandedProject === project.id && (
+                  <div className="mt-4 border-t border-gray-200 dark:border-gray-700 pt-4 animate-fadeIn">
+                    <h4 className="font-bold text-gray-800 dark:text-gray-200 mb-2">Project Details</h4>
+                    <ul className="space-y-2 text-gray-600 dark:text-gray-300 mb-4">
+                      {project.longDescription.map((point, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <span className="w-1.5 h-1.5 bg-blue-600 dark:bg-blue-400 rounded-full mt-1.5 mr-2 flex-shrink-0"></span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    {project.technologies.length > 5 && (
+                      <div className="mb-4">
+                        <h4 className="font-bold text-gray-800 dark:text-gray-200 mb-2">All Technologies</h4>
+                        <div className="flex flex-wrap gap-1">
+                          {project.technologies.map((tech, idx) => (
+                            <ProjectTechTag key={idx} tech={tech} />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+                
+                <div className="mt-auto flex items-center justify-between pt-4">
+                  <div className="flex space-x-2">
+                    {project.links.github && (
+                      <a 
+                        href={project.links.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 p-1 rounded-full hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
+                        aria-label={`GitHub repository for ${project.title}`}
+                      >
+                        <Github size={20} aria-hidden="true" />
+                      </a>
+                    )}
+                    {project.links.live && (
+                      <a 
+                        href={project.links.live} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 p-1 rounded-full hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
+                        aria-label={`Live demo for ${project.title}`}
+                      >
+                        <ExternalLink size={20} aria-hidden="true" />
+                      </a>
+                    )}
+                  </div>
+                  
                   <button 
-                    onClick={loadMore}
-                    className="px-6 py-3 bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                    onClick={() => toggleExpand(project.id)}
+                    className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center text-sm font-medium transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-700 focus:ring-offset-2 rounded"
+                    aria-expanded={expandedProject === project.id}
+                    aria-controls={`project-details-${project.id}`}
                   >
-                    Load More Projects
+                    {expandedProject === project.id ? (
+                      <>
+                        <ChevronUp size={16} className="mr-1" aria-hidden="true" />
+                        <span>Show less</span>
+                      </>
+                    ) : (
+                      <>
+                        <ChevronDown size={16} className="mr-1" aria-hidden="true" />
+                        <span>Read more</span>
+                      </>
+                    )}
                   </button>
                 </div>
-              )}
-            </>
-          ) : (
-            <div className="text-center py-12">
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-8 max-w-md mx-auto shadow-md">
-                <p className="text-xl text-gray-700 dark:text-gray-300 mb-4">No projects found matching your criteria.</p>
-                <button 
-                  onClick={() => {
-                    setActiveCategory('all');
-                    setSearchTerm('');
-                  }}
-                  className="px-4 py-2 bg-blue-600 dark:bg-blue-500 hover:bg-blue-700 dark:hover:bg-blue-600 text-white font-medium rounded-lg"
-                >
-                  Reset Filters
-                </button>
               </div>
             </div>
-          )}
+          ))}
         </div>
         
-        <UpcomingProjects />
+        {filteredProjects.length > projectsToShow && !showAllProjects && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={() => setShowAllProjects(true)}
+              className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              Load {filteredProjects.length - projectsToShow} More Projects
+            </button>
+          </div>
+        )}
+        
+        {showAllProjects && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={() => setShowAllProjects(false)}
+              className="px-6 py-3 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+            >
+              Show Fewer Projects
+            </button>
+          </div>
+        )}
+        
+        {/* Upcoming Projects Section */}
+        <div className="mt-16 bg-white dark:bg-gray-800 rounded-xl p-8 shadow-md max-w-4xl mx-auto">
+          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">Upcoming Projects</h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {upcomingProjects.map((project, idx) => (
+              <div key={idx} className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 p-5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+                <div className="flex items-start">
+                  <div className="p-2 bg-white dark:bg-gray-800 rounded-md shadow-sm mr-4">
+                    {project.icon}
+                  </div>
+                  <div>
+                    <div className="flex items-center mb-2">
+                      <h4 className="font-bold text-gray-800 dark:text-gray-100">{project.title}</h4>
+                      <span className={`ml-2 text-xs px-2 py-0.5 rounded-full ${
+                        project.status === 'Coming Soon' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300' :
+                        project.status === 'In Progress' ? 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300' :
+                        'bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300'
+                      }`}>
+                        {project.status}
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm">{project.description}</p>
+                    <p className="text-gray-500 dark:text-gray-400 text-xs mt-2">{project.category}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-8 text-center">
+            <p className="text-gray-600 dark:text-gray-300 italic">
+              "I'm constantly working on new projects to expand my skills and explore new technologies. Check back soon to see these projects in action!"
+            </p>
+          </div>
+        </div>
+        
+        <div className="mt-16 bg-white dark:bg-gray-800 rounded-xl p-8 shadow-md max-w-3xl mx-auto">
+          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4 text-center">Additional Projects & Contributions</h3>
+          <p className="text-gray-600 dark:text-gray-300 mb-6 text-center">
+            In addition to the featured projects, I've worked on various smaller projects and contributions.
+            Feel free to check out my GitHub for more examples of my work.
+          </p>
+          
+          <div className="flex justify-center">
+            <a 
+              href="https://github.com/tzolkowski96" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-gray-800 dark:bg-gray-700 text-white rounded-md hover:bg-gray-900 dark:hover:bg-gray-600 transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 flex items-center"
+            >
+              <Github size={20} className="mr-2" aria-hidden="true" />
+              <span>View GitHub Profile</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
-
-interface CategoryButtonProps {
-  category: ProjectCategory;
-  active: boolean;
-  onClick: () => void;
-  label: string;
-}
-
-const CategoryButton: React.FC<CategoryButtonProps> = ({ category, active, onClick, label }) => (
-  <button
-    onClick={onClick}
-    className={`w-full md:w-auto px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-      active
-        ? 'bg-blue-600 dark:bg-blue-500 text-white'
-        : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-600'
-    }`}
-  >
-    {label}
-  </button>
-);
 
 export default Projects;

@@ -4,46 +4,43 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-      },
       colors: {
+        blue: {
+          50: '#EFF6FF',
+          100: '#DBEAFE',
+          200: '#BFDBFE',
+          300: '#93C5FD',
+          400: '#60A5FA',
+          500: '#3B82F6',
+          600: '#2563EB',
+          700: '#1D4ED8',
+          800: '#1E40AF',
+          900: '#1E3A8A',
+        },
         gray: {
-          850: '#1f2937',
+          50: '#F9FAFB',
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#6B7280',
+          600: '#4B5563',
+          700: '#374151',
+          800: '#1F2937',
+          900: '#111827',
         },
       },
-      spacing: {
-        'safe-top': 'env(safe-area-inset-top)',
-        'safe-bottom': 'env(safe-area-inset-bottom)',
-        'safe-left': 'env(safe-area-inset-left)',
-        'safe-right': 'env(safe-area-inset-right)',
+      animation: {
+        fadeIn: 'fadeIn 1s ease-in-out forwards',
+        slideUp: 'slideUp 0.6s ease-out forwards',
+        slideInRight: 'slideInRight 0.6s ease-out forwards',
       },
-      height: {
-        screen: ['100vh', '100dvh'],
+      boxShadow: {
+        'inner-lg': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       },
-      minHeight: {
-        screen: ['100vh', '100dvh'],
-      },
-      maxHeight: {
-        screen: ['100vh', '100dvh'],
-      },
-      screens: {
-        'xs': '375px',
-        'sm': '640px',
-        'md': '768px',
-        'lg': '1024px',
-        'xl': '1280px',
-        '2xl': '1536px',
-      },
-    },
-    container: {
-      center: true,
-      padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
       },
     },
   },

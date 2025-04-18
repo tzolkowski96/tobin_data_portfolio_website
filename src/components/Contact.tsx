@@ -1,272 +1,537 @@
-import React, { useState } from 'react';
-import { Send, Mail, MapPin, Phone, CheckCircle, XCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { Github, Linkedin, Mail, ExternalLink, Send, Check, AlertCircle, Loader, MessageSquare, Calendar, Phone, ArrowUpRight } from 'lucide-react';
 
-interface FormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
-
-interface FormStatus {
-  success: boolean;
-  message: string;
-}
-
-const Contact = () => {
-  const [formData, setFormData] = useState<FormData>({
+const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
   
-  const [formStatus, setFormStatus] = useState<FormStatus | null>(null);
+  const [formStatus, setFormStatus] = useState({
+    submitted: false,
+    error: false,
+    loading: false,
+    message: '',
+  });
+
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
   
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const submitButtonRef = useRef<HTMLButtonElement>(null);
+
+  const validateEmail = (email: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const validateForm = () => {
+    const newErrors = {
+      name: formData.name.trim() === '' ? 'Name is required' : '',
+      email: formData.email.trim() === '' ? 'Email is required' : 
+             !validateEmail(formData.email) ? 'Valid email is required' : '',
+      subject: formData.subject.trim() === '' ? 'Subject is required' : '',
+      message: formData.message.trim() === '' ? 'Message is required' : '',
+    };
+    
+    setErrors(newErrors);
+    return !Object.values(newErrors).some(error => error !== '');
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value,
     }));
+    
+    // Clear error when user starts typing
+    if (errors[name as keyof typeof errors]) {
+      setErrors({
+        ...errors,
+        [name]: '',
+      });
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      // Find first error and focus that input
+      const errorField = Object.keys(errors).find(key => errors[key as keyof typeof errors] !== '');
+      if (errorField) {
+        const element = document.getElementById(errorField);
+        if (element) {
+          element.focus();
+        }
+      }
+      return;
+    }
+    
+    setFormStatus({
+      submitted: false,
+      error: false,
+      loading: true,
+      message: '',
+    });
+    
+    try {
+      const response = await fetch("https://formspree.io/f/myzggjel", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      if (response.ok) {
+        setFormStatus({
+          submitted: true,
+          error: false,
+          loading: false,
+          message: 'Thank you for your message! I\'ll get back to you soon.',
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+        
+        // Create a success confetti effect
+        createConfetti();
+        
+        // Announce to screen readers
+        const announcement = document.createElement('div');
+        announcement.setAttribute('aria-live', 'assertive');
+        announcement.className = 'screen-reader-text';
+        announcement.textContent = 'Message sent successfully. Thank you for your message!';
+        document.body.appendChild(announcement);
+        setTimeout(() => announcement.remove(), 1000);
+        
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      setFormStatus({
+        submitted: true,
+        error: true,
+        loading: false,
+        message: 'Oops! Something went wrong. Please try again later.',
+      });
+      
+      // Announce to screen readers
+      const announcement = document.createElement('div');
+      announcement.setAttribute('aria-live', 'assertive');
+      announcement.className = 'screen-reader-text';
+      announcement.textContent = 'Error sending message. Please try again later.';
+      document.body.appendChild(announcement);
+      setTimeout(() => announcement.remove(), 1000);
+    }
   };
   
+  const createConfetti = () => {
+    const confetti = document.createElement('div');
+    confetti.className = 'confetti-container';
+    confetti.style.position = 'absolute';
+    confetti.style.top = '0';
+    confetti.style.left = '0';
+    confetti.style.width = '100%';
+    confetti.style.height = '100%';
+    confetti.style.overflow = 'hidden';
+    confetti.style.pointerEvents = 'none';
+    formRef.current?.appendChild(confetti);
+    
+    const colors = ['#3b82f6', '#60a5fa', '#93c5fd', '#818cf8', '#c084fc'];
+    
+    for (let i = 0; i < 100; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'confetti-particle';
+      particle.style.position = 'absolute';
+      particle.style.width = `${Math.random() * 10 + 5}px`;
+      particle.style.height = `${Math.random() * 10 + 5}px`;
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.borderRadius = '50%';
+      particle.style.top = '50%';
+      particle.style.left = '50%';
+      particle.style.transform = `translate(-50%, -50%)`;
+      particle.style.opacity = '0';
+      
+      confetti.appendChild(particle);
+      
+      // Animate each particle
+      const angle = Math.random() * Math.PI * 2;
+      const velocity = Math.random() * 100 + 50;
+      const posX = Math.cos(angle) * velocity;
+      const posY = Math.sin(angle) * velocity;
+      
+      // Using Web Animations API for better performance
+      particle.animate([
+        { transform: 'translate(-50%, -50%)', opacity: 1 },
+        { transform: `translate(calc(-50% + ${posX}px), calc(-50% + ${posY}px))`, opacity: 0 }
+      ], {
+        duration: Math.random() * 1000 + 1000,
+        easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)',
+        fill: 'forwards'
+      });
+    }
+    
+    // Remove confetti after animation completes
+    setTimeout(() => {
+      confetti.remove();
+    }, 2500);
+  };
+  
+  const handleTryAgain = () => {
+    setFormStatus({
+      submitted: false,
+      error: false,
+      loading: false,
+      message: '',
+    });
+    
+    // Focus first field after resetting
+    setTimeout(() => {
+      if (document.getElementById('name')) {
+        (document.getElementById('name') as HTMLInputElement).focus();
+      }
+    }, 0);
+  };
+
   return (
-    <section id="contact" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-800 safe-area-inset">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Get In Touch</h2>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-6">
-            Have a question or want to work together? Feel free to reach out using the form below or through my social media channels.
+    <section id="contact" className="py-20 bg-gradient-accent relative">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none" aria-hidden="true">
+        <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-blue-300 dark:bg-blue-700 mix-blend-multiply dark:mix-blend-soft-light transform translate-x-10"></div>
+        <div className="absolute top-1/4 -left-20 w-96 h-96 rounded-full bg-indigo-300 dark:bg-indigo-700 mix-blend-multiply dark:mix-blend-soft-light transform -translate-x-10 translate-y-10"></div>
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-purple-300 dark:bg-purple-700 mix-blend-multiply dark:mix-blend-soft-light transform translate-y-32"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-16 opacity-0 animate-fadeIn">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-4">Get In Touch</h2>
+          <div className="w-20 h-1 bg-blue-600 mx-auto mb-8"></div>
+          <p className="max-w-2xl mx-auto text-gray-700 dark:text-gray-300 text-pretty">
+            Have a project in mind or want to discuss potential collaborations? I'd love to hear from you! 
+            Fill out the form below or connect through any of the provided channels.
           </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mx-auto mb-4"></div>
         </div>
-        
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="md:col-span-1 order-2 md:order-1 bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 h-full transform transition-transform hover:scale-105"
-            >
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-6">Contact Information</h3>
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg text-blue-600 dark:text-blue-400 mr-4">
-                    <Mail size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">Email</h4>
-                    <p className="text-gray-800 dark:text-white">Available via contact form</p>
-                  </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {/* Contact Information */}
+          <div className="enhanced-card p-8 transform transition-all duration-500 hover:shadow-lg opacity-0 animate-fadeIn bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm" style={{animationDelay: '0.2s'}}>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-6 flex items-center">
+              <MessageSquare size={20} className="mr-2 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+              Contact Information
+            </h3>
+            <div className="space-y-6">
+              <div className="flex items-start">
+                <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
+                  <Mail className="text-blue-600 dark:text-blue-400" size={20} aria-hidden="true" />
                 </div>
-                <div className="flex items-start">
-                  <div className="bg-indigo-100 dark:bg-indigo-900/30 p-3 rounded-lg text-indigo-600 dark:text-indigo-400 mr-4">
-                    <MapPin size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">Location</h4>
-                    <p className="text-gray-800 dark:text-white">Madison, Wisconsin, USA</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-lg text-purple-600 dark:text-purple-400 mr-4">
-                    <Phone size={20} />
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-medium text-gray-500 dark:text-gray-400">Phone</h4>
-                    <p className="text-gray-800 dark:text-white">Available upon request</p>
+                <div>
+                  <h4 className="font-medium text-gray-800 dark:text-gray-200">Email</h4>
+                  <div className="text-gray-700 dark:text-gray-300 flex items-center">
+                    <span className="mr-2">Available via contact form</span>
+                    <div 
+                      className="text-blue-600 dark:text-blue-400 cursor-pointer"
+                      onClick={() => {
+                        document.getElementById('email')?.focus();
+                      }}
+                      onKeyDown={(e) => e.key === 'Enter' && document.getElementById('email')?.focus()}
+                      tabIndex={0}
+                      role="button"
+                      aria-label="Focus email field"
+                    >
+                      <ArrowUpRight size={14} />
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
-                <h4 className="text-lg font-medium text-gray-800 dark:text-white mb-4">Connect with me</h4>
-                <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-2 gap-4">
-                  <SocialLink
-                    href="https://www.linkedin.com/in/tobin-zolkowski-844873200/"
-                    icon={
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                      </svg>
-                    }
-                    label="LinkedIn"
-                  />
-                  <SocialLink
-                    href="https://github.com/tzolkowski96"
-                    icon={
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                      </svg>
-                    }
-                    label="GitHub"
-                  />
-                  <SocialLink
-                    href="https://medium.com/@grateful_aqua_goat_147"
-                    icon={
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="20" height="20" fill="currentColor">
-                        <path d="M180.5 74.3C80.8 74.3 0 155.6 0 256S80.8 437.7 180.5 437.7 361 356.4 361 256 280.2 74.3 180.5 74.3zm288.3 10.6c-49.8 0-90.2 76.6-90.2 171.1s40.4 171.1 90.3 171.1 90.3-76.6 90.3-171.1H559C559 161.5 518.6 84.9 468.8 84.9zm139.5 17.8c-17.5 0-31.7 68.6-31.7 153.3s14.2 153.3 31.7 153.3S640 340.6 640 256C640 171.4 625.8 102.7 608.3 102.7z"/>
-                      </svg>
-                    }
-                    label="Medium"
-                  />
-                  <SocialLink
-                    href="https://tobinzolkowski.substack.com/"
-                    icon={
-                      <svg xmlns="http://www.w3.org/2000/svg" shapeRendering="geometricPrecision" textRendering="geometricPrecision" imageRendering="optimizeQuality" fillRule="evenodd" clipRule="evenodd" viewBox="0 0 448 511.471" width="20" height="20" fill="currentColor">
-                        <path d="M0 0h448v62.804H0V0zm0 229.083h448v282.388L223.954 385.808 0 511.471V229.083zm0-114.542h448v62.804H0v-62.804z"/>
-                      </svg>
-                    }
-                    label="Substack"
-                  />
+
+              <div className="flex items-start">
+                <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
+                  <Linkedin className="text-blue-600 dark:text-blue-400" size={20} aria-hidden="true" />
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-800 dark:text-gray-200">LinkedIn</h4>
+                  <a 
+                    href="https://www.linkedin.com/in/tobin-zolkowski-844873200/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 rounded"
+                    aria-label="Connect with me on LinkedIn"
+                  >
+                    Connect with me <ExternalLink size={14} className="ml-1" aria-hidden="true" />
+                  </a>
                 </div>
               </div>
-            </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="md:col-span-2 order-1 md:order-2 bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 h-full transform transition-transform hover:scale-105"
-            >
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-6">Send Me a Message</h3>
+
+              <div className="flex items-start">
+                <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
+                  <Github className="text-blue-600 dark:text-blue-400" size={20} aria-hidden="true" />
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-800 dark:text-gray-200">GitHub</h4>
+                  <a 
+                    href="https://github.com/tzolkowski96" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 flex items-center focus:outline-none focus:ring-2 focus:ring-blue-200 focus:ring-offset-2 rounded"
+                    aria-label="See my projects on GitHub"
+                  >
+                    See my projects <ExternalLink size={14} className="ml-1" aria-hidden="true" />
+                  </a>
+                </div>
+              </div>
               
-              {formStatus ? (
-                <div className="text-center py-8">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 ${
-                    formStatus.success ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400' : 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400'
-                  }`}>
-                    {formStatus.success ? (
-                      <CheckCircle size={32} />
-                    ) : (
-                      <XCircle size={32} />
+              <div className="flex items-start">
+                <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
+                  <Calendar className="text-blue-600 dark:text-blue-400" size={20} aria-hidden="true" />
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-800 dark:text-gray-200">Availability</h4>
+                  <p className="text-gray-700 dark:text-gray-300">Flexible scheduling available</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start">
+                <div className="bg-blue-100 dark:bg-blue-900 p-3 rounded-full mr-4">
+                  <Phone className="text-blue-600 dark:text-blue-400" size={20} aria-hidden="true" />
+                </div>
+                <div>
+                  <h4 className="font-medium text-gray-800 dark:text-gray-200">Phone</h4>
+                  <p className="text-gray-700 dark:text-gray-300">Available upon request</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10">
+              <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">Available For</h3>
+              <ul className="space-y-3 text-gray-700 dark:text-gray-300">
+                <li className="flex items-center bg-blue-50/80 dark:bg-blue-900/20 p-2 rounded-lg">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-2 flex-shrink-0"></div>
+                  <span>Data analysis and visualization projects</span>
+                </li>
+                <li className="flex items-center bg-blue-50/80 dark:bg-blue-900/20 p-2 rounded-lg">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-2 flex-shrink-0"></div>
+                  <span>Machine learning model implementation</span>
+                </li>
+                <li className="flex items-center bg-blue-50/80 dark:bg-blue-900/20 p-2 rounded-lg">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-2 flex-shrink-0"></div>
+                  <span>SQL database design and optimization</span>
+                </li>
+                <li className="flex items-center bg-blue-50/80 dark:bg-blue-900/20 p-2 rounded-lg">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-2 flex-shrink-0"></div>
+                  <span>Data pipeline development</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="md:col-span-2 enhanced-card p-8 transform transition-all duration-500 hover:shadow-lg opacity-0 animate-fadeIn bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm" style={{animationDelay: '0.4s'}} ref={formRef}>
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-6 flex items-center">
+              <MessageSquare size={20} className="mr-2 text-blue-600 dark:text-blue-400" aria-hidden="true" />
+              Send Me a Message
+            </h3>
+            
+            {formStatus.submitted ? (
+              <div className={`p-6 rounded-lg ${
+                formStatus.error ? 'state-error' : 'state-success'
+              } flex items-center transition-all duration-300`}>
+                {formStatus.error ? 
+                  <AlertCircle size={24} className="text-red-500 dark:text-red-400 mr-3 flex-shrink-0" aria-hidden="true" /> : 
+                  <Check size={24} className="text-green-500 dark:text-green-400 mr-3 flex-shrink-0" aria-hidden="true" />
+                }
+                <div>
+                  <p className="font-medium mb-2">{formStatus.message}</p>
+                  {formStatus.error && (
+                    <button 
+                      onClick={handleTryAgain}
+                      className="mt-3 px-4 py-2 bg-white dark:bg-gray-700 text-red-600 dark:text-red-400 border border-red-300 dark:border-red-700 rounded-md hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors flex items-center"
+                    >
+                      Try Again
+                    </button>
+                  )}
+                  {!formStatus.error && (
+                    <button 
+                      onClick={handleTryAgain}
+                      className="mt-3 px-4 py-2 bg-white dark:bg-gray-700 text-green-600 dark:text-green-400 border border-green-300 dark:border-green-700 rounded-md hover:bg-green-50 dark:hover:bg-green-900/10 transition-colors flex items-center"
+                    >
+                      Send Another Message
+                    </button>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <form 
+                onSubmit={handleSubmit} 
+                action="https://formspree.io/f/myzggjel" 
+                method="POST" 
+                className="space-y-6"
+                noValidate
+                aria-label="Contact form"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="form-label">
+                      Your Name <span className="text-red-500" aria-hidden="true">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className={`form-input ${errors.name ? 'error' : ''}`}
+                      aria-required="true"
+                      aria-invalid={!!errors.name}
+                      aria-describedby={errors.name ? "name-error" : undefined}
+                      placeholder="John Doe"
+                      autoComplete="name"
+                    />
+                    {errors.name && (
+                      <p id="name-error" className="form-error">{errors.name}</p>
                     )}
                   </div>
-                  <p className="text-lg font-medium">{formStatus.message}</p>
-                  <button 
-                    onClick={() => setFormStatus(null)}
-                    className="mt-4 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors min-h-[44px] mobile-button"
-                  >
-                    Send Another Message
-                  </button>
+                  <div>
+                    <label htmlFor="email" className="form-label">
+                      Email Address <span className="text-red-500" aria-hidden="true">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={`form-input ${errors.email ? 'error' : ''}`}
+                      aria-required="true"
+                      aria-invalid={!!errors.email}
+                      aria-describedby={errors.email ? "email-error" : undefined}
+                      placeholder="john.doe@example.com"
+                      autoComplete="email"
+                    />
+                    {errors.email && (
+                      <p id="email-error" className="form-error">{errors.email}</p>
+                    )}
+                  </div>
                 </div>
-              ) : (
-                <form 
-                  action="https://formspree.io/f/myzggjel"
-                  method="POST"
-                  className="space-y-6"
-                >
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-base"
-                        required
-                        placeholder="John Doe"
-                        inputMode="text"
-                        autoComplete="name"
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Your Email
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-base"
-                        required
-                        placeholder="john@example.com"
-                        inputMode="email"
-                        autoComplete="email"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      Subject
-                    </label>
-                    <select
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-base"
-                      required
-                    >
-                      <option value="">Select a subject</option>
-                      <option value="Job Opportunity">Job Opportunity</option>
-                      <option value="Project Collaboration">Project Collaboration</option>
-                      <option value="Consulting">Consulting</option>
-                      <option value="General Inquiry">General Inquiry</option>
-                    </select>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={6}
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-blue-500 dark:focus:border-blue-400 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-base"
-                      required
-                      placeholder="Your message here..."
-                    ></textarea>
-                  </div>
-                  
+                <div>
+                  <label htmlFor="subject" className="form-label">
+                    Subject <span className="text-red-500" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    className={`form-input ${errors.subject ? 'error' : ''}`}
+                    aria-required="true"
+                    aria-invalid={!!errors.subject}
+                    aria-describedby={errors.subject ? "subject-error" : undefined}
+                    placeholder="Project Inquiry / Collaboration / Question"
+                    autoComplete="off"
+                  />
+                  {errors.subject && (
+                    <p id="subject-error" className="form-error">{errors.subject}</p>
+                  )}
+                </div>
+                <div>
+                  <label htmlFor="message" className="form-label">
+                    Message <span className="text-red-500" aria-hidden="true">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={6}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className={`form-input ${errors.message ? 'error' : ''}`}
+                    aria-required="true"
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? "message-error" : undefined}
+                    placeholder="Tell me about your project, questions, or collaboration ideas..."
+                  ></textarea>
+                  {errors.message && (
+                    <p id="message-error" className="form-error">{errors.message}</p>
+                  )}
+                </div>
+                <div className="flex items-center justify-between">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <span className="text-red-500" aria-hidden="true">*</span> Required fields
+                  </p>
                   <button
                     type="submit"
-                    className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center justify-center min-h-[48px] mobile-button"
+                    disabled={formStatus.loading}
+                    className={`px-6 py-3 ${formStatus.loading ? 'bg-blue-400 dark:bg-blue-600 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800'} text-white rounded-lg transition-all shadow-md hover:shadow-lg flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 relative overflow-hidden`}
+                    aria-label={formStatus.loading ? 'Sending message...' : 'Send message'}
+                    ref={submitButtonRef}
                   >
-                    <Send size={18} className="mr-2" />
-                    Send Message
+                    {formStatus.loading ? (
+                      <>
+                        <Loader size={20} className="animate-spin mr-2" aria-hidden="true" />
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send size={20} className="mr-2" aria-hidden="true" />
+                        <span>Send Message</span>
+                      </>
+                    )}
                   </button>
-                </form>
-              )}
-            </motion.div>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+        
+        {/* Alternative contact methods */}
+        <div className="mt-16 max-w-3xl mx-auto text-center">
+          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">Other Ways to Connect</h3>
+          <div className="flex flex-wrap justify-center gap-4 mt-6">
+            <a 
+              href="https://tzolkowski96.github.io/portfolio/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full shadow-sm hover:shadow-md transition-all duration-300 flex items-center"
+            >
+              <span className="mr-2">Portfolio Website</span>
+              <ExternalLink size={14} aria-hidden="true" />
+            </a>
+            <a 
+              href="https://medium.com/@grateful_aqua_goat_147" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full shadow-sm hover:shadow-md transition-all duration-300 flex items-center"
+            >
+              <span className="mr-2">Medium Blog</span>
+              <ExternalLink size={14} aria-hidden="true" />
+            </a>
+            <a 
+              href="https://tobinzolkowski.substack.com/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full shadow-sm hover:shadow-md transition-all duration-300 flex items-center"
+            >
+              <span className="mr-2">Substack Newsletter</span>
+              <ExternalLink size={14} aria-hidden="true" />
+            </a>
           </div>
         </div>
       </div>
     </section>
   );
 };
-
-interface SocialLinkProps {
-  href: string;
-  icon: React.ReactNode;
-  label: string;
-}
-
-const SocialLink: React.FC<SocialLinkProps> = ({ href, icon, label }) => (
-  <a 
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="bg-gray-100 dark:bg-gray-800 hover:bg-blue-100 dark:hover:bg-blue-900/30 p-3 rounded-full text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors flex items-center justify-center min-h-[44px] min-w-[44px] mobile-button"
-    aria-label={label}
-  >
-    {icon}
-  </a>
-);
 
 export default Contact;

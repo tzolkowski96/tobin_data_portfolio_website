@@ -1,21 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun, Database, Code } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, Home, User, Briefcase, FolderKanban, BarChart3, MessageSquare } from 'lucide-react';
 
-interface HeaderProps {
-  theme: 'light' | 'dark';
-  toggleTheme: () => void;
-}
-
-const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+const Header: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
+      // Update header background on scroll
+      setScrolled(window.scrollY > 50);
+      
+      // Update active section based on scroll position
+      const sections = ['hero', 'about', 'experience', 'projects', 'skills', 'contact'];
+      let currentSection = 'hero';
+      
+      // Find the current visible section
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // Consider a section "active" when it's in the top third of the viewport
+          if (rect.top <= window.innerHeight / 3 && rect.bottom > 0) {
+            currentSection = section;
+            break;
+          }
+        }
+      }
+      
+      setActiveSection(currentSection);
+      
+      // Update URL without page reload if not already on that section
+      if (window.location.hash !== `#${currentSection}` && currentSection !== 'hero') {
+        window.history.replaceState(null, '', `#${currentSection}`);
+      } else if (currentSection === 'hero' && window.location.hash) {
+        window.history.replaceState(null, '', window.location.pathname);
       }
     };
 
@@ -23,146 +42,183 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu when clicking outside
-  useEffect(() => {
-    if (isMenuOpen) {
-      const handleClickOutside = (e: MouseEvent) => {
-        const target = e.target as HTMLElement;
-        if (!target.closest('#mobile-menu-container') && !target.closest('#mobile-menu-button')) {
-          setIsMenuOpen(false);
-        }
-      };
-      
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
-    }
-  }, [isMenuOpen]);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const headerOffset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      setIsMenuOpen(false);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    
+    // Prevent body scroll when menu is open
+    if (!isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
     }
   };
+  
+  const closeMenu = () => {
+    setIsOpen(false);
+    document.body.style.overflow = '';
+  };
+  
+  const navLinks = [
+    { name: 'Home', href: '#hero', icon: <Home size={18} className="mr-2" aria-hidden="true" /> },
+    { name: 'About', href: '#about', icon: <User size={18} className="mr-2" aria-hidden="true" /> },
+    { name: 'Experience', href: '#experience', icon: <Briefcase size={18} className="mr-2" aria-hidden="true" /> },
+    { name: 'Projects', href: '#projects', icon: <FolderKanban size={18} className="mr-2" aria-hidden="true" /> },
+    { name: 'Skills', href: '#skills', icon: <BarChart3 size={18} className="mr-2" aria-hidden="true" /> },
+    { name: 'Contact', href: '#contact', icon: <MessageSquare size={18} className="mr-2" aria-hidden="true" /> },
+  ];
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md ${
-        isScrolled 
-          ? 'bg-white/90 dark:bg-gray-900/90 shadow-lg py-2' 
-          : 'bg-transparent py-4'
+      className={`fixed w-full z-50 transition-all duration-500 ${
+        scrolled 
+          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-md py-3' 
+          : 'bg-transparent py-4 md:py-5'
       }`}
+      role="banner"
     >
-      <div className="container mx-auto flex items-center justify-between px-4 md:px-6">
-        <div className="flex items-center">
-          <div className="mr-2 text-blue-600 dark:text-blue-400">
-            <Database size={20} className="inline-block mr-1" />
-            <Code size={20} className="inline-block" />
+      <div className="container mx-auto px-4 flex items-center justify-between">
+        <a 
+          href="#hero" 
+          className="text-xl font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors flex items-center"
+          aria-label="Tobin Zolkowski - Back to top"
+        >
+          <div className="mr-2 w-8 h-8 rounded-full bg-blue-600 dark:bg-blue-700 text-white flex items-center justify-center">
+            <span className="text-sm font-bold">TZ</span>
           </div>
-          <div className="text-lg md:text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 text-transparent bg-clip-text">
-            <button 
-              onClick={() => scrollToSection('hero')}
-              className="focus:outline-none"
-              aria-label="Scroll to top"
-            >
-              Tobin Zolkowski
-            </button>
-          </div>
-        </div>
-        
+          <span className={`transition-all duration-300 ${scrolled ? 'opacity-100' : 'opacity-0 md:opacity-100'}`}>
+            Tobin Zolkowski
+          </span>
+        </a>
+
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
-          <NavButton onClick={() => scrollToSection('about')} label="About" />
-          <NavButton onClick={() => scrollToSection('projects')} label="Projects" />
-          <NavButton onClick={() => scrollToSection('skills')} label="Skills" />
-          <NavButton onClick={() => scrollToSection('contact')} label="Contact" />
-          <button 
-            onClick={toggleTheme} 
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-            aria-label="Toggle theme"
-          >
-            {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
-          </button>
-        </div>
-        
+        <nav className="hidden md:flex items-center space-x-6">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className={`px-3 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                activeSection === link.href.substring(1) 
+                  ? 'text-blue-600 dark:text-blue-400 font-medium bg-blue-50 dark:bg-blue-900/30' 
+                  : ''
+              }`}
+              aria-current={activeSection === link.href.substring(1) ? 'page' : undefined}
+            >
+              {link.name}
+            </a>
+          ))}
+          <div className="flex items-center space-x-2 pl-4 border-l border-gray-200 dark:border-gray-700">
+            <a 
+              href="https://github.com/tzolkowski96" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-full transition-colors"
+              aria-label="GitHub profile"
+            >
+              <Github size={20} aria-hidden="true" />
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/tobin-zolkowski-844873200/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-full transition-colors"
+              aria-label="LinkedIn profile"
+            >
+              <Linkedin size={20} aria-hidden="true" />
+            </a>
+          </div>
+        </nav>
+
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center space-x-2">
-          <button 
-            onClick={toggleTheme} 
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-            aria-label="Toggle theme"
-          >
-            {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
-          </button>
-          <button 
-            id="mobile-menu-button"
-            className="text-gray-700 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 p-2 rounded-lg"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={isMenuOpen}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-      
-      {/* Mobile Navigation */}
-      <div 
-        id="mobile-menu-container"
-        className={`md:hidden fixed inset-x-0 top-[60px] transition-all duration-300 transform bg-white dark:bg-gray-800 shadow-lg z-40 ${
-          isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
-        }`}
-        aria-hidden={!isMenuOpen}
-      >
-        <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-          <MobileNavButton onClick={() => scrollToSection('about')} label="About" />
-          <MobileNavButton onClick={() => scrollToSection('projects')} label="Projects" />
-          <MobileNavButton onClick={() => scrollToSection('skills')} label="Skills" />
-          <MobileNavButton onClick={() => scrollToSection('contact')} label="Contact" />
-        </div>
+        <button 
+          className="md:hidden p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-md transition-colors"
+          onClick={toggleMenu}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+        >
+          {isOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
+        </button>
       </div>
 
-      {/* Backdrop for mobile menu */}
-      {isMenuOpen && (
-        <div 
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
-          onClick={() => setIsMenuOpen(false)}
-          aria-hidden="true"
-        />
-      )}
+      {/* Mobile Navigation */}
+      <div 
+        id="mobile-menu"
+        className={`md:hidden fixed inset-0 bg-white dark:bg-gray-900 z-40 transform transition-transform duration-300 ease-in-out ${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+        aria-hidden={!isOpen}
+      >
+        <div className="container mx-auto px-4 py-6 h-full flex flex-col">
+          <div className="flex justify-between items-center mb-8">
+            <a 
+              href="#hero" 
+              className="text-xl font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+              onClick={closeMenu}
+            >
+              Tobin Zolkowski
+            </a>
+            <button 
+              className="p-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-md transition-colors"
+              onClick={toggleMenu}
+              aria-label="Close menu"
+            >
+              <X size={24} aria-hidden="true" />
+            </button>
+          </div>
+          
+          <nav className="flex-1 flex flex-col space-y-2">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className={`px-4 py-3 rounded-lg flex items-center text-lg ${
+                  activeSection === link.href.substring(1) 
+                    ? 'text-blue-600 dark:text-blue-400 font-medium bg-blue-50 dark:bg-blue-900/30' 
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+                }`}
+                onClick={closeMenu}
+                aria-current={activeSection === link.href.substring(1) ? 'page' : undefined}
+              >
+                {link.icon}
+                {link.name}
+              </a>
+            ))}
+          </nav>
+          
+          <div className="mt-auto pt-6 border-t border-gray-100 dark:border-gray-800">
+            <div className="flex justify-center space-x-6">
+              <a 
+                href="https://github.com/tzolkowski96" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-full transition-colors"
+                aria-label="GitHub profile"
+              >
+                <Github size={24} aria-hidden="true" />
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/tobin-zolkowski-844873200/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-full transition-colors"
+                aria-label="LinkedIn profile"
+              >
+                <Linkedin size={24} aria-hidden="true" />
+              </a>
+              <a 
+                href="#contact" 
+                className="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-full transition-colors"
+                onClick={closeMenu}
+                aria-label="Contact"
+              >
+                <Mail size={24} aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
   );
 };
-
-interface NavButtonProps {
-  onClick: () => void;
-  label: string;
-}
-
-const NavButton: React.FC<NavButtonProps> = ({ onClick, label }) => (
-  <button 
-    onClick={onClick} 
-    className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 rounded-lg px-3 py-2"
-  >
-    {label}
-  </button>
-);
-
-const MobileNavButton: React.FC<NavButtonProps> = ({ onClick, label }) => (
-  <button 
-    onClick={onClick} 
-    className="w-full text-left text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 rounded-lg px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700"
-  >
-    {label}
-  </button>
-);
 
 export default Header;
