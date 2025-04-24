@@ -42,6 +42,9 @@ export default {
         'height': 'height',
         'spacing': 'margin, padding',
       },
+      screens: {
+        'xs': '480px',
+      },
     },
   },
   plugins: [],
