@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Github, ExternalLink, Code, Database, BarChart2, ChevronDown, ChevronUp, Tag, Calendar, Clock, Brain, LineChart, BarChart, FileSpreadsheet, Briefcase } from 'lucide-react';
+import { Github, ExternalLink, Code, Database, BarChart2, ChevronDown, ChevronUp, Tag, Calendar, Clock, Brain, LineChart, BarChart, FileSpreadsheet, Briefcase, ArrowRight } from 'lucide-react';
 
 interface ProjectDetailsType {
   id: number;
@@ -19,7 +19,11 @@ interface ProjectDetailsType {
   icon: React.ReactNode;
 }
 
-const Projects: React.FC = () => {
+interface ProjectsProps {
+  activeSection: string;
+}
+
+const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
   const [expandedProject, setExpandedProject] = useState<number | null>(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -281,6 +285,14 @@ const Projects: React.FC = () => {
     </span>
   );
 
+  // Navigation to next section
+  const goToNextSection = () => {
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+      skillsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="projects" className="py-20 bg-gradient-secondary">
       <div className="container mx-auto px-4">
@@ -323,15 +335,16 @@ const Projects: React.FC = () => {
           ))}
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Project Grid with Fixed Heights */}
+        <div className="project-card-container">
           {visibleProjects.map(project => (
             <div 
               key={project.id} 
-              className={`enhanced-card overflow-hidden transform transition-all duration-500 hover:shadow-lg flex flex-col h-full ${
+              className={`project-card enhanced-card overflow-hidden transform transition-all duration-500 hover:shadow-lg flex flex-col ${
                 expandedProject === project.id ? 'scale-100 z-10' : 'hover:-translate-y-2'
               }`}
             >
-              <div className="h-52 overflow-hidden relative">
+              <div className="project-card-image">
                 <img 
                   src={project.image} 
                   alt={`${project.title} project`} 
@@ -349,7 +362,7 @@ const Projects: React.FC = () => {
                 </div>
               </div>
               
-              <div className="p-6 flex-grow flex flex-col">
+              <div className="p-6 flex-grow flex flex-col project-card-content">
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 flex items-center">
                     <span className="mr-2">{project.icon}</span>
@@ -357,11 +370,11 @@ const Projects: React.FC = () => {
                   </h3>
                 </div>
                 
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className="text-gray-600 dark:text-gray-300 mb-4 text-center">
                   {project.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-1 mb-4">
+                <div className="flex flex-wrap gap-1 mb-4 justify-center">
                   {project.technologies.slice(0, 5).map((tech, idx) => (
                     <ProjectTechTag key={idx} tech={tech} />
                   ))}
@@ -371,7 +384,7 @@ const Projects: React.FC = () => {
                 </div>
                 
                 {/* Project timeline/info */}
-                <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-4">
+                <div className="flex items-center justify-center text-gray-500 dark:text-gray-400 text-sm mb-4">
                   <Calendar size={14} className="mr-1" aria-hidden="true" />
                   <span className="mr-3">{project.date}</span>
                   <Clock size={14} className="mr-1" aria-hidden="true" />
@@ -381,7 +394,7 @@ const Projects: React.FC = () => {
                 {/* Expanded content */}
                 {expandedProject === project.id && (
                   <div className="mt-4 border-t border-gray-200 dark:border-gray-700 pt-4 animate-fadeIn">
-                    <h4 className="font-bold text-gray-800 dark:text-gray-200 mb-2">Project Details</h4>
+                    <h4 className="font-bold text-gray-800 dark:text-gray-200 mb-2 text-center">Project Details</h4>
                     <ul className="space-y-2 text-gray-600 dark:text-gray-300 mb-4">
                       {project.longDescription.map((point, idx) => (
                         <li key={idx} className="flex items-start">
@@ -393,8 +406,8 @@ const Projects: React.FC = () => {
                     
                     {project.technologies.length > 5 && (
                       <div className="mb-4">
-                        <h4 className="font-bold text-gray-800 dark:text-gray-200 mb-2">All Technologies</h4>
-                        <div className="flex flex-wrap gap-1">
+                        <h4 className="font-bold text-gray-800 dark:text-gray-200 mb-2 text-center">All Technologies</h4>
+                        <div className="flex flex-wrap gap-1 justify-center">
                           {project.technologies.map((tech, idx) => (
                             <ProjectTechTag key={idx} tech={tech} />
                           ))}
@@ -483,12 +496,12 @@ const Projects: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {upcomingProjects.map((project, idx) => (
               <div key={idx} className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 p-5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
-                <div className="flex items-start">
+                <div className="flex items-start justify-center">
                   <div className="p-2 bg-white dark:bg-gray-800 rounded-md shadow-sm mr-4">
                     {project.icon}
                   </div>
                   <div>
-                    <div className="flex items-center mb-2">
+                    <div className="flex items-center mb-2 justify-center">
                       <h4 className="font-bold text-gray-800 dark:text-gray-100">{project.title}</h4>
                       <span className={`ml-2 text-xs px-2 py-0.5 rounded-full ${
                         project.status === 'Coming Soon' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300' :
@@ -498,8 +511,8 @@ const Projects: React.FC = () => {
                         {project.status}
                       </span>
                     </div>
-                    <p className="text-gray-700 dark:text-gray-300 text-sm">{project.description}</p>
-                    <p className="text-gray-500 dark:text-gray-400 text-xs mt-2">{project.category}</p>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm text-center">{project.description}</p>
+                    <p className="text-gray-500 dark:text-gray-400 text-xs mt-2 text-center">{project.category}</p>
                   </div>
                 </div>
               </div>
@@ -532,6 +545,40 @@ const Projects: React.FC = () => {
             </a>
           </div>
         </div>
+        
+        {/* Next Section Navigation */}
+        <div className="next-section-nav">
+          <button 
+            onClick={goToNextSection}
+            className="next-section-button"
+            aria-label="Go to Skills section"
+          >
+            <span>Explore My Skills</span>
+            <ArrowRight size={16} className="ml-2" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+
+      {/* Section Navigation Dots */}
+      <div className="section-navigator">
+        <a href="#hero" className={activeSection === 'hero' ? 'active' : ''}>
+          <span className="tooltip">Home</span>
+        </a>
+        <a href="#about" className={activeSection === 'about' ? 'active' : ''}>
+          <span className="tooltip">About</span>
+        </a>
+        <a href="#experience" className={activeSection === 'experience' ? 'active' : ''}>
+          <span className="tooltip">Experience</span>
+        </a>
+        <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>
+          <span className="tooltip">Projects</span>
+        </a>
+        <a href="#skills" className={activeSection === 'skills' ? 'active' : ''}>
+          <span className="tooltip">Skills</span>
+        </a>
+        <a href="#contact" className={activeSection === 'contact' ? 'active' : ''}>
+          <span className="tooltip">Contact</span>
+        </a>
       </div>
     </section>
   );

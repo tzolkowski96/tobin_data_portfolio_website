@@ -14,6 +14,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState('hero');
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
 
   // Function to apply dark mode
@@ -25,7 +26,7 @@ function App() {
     }
   };
 
-  // Handle scroll progress
+  // Handle scroll progress and section tracking
   const handleScroll = () => {
     setShowScrollTop(window.scrollY > 500);
     
@@ -34,7 +35,22 @@ function App() {
     const progress = (window.scrollY / totalHeight) * 100;
     setScrollProgress(progress);
     
-    // Check for section visibility
+    const sections = ['hero', 'about', 'experience', 'projects', 'skills', 'contact'];
+    let currentSection = 'hero';
+    
+    sections.forEach(section => {
+      const element = document.getElementById(section);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.4 && rect.bottom >= 0) {
+          currentSection = section;
+        }
+      }
+    });
+    
+    setActiveSection(currentSection);
+    
+    // Check for section visibility for animations
     sectionRefs.current.forEach(section => {
       if (section) {
         const rect = section.getBoundingClientRect();
@@ -268,7 +284,7 @@ function App() {
         <Hero />
         <About />
         <Experience />
-        <Projects />
+        <Projects activeSection={activeSection} />
         <Skills />
         <Contact />
       </main>
@@ -301,6 +317,28 @@ function App() {
       >
         <ArrowUp size={24} aria-hidden="true" />
       </button>
+      
+      {/* Section Navigation Dots - only shows on larger screens */}
+      <div className="section-navigator">
+        <a href="#hero" className={activeSection === 'hero' ? 'active' : ''}>
+          <span className="tooltip">Home</span>
+        </a>
+        <a href="#about" className={activeSection === 'about' ? 'active' : ''}>
+          <span className="tooltip">About</span>
+        </a>
+        <a href="#experience" className={activeSection === 'experience' ? 'active' : ''}>
+          <span className="tooltip">Experience</span>
+        </a>
+        <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>
+          <span className="tooltip">Projects</span>
+        </a>
+        <a href="#skills" className={activeSection === 'skills' ? 'active' : ''}>
+          <span className="tooltip">Skills</span>
+        </a>
+        <a href="#contact" className={activeSection === 'contact' ? 'active' : ''}>
+          <span className="tooltip">Contact</span>
+        </a>
+      </div>
       
       {/* Keyboard navigation instructions (only shown for keyboard users) */}
       <div className="keyboard-nav-info sr-only focus-within:not-sr-only fixed bottom-4 left-4 bg-white dark:bg-gray-800 p-3 rounded-lg shadow-lg z-20 border border-gray-200 dark:border-gray-700 text-sm">

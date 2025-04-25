@@ -443,7 +443,7 @@ const Skills: React.FC = () => {
           aria-labelledby={`${activeTab}-skills-tab`}
           className="mb-16"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {activeSkills
               .filter(skillGroup => !activeCategory || skillGroup.category === activeCategory)
               .map((skillGroup, idx) => (
@@ -452,7 +452,7 @@ const Skills: React.FC = () => {
                   className="skill-group enhanced-card p-6 transform transition-all duration-500 hover:shadow-lg opacity-0 animate-fadeIn" 
                   style={{animationDelay: `${0.4 + idx * 0.1}s`}}
                 >
-                  <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-6 flex items-center">
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-6 flex items-center justify-center">
                     <span className="p-2 bg-blue-50 dark:bg-blue-900/30 rounded-md mr-3">{skillGroup.icon}</span>
                     {skillGroup.category}
                   </h3>
@@ -510,7 +510,7 @@ const Skills: React.FC = () => {
         </div>
 
         {/* Key Technologies Section */}
-        <div className="mb-16 enhanced-card p-8 transform transition-all duration-500 hover:shadow-lg opacity-0 animate-fadeIn bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm" style={{animationDelay: '0.5s'}}>
+        <div className="mb-16 enhanced-card p-8 transform transition-all duration-500 hover:shadow-lg opacity-0 animate-fadeIn bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm max-w-6xl mx-auto" style={{animationDelay: '0.5s'}}>
           <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center flex items-center justify-center">
             <Server size={24} className="mr-2 text-blue-600 dark:text-blue-400" aria-hidden="true" />
             Key Technologies & Libraries
@@ -518,13 +518,13 @@ const Skills: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {keyTechnologies.map((tech, idx) => (
               <div key={idx} className="bg-blue-50/80 dark:bg-blue-900/30 rounded-xl p-5 shadow-sm hover:shadow-md transition-all transform hover:-translate-y-1">
-                <div className="flex items-center mb-3">
+                <div className="flex items-center mb-3 justify-center">
                   <div className="p-2 bg-white dark:bg-gray-800 rounded-full mr-3 shadow-sm">
                     {tech.icon}
                   </div>
                   <h4 className="font-bold text-gray-800 dark:text-gray-100">{tech.category}</h4>
                 </div>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-center">
                   {tech.technologies.map((item, i) => (
                     <span key={i} className="bg-white/70 dark:bg-gray-700/70 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded">
                       {item}
@@ -537,7 +537,7 @@ const Skills: React.FC = () => {
         </div>
         
         {/* Specialized Skills Tables */}
-        <div className="mb-16 enhanced-card p-8 transform transition-all duration-500 hover:shadow-lg opacity-0 animate-fadeIn bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm" style={{animationDelay: '0.55s'}}>
+        <div className="mb-16 enhanced-card p-8 transform transition-all duration-500 hover:shadow-lg opacity-0 animate-fadeIn bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm max-w-6xl mx-auto" style={{animationDelay: '0.55s'}}>
           <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center flex items-center justify-center">
             <Laptop size={24} className="mr-2 text-indigo-600 dark:text-indigo-400" aria-hidden="true" />
             Specialized Skills & Proficiencies
@@ -547,7 +547,7 @@ const Skills: React.FC = () => {
             {specializedSkills.map((skillCategory, idx) => (
               <div key={idx} className="rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 shadow-sm">
                 <div className="bg-indigo-50 dark:bg-indigo-900/30 py-3 px-4 border-b border-gray-200 dark:border-gray-700">
-                  <h4 className="font-bold text-gray-800 dark:text-gray-100 flex items-center">
+                  <h4 className="font-bold text-gray-800 dark:text-gray-100 flex items-center justify-center">
                     {skillCategory.icon}
                     <span className="ml-2">{skillCategory.category}</span>
                   </h4>
@@ -566,7 +566,7 @@ const Skills: React.FC = () => {
                           {skill.level}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{skill.description}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 text-center">{skill.description}</p>
                     </div>
                   ))}
                 </div>
@@ -576,21 +576,21 @@ const Skills: React.FC = () => {
         </div>
         
         {/* Certifications Section */}
-        <div className="mb-16 enhanced-card p-8 transform transition-all duration-500 hover:shadow-lg opacity-0 animate-fadeIn bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm" style={{animationDelay: '0.6s'}}>
+        <div className="mb-16 enhanced-card p-8 transform transition-all duration-500 hover:shadow-lg opacity-0 animate-fadeIn bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm max-w-6xl mx-auto" style={{animationDelay: '0.6s'}}>
           <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center flex items-center justify-center">
             <CheckCircle2 size={24} className="mr-2 text-blue-600 dark:text-blue-400" aria-hidden="true" />
             Certifications & Credentials
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {certifications.map((cert, idx) => (
-              <div key={idx} className="bg-blue-50/80 dark:bg-blue-900/30 rounded-xl p-5 shadow-sm hover:shadow-md transition-all transform hover:-translate-y-1">
+              <div key={idx} className="bg-blue-50/80 dark:bg-blue-900/30 rounded-xl p-5 shadow-sm hover:shadow-md transition-all transform hover:-translate-y-1 text-center">
                 <h4 className="font-bold text-gray-800 dark:text-gray-100 mb-2">{cert.title}</h4>
-                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm mb-2">
+                <div className="flex items-center justify-center text-gray-600 dark:text-gray-400 text-sm mb-2">
                   <span className="font-medium">{cert.issuer}</span>
                   <span className="mx-2">•</span>
                   <span>{cert.date}</span>
                 </div>
-                <div className="flex flex-wrap gap-2 mb-3">
+                <div className="flex flex-wrap gap-2 mb-3 justify-center">
                   {cert.skills.slice(0, 2).map((skill, i) => (
                     <span key={i} className="bg-white/80 dark:bg-gray-700/80 text-gray-700 dark:text-gray-300 text-xs px-2 py-1 rounded-md">
                       {skill}
@@ -618,18 +618,18 @@ const Skills: React.FC = () => {
         </div>
 
         {/* Focus Areas & Specializations */}
-        <div className="mb-16 enhanced-card p-8 transform transition-all duration-500 hover:shadow-lg opacity-0 animate-fadeIn bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm" style={{animationDelay: '0.7s'}}>
+        <div className="mb-16 enhanced-card p-8 transform transition-all duration-500 hover:shadow-lg opacity-0 animate-fadeIn bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm max-w-6xl mx-auto" style={{animationDelay: '0.7s'}}>
           <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">Focus Areas & Specializations</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {specializations.map((spec, idx) => (
               <div key={idx} className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30 p-5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
-                <div className="flex items-start">
+                <div className="flex items-start justify-center">
                   <div className="p-2 bg-white dark:bg-gray-800 rounded-md shadow-sm mr-4">
                     {spec.icon}
                   </div>
                   <div>
-                    <h4 className="font-bold text-gray-800 dark:text-gray-100 mb-2">{spec.area}</h4>
-                    <p className="text-gray-700 dark:text-gray-300 text-sm">{spec.description}</p>
+                    <h4 className="font-bold text-gray-800 dark:text-gray-100 mb-2 text-center">{spec.area}</h4>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm text-center">{spec.description}</p>
                   </div>
                 </div>
               </div>
@@ -638,16 +638,16 @@ const Skills: React.FC = () => {
         </div>
 
         {/* Development Pathway */}
-        <div className="enhanced-card p-8 transform transition-all duration-500 hover:shadow-lg opacity-0 animate-fadeIn bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm" style={{animationDelay: '0.8s'}}>
+        <div className="enhanced-card p-8 transform transition-all duration-500 hover:shadow-lg opacity-0 animate-fadeIn bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm max-w-6xl mx-auto" style={{animationDelay: '0.8s'}}>
           <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">Professional Development Roadmap</h3>
           <div className="overflow-x-auto mb-6">
-            <table className="min-w-full bg-transparent divide-y divide-gray-200 dark:divide-gray-700">
+            <table className="min-w-full bg-transparent divide-y divide-gray-200 dark:divide-gray-700 mx-auto">
               <thead>
                 <tr>
-                  <th className="py-3 px-4 bg-blue-50 dark:bg-blue-900/30 text-left text-sm font-semibold text-gray-800 dark:text-gray-200 border-b-2 border-blue-100 dark:border-blue-900/50 rounded-tl-lg">Timeframe</th>
-                  <th className="py-3 px-4 bg-blue-50 dark:bg-blue-900/30 text-left text-sm font-semibold text-gray-800 dark:text-gray-200 border-b-2 border-blue-100 dark:border-blue-900/50">Focus Areas</th>
-                  <th className="py-3 px-4 bg-blue-50 dark:bg-blue-900/30 text-left text-sm font-semibold text-gray-800 dark:text-gray-200 border-b-2 border-blue-100 dark:border-blue-900/50">Technologies</th>
-                  <th className="py-3 px-4 bg-blue-50 dark:bg-blue-900/30 text-left text-sm font-semibold text-gray-800 dark:text-gray-200 border-b-2 border-blue-100 dark:border-blue-900/50 rounded-tr-lg">Goal</th>
+                  <th className="py-3 px-4 bg-blue-50 dark:bg-blue-900/30 text-center text-sm font-semibold text-gray-800 dark:text-gray-200 border-b-2 border-blue-100 dark:border-blue-900/50 rounded-tl-lg">Timeframe</th>
+                  <th className="py-3 px-4 bg-blue-50 dark:bg-blue-900/30 text-center text-sm font-semibold text-gray-800 dark:text-gray-200 border-b-2 border-blue-100 dark:border-blue-900/50">Focus Areas</th>
+                  <th className="py-3 px-4 bg-blue-50 dark:bg-blue-900/30 text-center text-sm font-semibold text-gray-800 dark:text-gray-200 border-b-2 border-blue-100 dark:border-blue-900/50">Technologies</th>
+                  <th className="py-3 px-4 bg-blue-50 dark:bg-blue-900/30 text-center text-sm font-semibold text-gray-800 dark:text-gray-200 border-b-2 border-blue-100 dark:border-blue-900/50 rounded-tr-lg">Goal</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
@@ -658,7 +658,7 @@ const Skills: React.FC = () => {
                       idx % 2 === 0 ? 'bg-gray-50/70 dark:bg-gray-800/50' : 'bg-white/70 dark:bg-gray-800/30'
                     } hover:bg-blue-50/80 dark:hover:bg-blue-900/30 transition-colors relative group`}
                   >
-                    <td className="py-3 px-4 text-sm font-medium text-gray-800 dark:text-gray-200 border-b border-gray-100 dark:border-gray-800">
+                    <td className="py-3 px-4 text-sm font-medium text-gray-800 dark:text-gray-200 border-b border-gray-100 dark:border-gray-800 text-center">
                       <span className={`inline-block px-2 py-1 rounded-full text-xs ${
                         path.timeframe === 'Current' ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300' :
                         path.timeframe === 'Short-term' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300' :
@@ -668,29 +668,29 @@ const Skills: React.FC = () => {
                         {path.timeframe}
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-100 dark:border-gray-800">{path.focus}</td>
-                    <td className="py-3 px-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-100 dark:border-gray-800">{path.technologies}</td>
-                    <td className="py-3 px-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-100 dark:border-gray-800">{path.goal}</td>
+                    <td className="py-3 px-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-100 dark:border-gray-800 text-center">{path.focus}</td>
+                    <td className="py-3 px-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-100 dark:border-gray-800 text-center">{path.technologies}</td>
+                    <td className="py-3 px-4 text-sm text-gray-700 dark:text-gray-300 border-b border-gray-100 dark:border-gray-800 text-center">{path.goal}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <div className="p-5 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 rounded-xl border-l-4 border-blue-500 dark:border-blue-700">
-            <p className="text-gray-700 dark:text-gray-300 text-sm text-pretty">
+          <div className="p-5 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 rounded-xl border-l-4 border-blue-500 dark:border-blue-700 max-w-4xl mx-auto">
+            <p className="text-gray-700 dark:text-gray-300 text-sm text-pretty text-center">
               <strong className="text-blue-700 dark:text-blue-400">Learning Focus:</strong> My approach combines web development skills (JavaScript → TypeScript → React) for interactive visualizations, mobile app development (Swift), and continuous improvement in data science, machine learning, and database technologies. This comprehensive skill set enables me to create end-to-end data solutions across multiple platforms.
             </p>
           </div>
         </div>
         
         {/* Learning Journey Quote - Enhanced contrast version */}
-        <div className="mt-10 p-8 rounded-xl shadow-lg max-w-4xl mx-auto border-l-4 border-indigo-600 dark:border-indigo-500" style={{
+        <div className="mt-10 p-8 rounded-xl shadow-lg max-w-4xl mx-auto border-l-4 border-indigo-600 dark:border-indigo-500 text-center" style={{
           background: "linear-gradient(135deg, rgba(224, 231, 255, 0.95) 0%, rgba(214, 226, 255, 0.95) 100%)",
           color: "#1e3a8a"
         }}>
-          <div className="flex">
+          <div className="flex justify-center">
             <div className="flex-shrink-0">
-              <Lightbulb size={32} className="text-indigo-700" style={{ filter: "drop-shadow(0 1px 1px rgba(30, 64, 175, 0.4))" }} aria-hidden="true" />
+              <Lightbulb size={32} className="text-indigo-700 mx-auto" style={{ filter: "drop-shadow(0 1px 1px rgba(30, 64, 175, 0.4))" }} aria-hidden="true" />
             </div>
             <div className="ml-4">
               <blockquote className="italic text-lg font-medium text-indigo-900" style={{ textShadow: "0 1px 1px rgba(255, 255, 255, 0.5)" }}>
