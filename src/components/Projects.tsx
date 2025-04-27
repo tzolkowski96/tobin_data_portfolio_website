@@ -50,7 +50,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
       tags: ["Machine Learning", "Python", "Data Analysis", "Classification"],
       technologies: ["Python", "Pandas", "Scikit-Learn", "XGBoost", "Matplotlib", "Seaborn"],
       links: {
-        github: "https://github.com/tzolkowski96/Employee-Churn-Prediction",
+        github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/Employee-Churn-Prediction",
         live: "https://tzolkowski96.github.io/Salifort-Motors-Project/"
       },
       date: "2023",
@@ -75,7 +75,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
       tags: ["Big Data", "Geospatial Analysis", "Machine Learning", "Python"],
       technologies: ["Python", "NumPy", "Pandas", "Scikit-learn", "SciPy", "Matplotlib", "Seaborn", "Folium"],
       links: {
-        github: "https://github.com/tzolkowski96/us_accidents_analysis"
+        github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/us_accidents_analysis"
       },
       date: "2022",
       duration: "4 months",
@@ -99,7 +99,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
       tags: ["Marketing Analytics", "Customer Segmentation", "A/B Testing", "Python"],
       technologies: ["Python", "Pandas", "Scikit-learn", "Matplotlib", "Seaborn", "SciPy"],
       links: {
-        github: "https://github.com/tzolkowski96/ufood_analysis",
+        github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/ufood_analysis",
         live: "https://tzolkowski96.github.io/analyst-builder-food-marketing-project/"
       },
       date: "2023",
@@ -124,7 +124,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
       tags: ["SQL", "Data Cleaning", "Time-Series Analysis", "Global Health"],
       technologies: ["MySQL 8.0", "MySQL Workbench", "CTEs", "Window Functions", "Stored Procedures"],
       links: {
-        github: "https://github.com/tzolkowski96/world_life_expectancy"
+        github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/world_life_expectancy"
       },
       date: "2023",
       duration: "2 months",
@@ -149,7 +149,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
       tags: ["SQL", "Economic Analysis", "Data Quality", "Statistical Analysis"],
       technologies: ["MySQL 8.0+", "MySQL Workbench", "Window Functions", "CTEs", "Stored Procedures", "Performance Optimization"],
       links: {
-        github: "https://github.com/tzolkowski96/us-household-income-analysis"
+        github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/us-household-income-analysis"
       },
       date: "2022",
       duration: "3 months",
@@ -173,7 +173,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
       tags: ["Educational Analytics", "Machine Learning", "Python", "Statistical Analysis"],
       technologies: ["Python", "Pandas", "Scikit-learn", "Matplotlib", "Seaborn"],
       links: {
-        github: "https://github.com/tzolkowski96/portuguese-students-higher-education-analysis",
+        github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/portuguese-students-higher-education-analysis",
         live: "https://tzolkowski96.github.io/student-education-analysis/"
       },
       date: "2022",
@@ -198,7 +198,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
       tags: ["Web Scraping", "NLP", "Data Visualization", "Flask"],
       technologies: ["Python", "Flask", "BeautifulSoup", "Pandas", "NLTK", "Matplotlib", "Seaborn", "WordCloud"],
       links: {
-        github: "https://github.com/tzolkowski96/advanced_web_scraping_toolkit"
+        github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/advanced_web_scraping_toolkit"
       },
       date: "2023",
       duration: "4 months",
