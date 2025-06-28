@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Send, Check, AlertCircle, Loader } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Send, Check, AlertCircle, Loader, MessageSquare, Calendar, Phone } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -116,71 +116,142 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-20 bg-white dark:bg-black relative">
+      {/* Communication network pattern */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 200 200" className="text-gray-400">
+          <defs>
+            <pattern id="network-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+              <circle cx="20" cy="20" r="1" fill="currentColor" />
+              <path d="M20,20 L30,10 M20,20 L10,30 M20,20 L30,30" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#network-pattern)" />
+        </svg>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Get In Touch</h2>
-            <div className="w-16 h-px bg-gray-900 dark:bg-white mx-auto mb-8"></div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Let's Connect</h2>
+            <div className="section-divider"></div>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Have a project in mind or want to discuss potential collaborations? I'd love to hear from you! 
-              Fill out the form below or connect through any of the provided channels.
+              Ready to discuss data opportunities? Whether you have a project in mind, want to explore collaborations, 
+              or simply connect with a fellow data enthusiast, I'd love to hear from you.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-12">
-            {/* Contact Information */}
+            {/* Contact Information with data professional focus */}
             <div className="lg:col-span-1">
-              <div className="minimal-card">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Contact Information</h3>
+              <div className="minimal-card data-pattern-bg">
+                <div className="flex items-center mb-6">
+                  <div className="p-3 border border-gray-200 dark:border-gray-800 rounded-lg mr-4">
+                    <MessageSquare size={24} className="text-gray-600 dark:text-gray-400" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Contact Information</h3>
+                </div>
                 
                 <div className="space-y-6">
-                  <div>
-                    <h4 className="font-medium text-gray-900 dark:text-white mb-2">Email</h4>
-                    <p className="text-gray-600 dark:text-gray-400">Available via contact form</p>
+                  <div className="flex items-start">
+                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg mr-3">
+                      <Mail size={16} className="text-gray-600 dark:text-gray-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-900 dark:text-white mb-1">Email</h4>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">Available via contact form</p>
+                    </div>
                   </div>
 
-                  <div>
-                    <h4 className="font-medium text-gray-900 dark:text-white mb-2">LinkedIn</h4>
-                    <a 
-                      href="https://www.linkedin.com/in/tobin-zolkowski-844873200/" 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center transition-colors"
-                    >
-                      Connect with me <ExternalLink size={14} className="ml-1" aria-hidden="true" />
-                    </a>
+                  <div className="flex items-start">
+                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg mr-3">
+                      <Linkedin size={16} className="text-gray-600 dark:text-gray-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-900 dark:text-white mb-1">LinkedIn</h4>
+                      <a 
+                        href="https://www.linkedin.com/in/tobin-zolkowski-844873200/" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center transition-colors interactive-element text-sm ds-accent"
+                      >
+                        Professional Network <ExternalLink size={12} className="ml-1" aria-hidden="true" />
+                      </a>
+                    </div>
                   </div>
 
-                  <div>
-                    <h4 className="font-medium text-gray-900 dark:text-white mb-2">GitHub</h4>
-                    <a 
-                      href="https://github.com/tzolkowski96" 
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center transition-colors"
-                    >
-                      See my projects <ExternalLink size={14} className="ml-1" aria-hidden="true" />
-                    </a>
+                  <div className="flex items-start">
+                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg mr-3">
+                      <Github size={16} className="text-gray-600 dark:text-gray-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-900 dark:text-white mb-1">GitHub</h4>
+                      <a 
+                        href="https://github.com/tzolkowski96" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center transition-colors interactive-element text-sm ds-accent"
+                      >
+                        Code Portfolio <ExternalLink size={12} className="ml-1" aria-hidden="true" />
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg mr-3">
+                      <Calendar size={16} className="text-gray-600 dark:text-gray-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-900 dark:text-white mb-1">Availability</h4>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">Open to new opportunities</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start">
+                    <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg mr-3">
+                      <Phone size={16} className="text-gray-600 dark:text-gray-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-900 dark:text-white mb-1">Phone</h4>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">Available upon request</p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="mt-8">
-                  <h4 className="font-medium text-gray-900 dark:text-white mb-4">Available For</h4>
+                {/* Data services offered */}
+                <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
+                  <h4 className="font-medium text-gray-900 dark:text-white mb-4">Data Services Available:</h4>
                   <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                    <li>• Data analysis and visualization projects</li>
-                    <li>• Machine learning model implementation</li>
-                    <li>• SQL database design and optimization</li>
-                    <li>• Data pipeline development</li>
+                    <li className="flex items-center">
+                      <div className="w-1.5 h-1.5 bg-gray-900 dark:bg-white rounded-full mr-2"></div>
+                      Data analysis and visualization projects
+                    </li>
+                    <li className="flex items-center">
+                      <div className="w-1.5 h-1.5 bg-gray-900 dark:bg-white rounded-full mr-2"></div>
+                      Machine learning model development
+                    </li>
+                    <li className="flex items-center">
+                      <div className="w-1.5 h-1.5 bg-gray-900 dark:bg-white rounded-full mr-2"></div>
+                      SQL database design and optimization
+                    </li>
+                    <li className="flex items-center">
+                      <div className="w-1.5 h-1.5 bg-gray-900 dark:bg-white rounded-full mr-2"></div>
+                      ETL pipeline development
+                    </li>
+                    <li className="flex items-center">
+                      <div className="w-1.5 h-1.5 bg-gray-900 dark:bg-white rounded-full mr-2"></div>
+                      Business intelligence consulting
+                    </li>
                   </ul>
                 </div>
 
+                {/* Social links */}
                 <div className="flex justify-center space-x-4 mt-8 pt-6 border-t border-gray-200 dark:border-gray-800">
                   <a 
                     href="https://github.com/tzolkowski96" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                    className="p-3 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors interactive-element border border-gray-200 dark:border-gray-800 rounded-lg"
                     aria-label="GitHub profile"
                   >
                     <Github size={20} aria-hidden="true" />
@@ -189,14 +260,14 @@ const Contact: React.FC = () => {
                     href="https://www.linkedin.com/in/tobin-zolkowski-844873200/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                    className="p-3 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors interactive-element border border-gray-200 dark:border-gray-800 rounded-lg"
                     aria-label="LinkedIn profile"
                   >
                     <Linkedin size={20} aria-hidden="true" />
                   </a>
                   <a 
                     href="#contact" 
-                    className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                    className="p-3 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors interactive-element border border-gray-200 dark:border-gray-800 rounded-lg"
                     aria-label="Contact"
                   >
                     <Mail size={20} aria-hidden="true" />
@@ -205,13 +276,18 @@ const Contact: React.FC = () => {
               </div>
             </div>
 
-            {/* Contact Form */}
+            {/* Enhanced Contact Form */}
             <div className="lg:col-span-2">
-              <div className="minimal-card">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Send Me a Message</h3>
+              <div className="minimal-card data-pattern-bg">
+                <div className="flex items-center mb-6">
+                  <div className="p-3 border border-gray-200 dark:border-gray-800 rounded-lg mr-4">
+                    <Send size={24} className="text-gray-600 dark:text-gray-400" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Send Me a Message</h3>
+                </div>
                 
                 {formStatus.submitted ? (
-                  <div className={`p-6 rounded border ${
+                  <div className={`p-6 rounded-lg border ${
                     formStatus.error 
                       ? 'bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800' 
                       : 'bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800'
@@ -226,7 +302,7 @@ const Contact: React.FC = () => {
                       </p>
                       <button 
                         onClick={handleTryAgain}
-                        className="mt-2 text-sm underline hover:no-underline transition-all"
+                        className="mt-2 text-sm underline hover:no-underline transition-all interactive-element"
                       >
                         {formStatus.error ? 'Try Again' : 'Send Another Message'}
                       </button>
@@ -244,7 +320,7 @@ const Contact: React.FC = () => {
                           value={formData.name}
                           onChange={handleChange}
                           className={`form-input ${errors.name ? 'error' : ''}`}
-                          placeholder="John Doe"
+                          placeholder="Your name"
                         />
                         {errors.name && <p className="form-error">{errors.name}</p>}
                       </div>
@@ -257,7 +333,7 @@ const Contact: React.FC = () => {
                           value={formData.email}
                           onChange={handleChange}
                           className={`form-input ${errors.email ? 'error' : ''}`}
-                          placeholder="john.doe@example.com"
+                          placeholder="your.email@example.com"
                         />
                         {errors.email && <p className="form-error">{errors.email}</p>}
                       </div>
@@ -272,7 +348,7 @@ const Contact: React.FC = () => {
                         value={formData.subject}
                         onChange={handleChange}
                         className={`form-input ${errors.subject ? 'error' : ''}`}
-                        placeholder="Project Inquiry / Collaboration / Question"
+                        placeholder="Data Project Inquiry / Collaboration / Question"
                       />
                       {errors.subject && <p className="form-error">{errors.subject}</p>}
                     </div>
@@ -286,7 +362,7 @@ const Contact: React.FC = () => {
                         value={formData.message}
                         onChange={handleChange}
                         className={`form-input ${errors.message ? 'error' : ''}`}
-                        placeholder="Tell me about your project, questions, or collaboration ideas..."
+                        placeholder="Tell me about your data project, questions, or collaboration ideas..."
                       ></textarea>
                       {errors.message && <p className="form-error">{errors.message}</p>}
                     </div>
@@ -296,7 +372,7 @@ const Contact: React.FC = () => {
                       <button
                         type="submit"
                         disabled={formStatus.loading}
-                        className={`btn-primary flex items-center ${formStatus.loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        className={`btn-primary interactive-element flex items-center ${formStatus.loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                       >
                         {formStatus.loading ? (
                           <>
@@ -317,7 +393,7 @@ const Contact: React.FC = () => {
             </div>
           </div>
           
-          {/* Additional Links */}
+          {/* Additional connection methods */}
           <div className="text-center mt-16">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Other Ways to Connect</h3>
             <div className="flex flex-wrap justify-center gap-4">
@@ -325,7 +401,7 @@ const Contact: React.FC = () => {
                 href="https://tzolkowski96.github.io/portfolio/" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded text-sm hover:border-gray-900 dark:hover:border-white transition-colors flex items-center"
+                className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded text-sm hover:border-gray-900 dark:hover:border-white transition-colors flex items-center interactive-element"
               >
                 Portfolio Website
                 <ExternalLink size={14} className="ml-1" aria-hidden="true" />
@@ -334,18 +410,18 @@ const Contact: React.FC = () => {
                 href="https://medium.com/@grateful_aqua_goat_147" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded text-sm hover:border-gray-900 dark:hover:border-white transition-colors flex items-center"
+                className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded text-sm hover:border-gray-900 dark:hover:border-white transition-colors flex items-center interactive-element"
               >
-                Medium Blog
+                Data Blog
                 <ExternalLink size={14} className="ml-1" aria-hidden="true" />
               </a>
               <a 
                 href="https://tobinzolkowski.substack.com/" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded text-sm hover:border-gray-900 dark:hover:border-white transition-colors flex items-center"
+                className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded text-sm hover:border-gray-900 dark:hover:border-white transition-colors flex items-center interactive-element"
               >
-                Substack Newsletter
+                Newsletter
                 <ExternalLink size={14} className="ml-1" aria-hidden="true" />
               </a>
             </div>

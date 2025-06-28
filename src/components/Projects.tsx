@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Github, ExternalLink, ChevronDown, ChevronUp, Calendar, Clock } from 'lucide-react';
+import { Github, ExternalLink, ChevronDown, ChevronUp, Calendar, Clock, BarChart3, Database, Brain, Globe, Code2, LineChart } from 'lucide-react';
 
 interface ProjectDetailsType {
   id: number;
@@ -15,6 +15,11 @@ interface ProjectDetailsType {
   date: string;
   duration: string;
   category: string;
+  icon: React.ReactNode;
+  metrics?: {
+    label: string;
+    value: string;
+  }[];
 }
 
 interface ProjectsProps {
@@ -44,7 +49,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
         "Developed interactive dashboard for HR managers to visualize churn risk for current employees.",
         "Provided actionable HR recommendations based on model findings."
       ],
-      tags: ["Machine Learning", "Python", "Data Analysis", "Classification"],
+      tags: ["Machine Learning", "Python", "HR Analytics", "Classification"],
       technologies: ["Python", "Pandas", "Scikit-Learn", "XGBoost", "Matplotlib", "Seaborn"],
       links: {
         github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/Employee-Churn-Prediction",
@@ -52,7 +57,13 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
       },
       date: "2023",
       duration: "3 months",
-      category: "Data Analysis & Machine Learning"
+      category: "Machine Learning & Analytics",
+      icon: <Brain size={24} className="text-gray-600 dark:text-gray-400" />,
+      metrics: [
+        { label: "Accuracy", value: "98%" },
+        { label: "Dataset Size", value: "15K+" },
+        { label: "Features", value: "10" }
+      ]
     },
     {
       id: 2,
@@ -67,14 +78,20 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
         "Optimized memory usage, achieving a 3.25% reduction in resource consumption.",
         "Identified significant patterns in accident occurrence and severity based on time, location, and weather conditions."
       ],
-      tags: ["Big Data", "Geospatial Analysis", "Machine Learning", "Python"],
+      tags: ["Big Data", "Geospatial Analysis", "Public Safety", "Python"],
       technologies: ["Python", "NumPy", "Pandas", "Scikit-learn", "SciPy", "Matplotlib", "Seaborn", "Folium"],
       links: {
         github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/us_accidents_analysis"
       },
       date: "2022",
       duration: "4 months",
-      category: "Data Analysis & Machine Learning"
+      category: "Big Data & Analytics",
+      icon: <BarChart3 size={24} className="text-gray-600 dark:text-gray-400" />,
+      metrics: [
+        { label: "Records", value: "7.7M" },
+        { label: "States", value: "49" },
+        { label: "ML Accuracy", value: "78%" }
+      ]
     },
     {
       id: 3,
@@ -89,7 +106,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
         "Analyzed product preferences and purchasing patterns to guide menu optimization.",
         "Designed a complete marketing strategy framework based on analytical insights."
       ],
-      tags: ["Marketing Analytics", "Customer Segmentation", "A/B Testing", "Python"],
+      tags: ["Marketing Analytics", "Customer Segmentation", "A/B Testing", "Business Intelligence"],
       technologies: ["Python", "Pandas", "Scikit-learn", "Matplotlib", "Seaborn", "SciPy"],
       links: {
         github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/ufood_analysis",
@@ -97,7 +114,13 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
       },
       date: "2023",
       duration: "3 months",
-      category: "Data Analysis & Machine Learning"
+      category: "Business Intelligence",
+      icon: <LineChart size={24} className="text-gray-600 dark:text-gray-400" />,
+      metrics: [
+        { label: "Customer Segments", value: "5" },
+        { label: "Campaign ROI", value: "+25%" },
+        { label: "CLV Increase", value: "18%" }
+      ]
     },
     {
       id: 4,
@@ -119,7 +142,13 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
       },
       date: "2023",
       duration: "2 months",
-      category: "SQL Projects"
+      category: "Database & SQL",
+      icon: <Database size={24} className="text-gray-600 dark:text-gray-400" />,
+      metrics: [
+        { label: "Countries", value: "183" },
+        { label: "Data Quality", value: "93.4%" },
+        { label: "Time Span", value: "15 years" }
+      ]
     },
     {
       id: 5,
@@ -142,7 +171,13 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
       },
       date: "2022",
       duration: "3 months",
-      category: "SQL Projects"
+      category: "Database & SQL",
+      icon: <Database size={24} className="text-gray-600 dark:text-gray-400" />,
+      metrics: [
+        { label: "Records", value: "32K+" },
+        { label: "Performance Gain", value: "68%" },
+        { label: "Quality Score", value: "9.6/10" }
+      ]
     },
     {
       id: 6,
@@ -165,7 +200,13 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
       },
       date: "2022",
       duration: "2 months",
-      category: "Data Analysis & Machine Learning"
+      category: "Machine Learning & Analytics",
+      icon: <Brain size={24} className="text-gray-600 dark:text-gray-400" />,
+      metrics: [
+        { label: "Students", value: "649" },
+        { label: "Predictive Accuracy", value: "85%" },
+        { label: "Key Factors", value: "12" }
+      ]
     },
     {
       id: 7,
@@ -187,7 +228,13 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
       },
       date: "2023",
       duration: "4 months",
-      category: "Web Development & Applications"
+      category: "Web Development & Data Tools",
+      icon: <Code2 size={24} className="text-gray-600 dark:text-gray-400" />,
+      metrics: [
+        { label: "Data Sources", value: "50+" },
+        { label: "NLP Models", value: "3" },
+        { label: "Visualization Types", value: "8" }
+      ]
     },
     {
       id: 8,
@@ -210,7 +257,13 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
       },
       date: "2023",
       duration: "3 months",
-      category: "Web Development & Applications"
+      category: "Web Development & Data Tools",
+      icon: <Globe size={24} className="text-gray-600 dark:text-gray-400" />,
+      metrics: [
+        { label: "Countries", value: "195" },
+        { label: "Interactive Charts", value: "12" },
+        { label: "Time Range", value: "70 years" }
+      ]
     },
   ];
   
@@ -221,52 +274,117 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
   const visibleProjects = showAllProjects ? filteredProjects : filteredProjects.slice(0, projectsToShow);
 
   return (
-    <section id="projects" className="py-20 bg-white dark:bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-20 bg-white dark:bg-black relative">
+      {/* Data-themed background pattern */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <svg width="100%" height="100%" viewBox="0 0 60 60" className="text-gray-400">
+          <defs>
+            <pattern id="data-dots" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+              <circle cx="30" cy="30" r="1.5" fill="currentColor" />
+              <circle cx="10" cy="10" r="1" fill="currentColor" opacity="0.5" />
+              <circle cx="50" cy="50" r="1" fill="currentColor" opacity="0.5" />
+              <circle cx="10" cy="50" r="0.5" fill="currentColor" opacity="0.3" />
+              <circle cx="50" cy="10" r="0.5" fill="currentColor" opacity="0.3" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#data-dots)" />
+        </svg>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Featured Projects</h2>
-          <div className="w-16 h-px bg-gray-900 dark:bg-white mx-auto mb-8"></div>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Data Projects Portfolio</h2>
+          <div className="section-divider"></div>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            A selection of my data analysis, machine learning, and visualization projects. Each project demonstrates
-            my approach to solving complex problems using data-driven methods.
+            A comprehensive showcase of my data analysis, machine learning, and visualization projects. Each project demonstrates
+            my approach to solving complex problems using data-driven methods and advanced analytics.
           </p>
         </div>
         
-        {/* Category filters */}
+        {/* Enhanced category filters with data icons */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
           <button
             onClick={() => setActiveCategory(null)}
-            className={`px-4 py-2 text-sm border rounded transition-colors ${
+            className={`px-4 py-2 text-sm border rounded transition-all interactive-element flex items-center ${
               activeCategory === null 
                 ? 'bg-gray-900 text-white border-gray-900 dark:bg-white dark:text-black dark:border-white' 
                 : 'bg-white text-gray-900 border-gray-300 hover:border-gray-900 dark:bg-black dark:text-white dark:border-gray-700 dark:hover:border-white'
             }`}
           >
+            <BarChart3 size={16} className="mr-2" />
             All Projects
           </button>
           
-          {categories.map((category, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 text-sm border rounded transition-colors ${
-                activeCategory === category 
-                  ? 'bg-gray-900 text-white border-gray-900 dark:bg-white dark:text-black dark:border-white' 
-                  : 'bg-white text-gray-900 border-gray-300 hover:border-gray-900 dark:bg-black dark:text-white dark:border-gray-700 dark:hover:border-white'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+          {categories.map((category, idx) => {
+            const getIcon = () => {
+              if (category.includes('Machine Learning')) return <Brain size={16} className="mr-2" />;
+              if (category.includes('Database')) return <Database size={16} className="mr-2" />;
+              if (category.includes('Business')) return <LineChart size={16} className="mr-2" />;
+              if (category.includes('Web')) return <Code2 size={16} className="mr-2" />;
+              if (category.includes('Big Data')) return <BarChart3 size={16} className="mr-2" />;
+              return <Database size={16} className="mr-2" />;
+            };
+
+            return (
+              <button
+                key={idx}
+                onClick={() => setActiveCategory(category)}
+                className={`px-4 py-2 text-sm border rounded transition-all interactive-element flex items-center ${
+                  activeCategory === category 
+                    ? 'bg-gray-900 text-white border-gray-900 dark:bg-white dark:text-black dark:border-white' 
+                    : 'bg-white text-gray-900 border-gray-300 hover:border-gray-900 dark:bg-black dark:text-white dark:border-gray-700 dark:hover:border-white'
+                }`}
+              >
+                {getIcon()}
+                {category}
+              </button>
+            );
+          })}
         </div>
         
-        {/* Projects grid */}
+        {/* Enhanced projects grid with data visualization elements */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-12">
           {visibleProjects.map(project => (
-            <div key={project.id} className="minimal-card h-full flex flex-col">
+            <div key={project.id} className="minimal-card h-full flex flex-col data-pattern-bg">
+              {/* Project header with icon */}
+              <div className="flex items-center mb-4">
+                <div className="p-2 border border-gray-200 dark:border-gray-800 rounded mr-3">
+                  {project.icon}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{project.title}</h3>
+                  <span className="text-xs text-gray-500 dark:text-gray-500">{project.category}</span>
+                </div>
+              </div>
+
+              {/* Data visualization preview */}
+              <div className="viz-preview mb-4">
+                <div className="flex items-center justify-center h-full">
+                  <div className="text-center">
+                    <div className="flex justify-center mb-2">
+                      {project.icon}
+                    </div>
+                    <div className="text-xs text-gray-500 dark:text-gray-400">
+                      {project.category.split(' ')[0]} Visualization
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="flex-1">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{project.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
+                
+                {/* Project metrics */}
+                {project.metrics && (
+                  <div className="grid grid-cols-3 gap-2 mb-4">
+                    {project.metrics.map((metric, idx) => (
+                      <div key={idx} className="text-center p-2 bg-gray-50 dark:bg-gray-900 rounded">
+                        <div className="text-sm font-semibold text-gray-900 dark:text-white">{metric.value}</div>
+                        <div className="text-xs text-gray-500 dark:text-gray-500">{metric.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
                 
                 <div className="flex flex-wrap gap-1 mb-4">
                   {project.tags.slice(0, 3).map((tag, idx) => (
@@ -281,12 +399,14 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
                 
                 <div className="flex flex-wrap gap-1 mb-4">
                   {project.technologies.slice(0, 4).map((tech, idx) => (
-                    <span key={idx} className="text-xs text-gray-500 dark:text-gray-500">
+                    <span key={idx} className="text-xs text-gray-500 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 4 && (
-                    <span className="text-xs text-gray-500 dark:text-gray-500">+{project.technologies.length - 4} more</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
+                      +{project.technologies.length - 4} more
+                    </span>
                   )}
                 </div>
                 
@@ -299,6 +419,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
                 
                 {expandedProject === project.id && (
                   <div className="mb-4 pt-4 border-t border-gray-200 dark:border-gray-800">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-3">Project Details:</h4>
                     <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
                       {project.longDescription.map((point, idx) => (
                         <li key={idx} className="flex items-start">
@@ -318,7 +439,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
                       href={project.links.github} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                      className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors interactive-element"
                       aria-label={`GitHub repository for ${project.title}`}
                     >
                       <Github size={18} aria-hidden="true" />
@@ -329,7 +450,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
                       href={project.links.live} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                      className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors interactive-element"
                       aria-label={`Live demo for ${project.title}`}
                     >
                       <ExternalLink size={18} aria-hidden="true" />
@@ -339,7 +460,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
                 
                 <button 
                   onClick={() => toggleExpand(project.id)}
-                  className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center transition-colors"
+                  className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white flex items-center transition-colors interactive-element"
                   aria-expanded={expandedProject === project.id}
                 >
                   {expandedProject === project.id ? (
@@ -350,7 +471,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
                   ) : (
                     <>
                       <ChevronDown size={14} className="mr-1" aria-hidden="true" />
-                      <span>More</span>
+                      <span>Details</span>
                     </>
                   )}
                 </button>
@@ -363,9 +484,9 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
           <div className="text-center">
             <button
               onClick={() => setShowAllProjects(true)}
-              className="btn-secondary"
+              className="btn-secondary interactive-element"
             >
-              Load {filteredProjects.length - projectsToShow} More Projects
+              Load {filteredProjects.length - projectsToShow} More Data Projects
             </button>
           </div>
         )}
@@ -374,22 +495,27 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
           <div className="text-center">
             <button
               onClick={() => setShowAllProjects(false)}
-              className="btn-secondary"
+              className="btn-secondary interactive-element"
             >
               Show Fewer Projects
             </button>
           </div>
         )}
         
-        <div className="text-center mt-16">
+        {/* Enhanced GitHub CTA */}
+        <div className="text-center mt-16 p-8 border border-gray-200 dark:border-gray-800 rounded-lg bg-gray-50 dark:bg-gray-900">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Explore More Data Projects</h3>
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
+            View additional projects, code samples, and data analysis work on my GitHub profile.
+          </p>
           <a 
             href="https://github.com/tzolkowski96" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="btn-primary"
+            className="btn-primary interactive-element"
           >
             <Github size={18} className="mr-2" aria-hidden="true" />
-            View GitHub Profile
+            View GitHub Portfolio
           </a>
         </div>
       </div>
