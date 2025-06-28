@@ -488,6 +488,8 @@ html.dark #mobile-menu {
 
 .project-card-large:hover {
   border-color: #CCCCCC;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .project-card-large:hover::before {
@@ -501,6 +503,7 @@ html.dark .project-card-large {
 
 html.dark .project-card-large:hover {
   border-color: #555555;
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
 }
 
 html.dark .project-card-large::before {

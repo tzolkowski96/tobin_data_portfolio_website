@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
+import Showcase from './components/Showcase';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
@@ -80,8 +81,8 @@ function App() {
       <main id="main-content">
         <Hero />
         <About />
+        <Showcase />
         <Experience />
-        <Projects activeSection={activeSection} />
         <Skills />
         <Contact />
       </main>

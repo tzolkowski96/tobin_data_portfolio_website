@@ -47,8 +47,8 @@ const Footer: React.FC = () => {
             <h4 className="heading-3 text-gray-900 dark:text-white mb-4">Navigation</h4>
             <ul className="space-y-2">
               <li><a href="#about" className="body-regular text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">About</a></li>
+              <li><a href="#showcase" className="body-regular text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Showcase</a></li>
               <li><a href="#experience" className="body-regular text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Experience</a></li>
-              <li><a href="#projects" className="body-regular text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Projects</a></li>
               <li><a href="#skills" className="body-regular text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Skills</a></li>
               <li><a href="#contact" className="body-regular text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Contact</a></li>
             </ul>
