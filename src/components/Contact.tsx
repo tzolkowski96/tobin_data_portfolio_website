@@ -94,11 +94,27 @@ const Contact: React.FC = () => {
         
         {/* Large Section Header */}
         <div className="section-header">
-          <h2 className="display-3">Contact</h2>
+          <h2 className="display-3">Let's Connect</h2>
           <p className="body-large">
-            Have a project in mind or want to discuss collaborations? Let's connect and explore 
-            how we can work together on data-driven solutions.
+            <strong>Ready to discuss opportunities?</strong> Whether you have a specific project in mind 
+            or want to explore potential collaborations, I'd love to hear about your data challenges.
           </p>
+        </div>
+
+        {/* Contact Stats */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="text-center p-6 border-2 border-gray-600">
+            <div className="heading-2 mb-2">24hrs</div>
+            <div className="caption text-gray-400">Typical Response Time</div>
+          </div>
+          <div className="text-center p-6 border-2 border-gray-600">
+            <div className="heading-2 mb-2">Remote</div>
+            <div className="caption text-gray-400">Work Preference</div>
+          </div>
+          <div className="text-center p-6 border-2 border-gray-600">
+            <div className="heading-2 mb-2">Available</div>
+            <div className="caption text-gray-400">New Opportunities</div>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-12">
@@ -106,9 +122,19 @@ const Contact: React.FC = () => {
           {/* Contact Info */}
           <div className="lg:col-span-2">
             <div className="minimal-card">
-              <h3 className="heading-2 mb-8">Get in Touch</h3>
+              <h3 className="heading-2 mb-8">Contact Information</h3>
               
               <div className="space-y-8 mb-8">
+                <div>
+                  <h4 className="heading-3 mb-3">Email</h4>
+                  <a 
+                    href="mailto:contact@example.com"
+                    className="text-gray-400 hover:text-white body-regular transition-colors"
+                  >
+                    Available via contact form
+                  </a>
+                </div>
+                
                 <div>
                   <h4 className="heading-3 mb-3">LinkedIn</h4>
                   <a 
@@ -117,7 +143,7 @@ const Contact: React.FC = () => {
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white flex items-center body-regular group transition-colors"
                   >
-                    Connect with me 
+                    Professional profile & network
                     <ExternalLink size={16} className="ml-2 group-hover:transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </a>
                 </div>
@@ -130,18 +156,18 @@ const Contact: React.FC = () => {
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white flex items-center body-regular group transition-colors"
                   >
-                    View projects 
+                    Code repositories & projects
                     <ExternalLink size={16} className="ml-2 group-hover:transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </a>
                 </div>
               </div>
 
               <div className="mb-8">
-                <h4 className="heading-3 mb-4">Available For</h4>
+                <h4 className="heading-3 mb-4">Areas of Interest</h4>
                 <ul className="space-y-2 body-regular text-gray-400">
-                  <li>• Data analysis projects</li>
-                  <li>• Machine learning implementation</li>
-                  <li>• Database optimization</li>
+                  <li>• <strong>Full-time positions</strong> in data analytics</li>
+                  <li>• <strong>Contract projects</strong> with defined scope</li>
+                  <li>• <strong>Consulting opportunities</strong> for ML implementation</li>
                   <li>• Data pipeline development</li>
                 </ul>
               </div>
@@ -170,7 +196,7 @@ const Contact: React.FC = () => {
           {/* Contact Form */}
           <div className="lg:col-span-3">
             <div className="minimal-card">
-              <h3 className="heading-2 mb-8">Send Message</h3>
+              <h3 className="heading-2 mb-8">Start a Conversation</h3>
               
               {formStatus.submitted ? (
                 <div className={`p-6 border-2 ${

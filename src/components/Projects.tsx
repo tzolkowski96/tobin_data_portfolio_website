@@ -136,11 +136,31 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
         
         {/* Large Section Header */}
         <div className="section-header">
-          <h2 className="display-3 text-gray-900 dark:text-white">Projects</h2>
+          <h2 className="display-3 text-gray-900 dark:text-white">Portfolio</h2>
           <p className="body-large">
-            Data analysis, machine learning, and visualization projects demonstrating problem-solving 
-            with data-driven methods and continuous learning approach.
+            <strong>Featured projects</strong> demonstrating expertise in data analysis, machine learning, 
+            and visualization. Each project showcases measurable results and practical business applications.
           </p>
+        </div>
+        
+        {/* Project Stats */}
+        <div className="grid md:grid-cols-4 gap-6 mb-12">
+          <div className="text-center p-6 border-2 border-gray-200 dark:border-gray-800">
+            <div className="heading-2 text-gray-900 dark:text-white mb-2">14+</div>
+            <div className="caption text-gray-600 dark:text-gray-400">Completed Projects</div>
+          </div>
+          <div className="text-center p-6 border-2 border-gray-200 dark:border-gray-800">
+            <div className="heading-2 text-gray-900 dark:text-white mb-2">7.7M</div>
+            <div className="caption text-gray-600 dark:text-gray-400">Records Processed</div>
+          </div>
+          <div className="text-center p-6 border-2 border-gray-200 dark:border-gray-800">
+            <div className="heading-2 text-gray-900 dark:text-white mb-2">98%</div>
+            <div className="caption text-gray-600 dark:text-gray-400">ML Accuracy</div>
+          </div>
+          <div className="text-center p-6 border-2 border-gray-200 dark:border-gray-800">
+            <div className="heading-2 text-gray-900 dark:text-white mb-2">35%</div>
+            <div className="caption text-gray-600 dark:text-gray-400">Quality Improvement</div>
+          </div>
         </div>
         
         {/* Projects Grid */}
@@ -150,7 +170,10 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
               
               {/* Project Header */}
               <div className="mb-6">
+                <div className="flex justify-between items-start mb-4">
                 <h3 className="heading-2 text-gray-900 dark:text-white mb-4">{project.title}</h3>
+                  <span className="caption text-gray-500 dark:text-gray-500 bg-gray-100 dark:bg-gray-800 px-3 py-1">{project.date}</span>
+                </div>
                 <p className="body-large mb-4">{project.description}</p>
                 
                 {/* Tags */}
@@ -159,8 +182,6 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
                     <span key={idx} className="tag-large">{tag}</span>
                   ))}
                 </div>
-                
-                <p className="caption text-gray-500 dark:text-gray-500 mb-4">{project.date}</p>
               </div>
               
               {/* Expanded Details */}
@@ -240,6 +261,13 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
         
         {/* GitHub CTA */}
         <div className="text-center">
+          <div className="mb-6">
+            <h3 className="heading-2 text-gray-900 dark:text-white mb-4">Explore All Projects</h3>
+            <p className="body-regular max-w-2xl mx-auto">
+              Visit my GitHub repository to explore additional projects, code samples, 
+              and contributions to open-source data science initiatives.
+            </p>
+          </div>
           <a 
             href="https://github.com/tzolkowski96" 
             target="_blank" 
@@ -247,7 +275,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
             className="btn-large inline-flex items-center"
           >
             <Github size={20} className="mr-3" />
-            View All on GitHub
+            View GitHub Repository
           </a>
         </div>
       </div>
