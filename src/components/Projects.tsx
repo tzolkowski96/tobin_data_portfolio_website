@@ -30,7 +30,7 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
     {
       id: 1,
       title: "Employee Churn Prediction",
-      description: "ML model predicting employee turnover with 98% accuracy using Python and scikit-learn.",
+      description: "Machine learning model predicting employee turnover with 98% accuracy using Python and scikit-learn.",
       details: [
         "Random Forest, Logistic Regression, and Gradient Boosting algorithms",
         "Extensive data preprocessing and feature engineering",
@@ -131,54 +131,64 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
   const visibleProjects = showAll ? projects : projects.slice(0, 4);
 
   return (
-    <section id="projects" className="py-16 bg-white dark:bg-black">
-      <div className="max-w-5xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl text-gray-900 dark:text-white mb-8">Projects</h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
-            Data analysis, machine learning, and visualization projects demonstrating problem-solving with data-driven methods.
+    <section className="section-light section-padding">
+      <div className="container-large">
+        
+        {/* Large Section Header */}
+        <div className="section-header">
+          <h2 className="display-3 text-gray-900 dark:text-white">Projects</h2>
+          <p className="body-large">
+            Data analysis, machine learning, and visualization projects demonstrating problem-solving 
+            with data-driven methods and continuous learning approach.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
+        {/* Projects Grid */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-12">
           {visibleProjects.map(project => (
-            <div key={project.id} className="minimal-card">
-              <div className="mb-3">
-                <h3 className="text-lg text-gray-900 dark:text-white mb-2">{project.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-3">{project.description}</p>
+            <div key={project.id} className="project-card-large">
+              
+              {/* Project Header */}
+              <div className="mb-6">
+                <h3 className="heading-2 text-gray-900 dark:text-white mb-4">{project.title}</h3>
+                <p className="body-large mb-4">{project.description}</p>
                 
-                <div className="flex flex-wrap gap-1 mb-3">
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, idx) => (
-                    <span key={idx} className="minimal-tag">{tag}</span>
+                    <span key={idx} className="tag-large">{tag}</span>
                   ))}
                 </div>
                 
-                <p className="text-xs text-gray-500 dark:text-gray-500 mb-3">{project.date}</p>
-                
-                {expandedProject === project.id && (
-                  <div className="mb-3 pt-3 border-t border-gray-200 dark:border-gray-800">
-                    <ul className="space-y-1">
-                      {project.details.map((detail, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="w-1 h-1 bg-gray-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
-                          <span className="text-sm text-gray-600 dark:text-gray-400">{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                <p className="caption text-gray-500 dark:text-gray-500 mb-4">{project.date}</p>
               </div>
               
-              <div className="flex items-center justify-between">
-                <div className="flex space-x-3">
+              {/* Expanded Details */}
+              {expandedProject === project.id && (
+                <div className="mb-6 pt-6 border-t border-gray-300 dark:border-gray-600 animate-slideUp">
+                  <ul className="space-y-3">
+                    {project.details.map((detail, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <span className="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-4 flex-shrink-0"></span>
+                        <span className="body-regular">{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              
+              {/* Footer Actions */}
+              <div className="flex items-center justify-between pt-6 border-t border-gray-300 dark:border-gray-600">
+                <div className="flex space-x-4">
                   {project.links.github && (
                     <a 
                       href={project.links.github} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300"
+                      className="text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300 transition-colors p-2"
+                      aria-label="View GitHub repository"
                     >
-                      <Github size={16} />
+                      <Github size={20} />
                     </a>
                   )}
                   {project.links.live && (
@@ -186,27 +196,28 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
                       href={project.links.live} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300"
+                      className="text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300 transition-colors p-2"
+                      aria-label="View live demo"
                     >
-                      <ExternalLink size={16} />
+                      <ExternalLink size={20} />
                     </a>
                   )}
                 </div>
                 
                 <button 
                   onClick={() => toggleExpand(project.id)}
-                  className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300 flex items-center"
+                  className="text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300 flex items-center body-regular group transition-colors"
                   aria-expanded={expandedProject === project.id}
                 >
                   {expandedProject === project.id ? (
                     <>
-                      <ChevronUp size={14} className="mr-1" />
+                      <ChevronUp size={20} className="mr-2 group-hover:transform group-hover:-translate-y-1 transition-transform" />
                       <span>Less</span>
                     </>
                   ) : (
                     <>
-                      <ChevronDown size={14} className="mr-1" />
-                      <span>More</span>
+                      <ChevronDown size={20} className="mr-2 group-hover:transform group-hover:translate-y-1 transition-transform" />
+                      <span>Details</span>
                     </>
                   )}
                 </button>
@@ -215,26 +226,28 @@ const Projects: React.FC<ProjectsProps> = ({ activeSection }) => {
           ))}
         </div>
         
+        {/* Show More Button */}
         {!showAll && projects.length > 4 && (
-          <div className="text-center mb-8">
+          <div className="text-center mb-12">
             <button
               onClick={() => setShowAll(true)}
-              className="btn-secondary"
+              className="btn-outline"
             >
               View {projects.length - 4} More Projects
             </button>
           </div>
         )}
         
+        {/* GitHub CTA */}
         <div className="text-center">
           <a 
             href="https://github.com/tzolkowski96" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="btn-primary"
+            className="btn-large inline-flex items-center"
           >
-            <Github size={16} className="mr-2" />
-            GitHub Profile
+            <Github size={20} className="mr-3" />
+            View All on GitHub
           </a>
         </div>
       </div>

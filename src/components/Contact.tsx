@@ -68,7 +68,7 @@ const Contact: React.FC = () => {
           submitted: true,
           error: false,
           loading: false,
-          message: 'Message sent. I\'ll get back to you soon.',
+          message: 'Message sent successfully. I\'ll get back to you soon.',
         });
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
@@ -89,73 +89,79 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-16 bg-white dark:bg-black">
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl text-gray-900 dark:text-white mb-8">Contact</h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
-            Have a project in mind or want to discuss collaborations? Let's connect.
+    <section className="section-dark section-padding">
+      <div className="container-medium">
+        
+        {/* Large Section Header */}
+        <div className="section-header">
+          <h2 className="display-3">Contact</h2>
+          <p className="body-large">
+            Have a project in mind or want to discuss collaborations? Let's connect and explore 
+            how we can work together on data-driven solutions.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
+        <div className="grid lg:grid-cols-5 gap-12">
+          
           {/* Contact Info */}
           <div className="lg:col-span-2">
             <div className="minimal-card">
-              <h3 className="text-lg text-gray-900 dark:text-white mb-4">Get in Touch</h3>
+              <h3 className="heading-2 mb-8">Get in Touch</h3>
               
-              <div className="space-y-4 mb-6">
+              <div className="space-y-8 mb-8">
                 <div>
-                  <h4 className="font-normal text-gray-900 dark:text-white mb-1">LinkedIn</h4>
+                  <h4 className="heading-3 mb-3">LinkedIn</h4>
                   <a 
                     href="https://www.linkedin.com/in/tobin-zolkowski-844873200/" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300 flex items-center text-sm"
+                    className="text-gray-400 hover:text-white flex items-center body-regular group transition-colors"
                   >
-                    Connect <ExternalLink size={12} className="ml-1" />
+                    Connect with me 
+                    <ExternalLink size={16} className="ml-2 group-hover:transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </a>
                 </div>
 
                 <div>
-                  <h4 className="font-normal text-gray-900 dark:text-white mb-1">GitHub</h4>
+                  <h4 className="heading-3 mb-3">GitHub</h4>
                   <a 
                     href="https://github.com/tzolkowski96" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300 flex items-center text-sm"
+                    className="text-gray-400 hover:text-white flex items-center body-regular group transition-colors"
                   >
-                    View projects <ExternalLink size={12} className="ml-1" />
+                    View projects 
+                    <ExternalLink size={16} className="ml-2 group-hover:transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </a>
                 </div>
               </div>
 
-              <div className="mb-6">
-                <h4 className="font-normal text-gray-900 dark:text-white mb-2">Available For</h4>
-                <ul className="space-y-1 text-sm text-gray-500 dark:text-gray-500">
-                  <li>Data analysis projects</li>
-                  <li>Machine learning implementation</li>
-                  <li>Database optimization</li>
-                  <li>Data pipeline development</li>
+              <div className="mb-8">
+                <h4 className="heading-3 mb-4">Available For</h4>
+                <ul className="space-y-2 body-regular text-gray-400">
+                  <li>• Data analysis projects</li>
+                  <li>• Machine learning implementation</li>
+                  <li>• Database optimization</li>
+                  <li>• Data pipeline development</li>
                 </ul>
               </div>
 
-              <div className="flex space-x-4 pt-4 border-t border-gray-200 dark:border-gray-800">
+              <div className="flex space-x-6 pt-8 border-t border-gray-600">
                 <a 
                   href="https://github.com/tzolkowski96" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300"
+                  className="text-gray-400 hover:text-white transition-colors"
                 >
-                  <Github size={18} />
+                  <Github size={24} />
                 </a>
                 <a 
                   href="https://www.linkedin.com/in/tobin-zolkowski-844873200/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-300"
+                  className="text-gray-400 hover:text-white transition-colors"
                 >
-                  <Linkedin size={18} />
+                  <Linkedin size={24} />
                 </a>
               </div>
             </div>
@@ -164,103 +170,103 @@ const Contact: React.FC = () => {
           {/* Contact Form */}
           <div className="lg:col-span-3">
             <div className="minimal-card">
-              <h3 className="text-lg text-gray-900 dark:text-white mb-4">Send Message</h3>
+              <h3 className="heading-2 mb-8">Send Message</h3>
               
               {formStatus.submitted ? (
-                <div className={`p-4 border ${
+                <div className={`p-6 border-2 ${
                   formStatus.error 
-                    ? 'bg-red-50 border-red-200 dark:bg-red-900/20 dark:border-red-800' 
-                    : 'bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800'
-                } flex items-center`}>
+                    ? 'bg-red-900/20 border-red-500' 
+                    : 'bg-green-900/20 border-green-500'
+                } flex items-start`}>
                   {formStatus.error ? 
-                    <AlertCircle size={16} className="text-red-600 dark:text-red-400 mr-2" /> : 
-                    <Check size={16} className="text-green-600 dark:text-green-400 mr-2" />
+                    <AlertCircle size={24} className="text-red-400 mr-4 flex-shrink-0 mt-1" /> : 
+                    <Check size={24} className="text-green-400 mr-4 flex-shrink-0 mt-1" />
                   }
                   <div className="flex-1">
-                    <p className={`text-sm ${formStatus.error ? 'text-red-800 dark:text-red-200' : 'text-green-800 dark:text-green-200'}`}>
+                    <p className={`body-large mb-4 ${formStatus.error ? 'text-red-200' : 'text-green-200'}`}>
                       {formStatus.message}
                     </p>
                     <button 
                       onClick={resetForm}
-                      className="mt-1 text-xs underline hover:no-underline"
+                      className="btn-outline"
                     >
-                      {formStatus.error ? 'Try again' : 'Send another'}
+                      {formStatus.error ? 'Try Again' : 'Send Another Message'}
                     </button>
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid md:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="form-label">Name</label>
+                      <label htmlFor="name" className="form-label-large">Name</label>
                       <input
                         type="text"
                         id="name"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className={`form-input ${errors.name ? 'error' : ''}`}
+                        className={`form-input-large ${errors.name ? 'error' : ''}`}
                         placeholder="Your name"
                       />
-                      {errors.name && <p className="form-error">{errors.name}</p>}
+                      {errors.name && <p className="body-small text-red-400 mt-2">{errors.name}</p>}
                     </div>
                     <div>
-                      <label htmlFor="email" className="form-label">Email</label>
+                      <label htmlFor="email" className="form-label-large">Email</label>
                       <input
                         type="email"
                         id="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className={`form-input ${errors.email ? 'error' : ''}`}
+                        className={`form-input-large ${errors.email ? 'error' : ''}`}
                         placeholder="your@email.com"
                       />
-                      {errors.email && <p className="form-error">{errors.email}</p>}
+                      {errors.email && <p className="body-small text-red-400 mt-2">{errors.email}</p>}
                     </div>
                   </div>
                   
                   <div>
-                    <label htmlFor="subject" className="form-label">Subject</label>
+                    <label htmlFor="subject" className="form-label-large">Subject</label>
                     <input
                       type="text"
                       id="subject"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className={`form-input ${errors.subject ? 'error' : ''}`}
+                      className={`form-input-large ${errors.subject ? 'error' : ''}`}
                       placeholder="Project inquiry"
                     />
-                    {errors.subject && <p className="form-error">{errors.subject}</p>}
+                    {errors.subject && <p className="body-small text-red-400 mt-2">{errors.subject}</p>}
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="form-label">Message</label>
+                    <label htmlFor="message" className="form-label-large">Message</label>
                     <textarea
                       id="message"
                       name="message"
-                      rows={4}
+                      rows={6}
                       value={formData.message}
                       onChange={handleChange}
-                      className={`form-input ${errors.message ? 'error' : ''}`}
+                      className={`form-input-large ${errors.message ? 'error' : ''}`}
                       placeholder="Tell me about your project..."
                     ></textarea>
-                    {errors.message && <p className="form-error">{errors.message}</p>}
+                    {errors.message && <p className="body-small text-red-400 mt-2">{errors.message}</p>}
                   </div>
                   
                   <button
                     type="submit"
                     disabled={formStatus.loading}
-                    className={`btn-primary flex items-center ${formStatus.loading ? 'opacity-50' : ''}`}
+                    className={`btn-large flex items-center ${formStatus.loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
                     {formStatus.loading ? (
                       <>
-                        <Loader size={16} className="animate-spin mr-2" />
+                        <Loader size={20} className="animate-spin mr-3" />
                         <span>Sending...</span>
                       </>
                     ) : (
                       <>
-                        <Send size={16} className="mr-2" />
-                        <span>Send</span>
+                        <Send size={20} className="mr-3" />
+                        <span>Send Message</span>
                       </>
                     )}
                   </button>
