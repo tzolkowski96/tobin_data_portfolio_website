@@ -37,24 +37,24 @@ const About: React.FC = () => {
           <h3 className="heading-2 text-gray-900 dark:text-white mb-8 text-center">Core Competencies</h3>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="minimal-card text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
-                <Target size={32} className="text-blue-600 dark:text-blue-400" />
+              <div className="icon-container mx-auto mb-4">
+                <Target size={32} className="text-gray-900 dark:text-white" />
               </div>
               <h4 className="heading-3 text-gray-900 dark:text-white mb-3">Data Analysis & ML</h4>
               <p className="body-regular">Python, SQL, Scikit-Learn, Statistical Analysis, Predictive Modeling</p>
             </div>
             
             <div className="minimal-card text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-green-50 dark:bg-green-900/20 flex items-center justify-center">
-                <Target size={32} className="text-green-600 dark:text-green-400" />
+              <div className="icon-container mx-auto mb-4">
+                <Target size={32} className="text-gray-900 dark:text-white" />
               </div>
               <h4 className="heading-3 text-gray-900 dark:text-white mb-3">Data Engineering</h4>
               <p className="body-regular">ETL Pipelines, Database Optimization, Data Quality, HIPAA Compliance</p>
             </div>
             
             <div className="minimal-card text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center">
-                <Target size={32} className="text-purple-600 dark:text-purple-400" />
+              <div className="icon-container mx-auto mb-4">
+                <Target size={32} className="text-gray-900 dark:text-white" />
               </div>
               <h4 className="heading-3 text-gray-900 dark:text-white mb-3">Business Intelligence</h4>
               <p className="body-regular">Tableau, Looker, Dashboard Development, Data Storytelling</p>
@@ -68,21 +68,21 @@ const About: React.FC = () => {
           {/* Education */}
           <div className="minimal-card">
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 mr-4 bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
-                <GraduationCap size={24} className="text-blue-600 dark:text-blue-400" />
+              <div className="icon-container mr-4">
+                <GraduationCap size={24} className="text-gray-900 dark:text-white" />
               </div>
               <h3 className="heading-2 text-gray-900 dark:text-white">Education</h3>
             </div>
             
             <div className="space-y-6">
-              <div className="border-l-4 border-blue-500 pl-6">
+              <div className="border-l-4 border-gray-900 dark:border-white pl-6">
                 <h4 className="heading-3 text-gray-900 dark:text-white mb-2">Master of Science</h4>
                 <p className="body-regular font-medium mb-1">Information Science</p>
                 <p className="body-small text-gray-600 dark:text-gray-400 mb-2">University of Wisconsin-Madison</p>
                 <p className="caption">Focus: Data Analytics, Machine Learning, Information Systems</p>
               </div>
               
-              <div className="border-l-4 border-gray-300 dark:border-gray-600 pl-6">
+              <div className="border-l-4 border-gray-400 dark:border-gray-600 pl-6">
                 <h4 className="heading-3 text-gray-900 dark:text-white mb-2">Bachelor of Arts</h4>
                 <p className="body-regular font-medium mb-1">International Studies</p>
                 <p className="body-small text-gray-600 dark:text-gray-400 mb-2">University of Wisconsin-Madison</p>
@@ -94,8 +94,8 @@ const About: React.FC = () => {
           {/* Certifications */}
           <div className="minimal-card">
             <div className="flex items-center mb-6">
-              <div className="w-12 h-12 mr-4 bg-green-50 dark:bg-green-900/20 flex items-center justify-center">
-                <Award size={24} className="text-green-600 dark:text-green-400" />
+              <div className="icon-container mr-4">
+                <Award size={24} className="text-gray-900 dark:text-white" />
               </div>
               <h3 className="heading-2 text-gray-900 dark:text-white">Certifications</h3>
             </div>
@@ -207,8 +207,8 @@ const About: React.FC = () => {
             aria-expanded={expandedSection === 'philosophy'}
           >
             <div className="flex items-center">
-              <div className="w-12 h-12 mr-4 bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center">
-                <Lightbulb size={24} className="text-purple-600 dark:text-purple-400" />
+              <div className="icon-container mr-4">
+                <Lightbulb size={24} className="text-gray-900 dark:text-white" />
               </div>
               <h3 className="heading-2 text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
                 Professional Philosophy & Approach
@@ -224,7 +224,7 @@ const About: React.FC = () => {
           
           {expandedSection === 'philosophy' && (
             <div className="mt-8 pl-16 space-y-6 animate-slideUp">
-              <div className="p-6 bg-blue-50 dark:bg-blue-900/10 border-l-4 border-blue-500">
+              <div className="p-6 bg-secondary border-l-4 border-primary">
                 <p className="body-large italic mb-4">
                   "I believe in continuous learning and practical application. Each project represents both 
                   a learning opportunity and a chance to solve real-world problems with data."
@@ -250,7 +250,7 @@ const About: React.FC = () => {
                 </div>
               </div>
               
-              <div className="p-6 bg-gray-50 dark:bg-gray-800/50">
+              <div className="p-6 bg-secondary">
                 <h4 className="heading-3 text-gray-900 dark:text-white mb-4">Current Learning Focus</h4>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>

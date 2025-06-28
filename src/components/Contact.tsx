@@ -201,15 +201,15 @@ const Contact: React.FC = () => {
               {formStatus.submitted ? (
                 <div className={`p-6 border-2 ${
                   formStatus.error 
-                    ? 'bg-red-900/20 border-red-500' 
-                    : 'bg-green-900/20 border-green-500'
+                    ? 'form-error' 
+                    : 'form-success'
                 } flex items-start`}>
                   {formStatus.error ? 
-                    <AlertCircle size={24} className="text-red-400 mr-4 flex-shrink-0 mt-1" /> : 
-                    <Check size={24} className="text-green-400 mr-4 flex-shrink-0 mt-1" />
+                    <AlertCircle size={24} className="text-gray-900 dark:text-white mr-4 flex-shrink-0 mt-1" /> : 
+                    <Check size={24} className="text-gray-900 dark:text-white mr-4 flex-shrink-0 mt-1" />
                   }
                   <div className="flex-1">
-                    <p className={`body-large mb-4 ${formStatus.error ? 'text-red-200' : 'text-green-200'}`}>
+                    <p className="body-large mb-4">
                       {formStatus.message}
                     </p>
                     <button 
@@ -234,7 +234,7 @@ const Contact: React.FC = () => {
                         className={`form-input-large ${errors.name ? 'error' : ''}`}
                         placeholder="Your name"
                       />
-                      {errors.name && <p className="body-small text-red-400 mt-2">{errors.name}</p>}
+                      {errors.name && <p className="body-small text-gray-900 dark:text-white mt-2">{errors.name}</p>}
                     </div>
                     <div>
                       <label htmlFor="email" className="form-label-large">Email</label>
@@ -247,7 +247,7 @@ const Contact: React.FC = () => {
                         className={`form-input-large ${errors.email ? 'error' : ''}`}
                         placeholder="your@email.com"
                       />
-                      {errors.email && <p className="body-small text-red-400 mt-2">{errors.email}</p>}
+                      {errors.email && <p className="body-small text-gray-900 dark:text-white mt-2">{errors.email}</p>}
                     </div>
                   </div>
                   
@@ -262,7 +262,7 @@ const Contact: React.FC = () => {
                       className={`form-input-large ${errors.subject ? 'error' : ''}`}
                       placeholder="Project inquiry"
                     />
-                    {errors.subject && <p className="body-small text-red-400 mt-2">{errors.subject}</p>}
+                    {errors.subject && <p className="body-small text-gray-900 dark:text-white mt-2">{errors.subject}</p>}
                   </div>
                   
                   <div>
@@ -276,7 +276,7 @@ const Contact: React.FC = () => {
                       className={`form-input-large ${errors.message ? 'error' : ''}`}
                       placeholder="Tell me about your project..."
                     ></textarea>
-                    {errors.message && <p className="body-small text-red-400 mt-2">{errors.message}</p>}
+                    {errors.message && <p className="body-small text-gray-900 dark:text-white mt-2">{errors.message}</p>}
                   </div>
                   
                   <button

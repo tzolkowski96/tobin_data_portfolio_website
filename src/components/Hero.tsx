@@ -51,8 +51,8 @@ const Hero: React.FC = () => {
 
   return (
     <section className="section-light section-padding min-h-screen flex items-center relative overflow-hidden">
-      {/* Background Data Visualization */}
-      <div className="absolute inset-0 opacity-5 dark:opacity-10 pointer-events-none">
+      {/* Background Data Visualization - Black and White */}
+      <div className="absolute inset-0 opacity-3 pointer-events-none">
         <div className="absolute top-10 left-10 w-32 h-32">
           <BarChart3 size={128} className="text-gray-900 dark:text-white" />
         </div>
@@ -73,10 +73,10 @@ const Hero: React.FC = () => {
           {/* Main Content - Left Side */}
           <div className="lg:col-span-8">
             
-            {/* Availability Badge */}
+            {/* Availability Badge - Black and White */}
             <div className="animate-fadeIn mb-8">
-              <div className="inline-flex items-center bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 px-6 py-3 border-2 border-green-200 dark:border-green-800">
-                <div className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
+              <div className="inline-flex items-center status-available px-6 py-3">
+                <div className="status-dot mr-3"></div>
                 <span className="caption font-medium">Available for new opportunities</span>
               </div>
             </div>
@@ -167,21 +167,21 @@ const Hero: React.FC = () => {
               </div>
             </div>
 
-            {/* Key Achievements */}
+            {/* Key Achievements - Black and White */}
             <div className="mt-8 animate-fadeIn" style={{animationDelay: '0.7s'}}>
               <div className="minimal-card">
                 <h3 className="heading-3 text-gray-900 dark:text-white mb-4">Recent Achievements</h3>
                 <ul className="space-y-2 body-small">
                   <li className="flex items-center">
-                    <TrendingUp size={16} className="mr-3 text-green-500" />
+                    <div className="w-4 h-4 mr-3 bg-gray-900 dark:bg-white"></div>
                     <span>98% accuracy in employee churn prediction</span>
                   </li>
                   <li className="flex items-center">
-                    <Database size={16} className="mr-3 text-blue-500" />
+                    <div className="w-4 h-4 mr-3 bg-gray-900 dark:bg-white"></div>
                     <span>Analyzed 7.7M traffic accident records</span>
                   </li>
                   <li className="flex items-center">
-                    <BarChart3 size={16} className="mr-3 text-purple-500" />
+                    <div className="w-4 h-4 mr-3 bg-gray-900 dark:bg-white"></div>
                     <span>35% improvement in data quality</span>
                   </li>
                 </ul>
