@@ -6,46 +6,42 @@ const Footer: React.FC = () => {
   
   return (
     <footer className="bg-gray-900 dark:bg-black text-white py-12 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          <div className="md:col-span-2">
-            <h3 className="text-xl font-semibold mb-4">Tobin Zolkowski</h3>
-            <p className="text-gray-400 mb-4 max-w-md">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div>
+            <h3 className="text-lg font-normal mb-3">Tobin Zolkowski</h3>
+            <p className="text-gray-400 text-sm mb-4 max-w-xs">
               Data professional focused on transforming complex data into actionable insights.
-              Continuously learning and developing new skills in data science and analytics.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-3">
               <a 
                 href="https://github.com/tzolkowski96" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors"
-                aria-label="GitHub profile"
               >
-                <Github size={20} aria-hidden="true" />
+                <Github size={16} />
               </a>
               <a 
                 href="https://www.linkedin.com/in/tobin-zolkowski-844873200/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors"
-                aria-label="LinkedIn profile"
               >
-                <Linkedin size={20} aria-hidden="true" />
+                <Linkedin size={16} />
               </a>
               <a 
                 href="#contact" 
                 className="text-gray-400 hover:text-white transition-colors"
-                aria-label="Contact"
               >
-                <Mail size={20} aria-hidden="true" />
+                <Mail size={16} />
               </a>
             </div>
           </div>
           
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="font-normal mb-3 text-sm">Navigation</h4>
+            <ul className="space-y-1 text-sm">
               <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">About</a></li>
               <li><a href="#experience" className="text-gray-400 hover:text-white transition-colors">Experience</a></li>
               <li><a href="#projects" className="text-gray-400 hover:text-white transition-colors">Projects</a></li>
@@ -55,8 +51,8 @@ const Footer: React.FC = () => {
           </div>
           
           <div>
-            <h4 className="font-semibold mb-4">External Links</h4>
-            <ul className="space-y-2">
+            <h4 className="font-normal mb-3 text-sm">External</h4>
+            <ul className="space-y-1 text-sm">
               <li>
                 <a 
                   href="https://medium.com/@grateful_aqua_goat_147" 
@@ -64,7 +60,7 @@ const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors flex items-center"
                 >
-                  Medium <ExternalLink size={12} className="ml-1" aria-hidden="true" />
+                  Medium <ExternalLink size={10} className="ml-1" />
                 </a>
               </li>
               <li>
@@ -74,30 +70,20 @@ const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors flex items-center"
                 >
-                  Substack <ExternalLink size={12} className="ml-1" aria-hidden="true" />
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://tzolkowski96.github.io/portfolio/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors flex items-center"
-                >
-                  Portfolio <ExternalLink size={12} className="ml-1" aria-hidden="true" />
+                  Substack <ExternalLink size={10} className="ml-1" />
                 </a>
               </li>
             </ul>
           </div>
         </div>
         
-        <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {currentYear} Tobin Zolkowski. All rights reserved.
+        <div className="pt-6 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-400 text-xs mb-2 md:mb-0">
+            © {currentYear} Tobin Zolkowski
           </p>
-          <div className="flex items-center space-x-4 text-sm text-gray-400">
-            <span>Built with React, TypeScript, Tailwind CSS</span>
-          </div>
+          <p className="text-gray-500 text-xs">
+            Built with React, TypeScript, Tailwind CSS
+          </p>
         </div>
       </div>
     </footer>
