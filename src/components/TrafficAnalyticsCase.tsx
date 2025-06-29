@@ -15,10 +15,10 @@ const TrafficAnalyticsCase: React.FC<TrafficAnalyticsCaseProps> = ({ isExpanded,
             <MapPin size={16} className="text-gray-600 dark:text-gray-400" />
           </div>
           <div className="flex-1">
-            <h3 className="font-semibold text-lg mb-2">Case Study: Traffic Accident Analytics Engine</h3>
+            <h3 className="font-semibold text-lg mb-2">Case Study: US Traffic Safety Analysis Engine</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-3">
-              Comprehensive analysis of <strong>7.7M US traffic records</strong> using advanced statistical methods, 
-              achieving 78% prediction accuracy with significant memory optimization.
+              Comprehensive analysis of <strong>7.7M US traffic accident records (2016-2023)</strong> using advanced statistical methods and geospatial visualization, 
+              achieving 78% severity prediction accuracy with 3.25% memory optimization across <strong>49 US states</strong>.
             </p>
           </div>
         </div>
@@ -38,11 +38,12 @@ const TrafficAnalyticsCase: React.FC<TrafficAnalyticsCaseProps> = ({ isExpanded,
           <div className="minimal-card p-4 border-l-4 border-red-400">
             <h4 className="font-medium mb-2 flex items-center">
               <AlertTriangle size={14} className="mr-2" />
-              Challenge
+              Research Objectives
             </h4>
             <p className="text-gray-600 dark:text-gray-400 text-small">
-              With millions of traffic accidents occurring annually in the US, there was a need to identify 
-              patterns and risk factors that could inform public safety initiatives and policy decisions.
+              Analyze the US Accidents dataset (2016-2023) to identify accident hotspots and temporal patterns, 
+              analyze environmental factors contributing to accidents, study COVID-19 impact on traffic patterns, 
+              and develop predictive insights for accident prevention across multiple data sources.
             </p>
           </div>
 
@@ -50,20 +51,20 @@ const TrafficAnalyticsCase: React.FC<TrafficAnalyticsCaseProps> = ({ isExpanded,
           <div>
             <h4 className="font-medium mb-3 flex items-center">
               <Database size={14} className="mr-2" />
-              Dataset Characteristics
+              Data Processing & Quality
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="minimal-card p-4">
-                <div className="text-xl font-semibold mb-1">7.7M</div>
-                <p className="text-small text-gray-600 dark:text-gray-400">Total accident records</p>
+                <div className="text-xl font-semibold mb-1">7,728,394</div>
+                <p className="text-small text-gray-600 dark:text-gray-400">Initial records processed</p>
               </div>
               <div className="minimal-card p-4">
-                <div className="text-xl font-semibold mb-1">49</div>
-                <p className="text-small text-gray-600 dark:text-gray-400">US states covered</p>
+                <div className="text-xl font-semibold mb-1">46→51</div>
+                <p className="text-small text-gray-600 dark:text-gray-400">Features (5 new derived)</p>
               </div>
               <div className="minimal-card p-4">
-                <div className="text-xl font-semibold mb-1">47</div>
-                <p className="text-small text-gray-600 dark:text-gray-400">Feature variables</p>
+                <div className="text-xl font-semibold mb-1">3.25%</div>
+                <p className="text-small text-gray-600 dark:text-gray-400">Memory optimization</p>
               </div>
             </div>
           </div>
@@ -72,25 +73,25 @@ const TrafficAnalyticsCase: React.FC<TrafficAnalyticsCaseProps> = ({ isExpanded,
           <div>
             <h4 className="font-medium mb-3 flex items-center">
               <BarChart3 size={14} className="mr-2" />
-              Methodology & Analysis
+              Statistical Analysis & Machine Learning
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-small">
               <div className="space-y-2">
                 <p><strong>Statistical Validation:</strong></p>
                 <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
-                  <li>Chi-square tests for categorical relationships</li>
-                  <li>ANOVA for continuous variable analysis</li>
-                  <li>Correlation matrix for feature selection</li>
-                  <li>P-value significance testing</li>
+                  <li>Chi-square test: χ² = 96,229.39, p < 0.001</li>
+                  <li>ANOVA for weather-duration analysis</li>
+                  <li>Cross-validation and performance metrics</li>
+                  <li>Feature importance ranking</li>
                 </ul>
               </div>
               <div className="space-y-2">
-                <p><strong>Machine Learning:</strong></p>
+                <p><strong>Geospatial & Temporal:</strong></p>
                 <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
-                  <li>Random Forest classification</li>
-                  <li>Feature importance ranking</li>
-                  <li>Cross-validation techniques</li>
-                  <li>Performance optimization</li>
+                  <li>Interactive Folium heatmaps</li>
+                  <li>Temporal pattern analysis (hourly/daily)</li>
+                  <li>Urban hotspot identification</li>
+                  <li>Weather condition clustering</li>
                 </ul>
               </div>
             </div>
@@ -98,47 +99,47 @@ const TrafficAnalyticsCase: React.FC<TrafficAnalyticsCaseProps> = ({ isExpanded,
 
           {/* Key Findings */}
           <div>
-            <h4 className="font-medium mb-3">Critical Insights Discovered</h4>
+            <h4 className="font-medium mb-3">Key Research Findings</h4>
             <div className="space-y-3">
               <div className="minimal-card p-3 border-l-4 border-blue-400">
                 <p className="text-gray-600 dark:text-gray-400 text-small">
-                  <strong>Weather Impact:</strong> Fog and heavy rain increase severe accident probability by 35%
+                  <strong>Weather Dominance:</strong> Fair weather accounts for 44.1% of accidents, followed by cloudy conditions (33.3%)
                 </p>
               </div>
               <div className="minimal-card p-3 border-l-4 border-green-400">
                 <p className="text-gray-600 dark:text-gray-400 text-small">
-                  <strong>Time Patterns:</strong> Rush hours (7-9 AM, 4-6 PM) show 2.3x higher accident density
+                  <strong>Temporal Patterns:</strong> Peak hours 7-9 AM and 3-7 PM, 50% reduction on weekends, December shows highest frequency
                 </p>
               </div>
               <div className="minimal-card p-3 border-l-4 border-yellow-400">
                 <p className="text-gray-600 dark:text-gray-400 text-small">
-                  <strong>Geographic Hotspots:</strong> Urban intersections account for 65% of severe accidents
+                  <strong>Geographic Distribution:</strong> California leads (1.7M), Florida second (0.9M), major urban corridor clustering
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Technical Innovation */}
+          {/* Feature Analysis */}
           <div>
-            <h4 className="font-medium mb-3">Technical Optimization</h4>
+            <h4 className="font-medium mb-3">Feature Importance & Weather Analysis</h4>
             <div className="minimal-card p-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-small">
                 <div>
-                  <p className="font-medium mb-2">Memory Optimization:</p>
+                  <p className="font-medium mb-2">Weather Feature Importance:</p>
                   <ul className="text-gray-600 dark:text-gray-400 space-y-1">
-                    <li>Reduced memory usage by 3.25%</li>
-                    <li>Chunked data processing for large datasets</li>
-                    <li>Efficient data type conversions</li>
-                    <li>Garbage collection optimization</li>
+                    <li>Pressure: 35% importance</li>
+                    <li>Temperature: 33% importance</li>
+                    <li>Wind Speed: 22% importance</li>
+                    <li>Visibility: 10% importance</li>
                   </ul>
                 </div>
                 <div>
-                  <p className="font-medium mb-2">Geospatial Analysis:</p>
+                  <p className="font-medium mb-2">Severity Distribution:</p>
                   <ul className="text-gray-600 dark:text-gray-400 space-y-1">
-                    <li>Interactive Folium visualizations</li>
-                    <li>Heatmap density analysis</li>
-                    <li>State-level aggregations</li>
-                    <li>Clustering algorithms for hotspots</li>
+                    <li>Level 2: ~6M accidents (dominant)</li>
+                    <li>Level 3: ~1.3M accidents</li>
+                    <li>Level 4: ~0.2M accidents</li>
+                    <li>Level 1: <0.1M accidents</li>
                   </ul>
                 </div>
               </div>
@@ -149,23 +150,23 @@ const TrafficAnalyticsCase: React.FC<TrafficAnalyticsCaseProps> = ({ isExpanded,
           <div className="minimal-card p-4 border-l-4 border-green-400">
             <h4 className="font-medium mb-3 flex items-center">
               <CheckCircle size={14} className="mr-2" />
-              Results & Applications
+              Model Performance & Data Insights
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-small">
               <div>
-                <p className="text-gray-600 dark:text-gray-400 mb-2"><strong>Model Performance:</strong></p>
+                <p className="text-gray-600 dark:text-gray-400 mb-2"><strong>Machine Learning Results:</strong></p>
                 <ul className="text-gray-600 dark:text-gray-400 space-y-1">
                   <li>78% accuracy in severity prediction</li>
-                  <li>Statistical significance confirmed (p &lt; 0.001)</li>
-                  <li>Robust cross-validation scores</li>
+                  <li>Random Forest classifier implementation</li>
+                  <li>Strong statistical significance (p < 0.001)</li>
                 </ul>
               </div>
               <div>
-                <p className="text-gray-600 dark:text-gray-400 mb-2"><strong>Practical Applications:</strong></p>
+                <p className="text-gray-600 dark:text-gray-400 mb-2"><strong>Data Quality Achievements:</strong></p>
                 <ul className="text-gray-600 dark:text-gray-400 space-y-1">
-                  <li>Public safety resource allocation</li>
-                  <li>Infrastructure improvement targeting</li>
-                  <li>Real-time risk assessment framework</li>
+                  <li>2,041.59 MB → 1,975.20 MB optimization</li>
+                  <li>7,728,394 → 7,728,141 cleaned records</li>
+                  <li>Comprehensive 7-year temporal analysis</li>
                 </ul>
               </div>
             </div>
@@ -177,16 +178,15 @@ const TrafficAnalyticsCase: React.FC<TrafficAnalyticsCaseProps> = ({ isExpanded,
             <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded overflow-x-auto">
               <pre className="text-gray-700 dark:text-gray-300 text-small">
 {`# Statistical significance testing
-from scipy.stats import chi2_contingency
+import scipy.stats as stats
 
-# Chi-square test for weather vs severity
-contingency_table = pd.crosstab(df['Weather_Condition'], 
-                               df['Severity'])
-chi2, p_value, dof, expected = chi2_contingency(contingency_table)
+# Weather-severity relationship analysis
+contingency = pd.crosstab(df_clean['Weather_Simple'], 
+                         df_clean['Severity'])
+chi2, p_value, dof, expected = stats.chi2_contingency(contingency)
 
 print(f"Chi-square statistic: {chi2:.4f}")
-print(f"P-value: {p_value:.2e}")
-print(f"Statistical significance: {'Yes' if p_value < 0.05 else 'No'}")`}
+print(f"P-value: {p_value:.2e}")  # Result: 96229.39, p=0.00e+00`}
               </pre>
             </div>
           </div>
@@ -195,7 +195,7 @@ print(f"Statistical significance: {'Yes' if p_value < 0.05 else 'No'}")`}
           <div>
             <h4 className="font-medium mb-3">Technical Stack</h4>
             <div className="flex flex-wrap gap-2">
-              {['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Scipy', 'Folium', 'Matplotlib', 'Seaborn'].map((tech) => (
+              {['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Scipy', 'Folium', 'Matplotlib', 'Seaborn', 'Kagglehub'].map((tech) => (
                 <span key={tech} className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-small">
                   {tech}
                 </span>
