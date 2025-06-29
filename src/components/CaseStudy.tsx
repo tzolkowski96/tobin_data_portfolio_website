@@ -17,8 +17,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({ isExpanded, onToggle }) => {
           <div className="flex-1">
             <h3 className="font-semibold text-lg mb-2">Case Study: Employee Churn Prediction</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-3">
-              A machine learning project achieving <strong>98% accuracy</strong> in predicting employee turnover for Salifort Motors. 
-              Identified key churn drivers and provided actionable HR recommendations.
+              A comprehensive machine learning capstone project for Salifort Motors HR department achieving <strong>98% accuracy</strong> in predicting employee turnover using Random Forest and XGBoost models on <strong>15,000 employee records</strong>.
             </p>
           </div>
         </div>
@@ -41,8 +40,9 @@ const CaseStudy: React.FC<CaseStudyProps> = ({ isExpanded, onToggle }) => {
               Problem Statement
             </h4>
             <p className="text-gray-600 dark:text-gray-400 text-small">
-              Salifort Motors was experiencing high employee turnover rates, leading to increased recruitment costs, 
-              knowledge loss, and reduced productivity. The company needed to identify at-risk employees before they left.
+              The HR department at Salifort Motors collected employee data but didn't know how to use it effectively. 
+              They needed data-driven insights to improve employee satisfaction and predict which employees are likely to leave, 
+              as finding and training new employees is time-consuming and expensive.
             </p>
           </div>
 
@@ -56,19 +56,19 @@ const CaseStudy: React.FC<CaseStudyProps> = ({ isExpanded, onToggle }) => {
               <div className="space-y-2">
                 <p><strong>Data Exploration:</strong></p>
                 <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
-                  <li>Analyzed 15,000 employee records</li>
+                  <li>Analyzed 14,999 employee records (11,991 after cleaning)</li>
                   <li>Identified 10 key features</li>
-                  <li>Discovered data quality issues</li>
-                  <li>Performed correlation analysis</li>
+                  <li>Removed 3,008 duplicate entries</li>
+                  <li>Comprehensive EDA and correlation analysis</li>
                 </ul>
               </div>
               <div className="space-y-2">
                 <p><strong>Model Development:</strong></p>
                 <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
-                  <li>Tested 3 algorithms comparatively</li>
-                  <li>Used cross-validation techniques</li>
-                  <li>Optimized hyperparameters</li>
-                  <li>Applied feature engineering</li>
+                  <li>Logistic Regression (83% accuracy)</li>
+                  <li>Random Forest (98% accuracy)</li>
+                  <li>XGBoost (98% accuracy)</li>
+                  <li>Cross-validation and hyperparameter tuning</li>
                 </ul>
               </div>
             </div>
@@ -79,16 +79,16 @@ const CaseStudy: React.FC<CaseStudyProps> = ({ isExpanded, onToggle }) => {
             <h4 className="font-medium mb-3">Key Findings</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="minimal-card p-4">
-                <div className="text-xl font-semibold mb-1">7+ projects</div>
-                <p className="text-small text-gray-600 dark:text-gray-400">Strong predictor of turnover</p>
+                <div className="text-xl font-semibold mb-1">16.6%</div>
+                <p className="text-small text-gray-600 dark:text-gray-400">Employee turnover rate</p>
               </div>
               <div className="minimal-card p-4">
-                <div className="text-xl font-semibold mb-1">242+ hours</div>
-                <p className="text-small text-gray-600 dark:text-gray-400">Monthly work threshold</p>
+                <div className="text-xl font-semibold mb-1">34.4%</div>
+                <p className="text-small text-gray-600 dark:text-gray-400">Satisfaction importance in model</p>
               </div>
               <div className="minimal-card p-4">
-                <div className="text-xl font-semibold mb-1">3.9/5</div>
-                <p className="text-small text-gray-600 dark:text-gray-400">Satisfaction score cutoff</p>
+                <div className="text-xl font-semibold mb-1">2.1%</div>
+                <p className="text-small text-gray-600 dark:text-gray-400">Employees promoted in 5 years</p>
               </div>
             </div>
           </div>
@@ -103,17 +103,17 @@ const CaseStudy: React.FC<CaseStudyProps> = ({ isExpanded, onToggle }) => {
               <div>
                 <p className="text-gray-600 dark:text-gray-400 mb-2"><strong>Model Performance:</strong></p>
                 <ul className="text-gray-600 dark:text-gray-400 space-y-1">
-                  <li>98% accuracy on test set</li>
-                  <li>97% precision for churn prediction</li>
-                  <li>Random Forest outperformed other models</li>
+                  <li>Random Forest: 98% accuracy, 97% precision</li>
+                  <li>XGBoost: 98% accuracy, 98% precision</li>
+                  <li>Cross-validation confirmed robustness</li>
                 </ul>
               </div>
               <div>
                 <p className="text-gray-600 dark:text-gray-400 mb-2"><strong>Business Impact:</strong></p>
                 <ul className="text-gray-600 dark:text-gray-400 space-y-1">
-                  <li>Identified key churn drivers</li>
-                  <li>Early intervention capabilities</li>
-                  <li>Data-driven HR decisions</li>
+                  <li>Identified satisfaction as top churn predictor</li>
+                  <li>Enabled proactive employee retention strategies</li>
+                  <li>Provided actionable insights for HR policies</li>
                 </ul>
               </div>
             </div>
@@ -130,16 +130,18 @@ const CaseStudy: React.FC<CaseStudyProps> = ({ isExpanded, onToggle }) => {
                     <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-small">Python</span>
                     <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-small">Pandas</span>
                     <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-small">Scikit-learn</span>
+                    <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-small">XGBoost</span>
                     <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-small">Matplotlib</span>
                     <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded text-small">Seaborn</span>
                   </div>
                 </div>
                 <div>
-                  <p className="font-medium mb-2">Algorithms Tested:</p>
+                  <p className="font-medium mb-2">Feature Importance (Random Forest):</p>
                   <ul className="text-gray-600 dark:text-gray-400 space-y-1">
-                    <li>Random Forest (98% accuracy)</li>
-                    <li>Logistic Regression (82% accuracy)</li>
-                    <li>Decision Tree (97% accuracy)</li>
+                    <li>1. Satisfaction Level (34.4%)</li>
+                    <li>2. Tenure (17.0%)</li>
+                    <li>3. Number of Projects (16.7%)</li>
+                    <li>4. Average Monthly Hours (16.0%)</li>
                   </ul>
                 </div>
               </div>
@@ -152,14 +154,16 @@ const CaseStudy: React.FC<CaseStudyProps> = ({ isExpanded, onToggle }) => {
             <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded overflow-x-auto">
               <pre className="text-gray-700 dark:text-gray-300 text-small">
 {`# Feature importance analysis
-feature_importance = pd.DataFrame({
-    'feature': X_train.columns,
-    'importance': rf_model.feature_importances_
+importances = rf_model.feature_importances_
+features = X_train.columns
+
+feature_importance_df = pd.DataFrame({
+    'Feature': features, 
+    'Importance': importances
 }).sort_values('importance', ascending=False)
 
-# Top predictors of churn
-print("Top 5 Churn Predictors:")
-print(feature_importance.head())`}
+# Results show satisfaction as top predictor (34.4%)
+print(feature_importance_df.head())`}
               </pre>
             </div>
           </div>
