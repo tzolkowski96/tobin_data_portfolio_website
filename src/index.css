@@ -279,18 +279,44 @@ img:hover {
 
 /* Enhanced mobile experience */
 @media (max-width: 640px) {
-  .max-w-2xl {
+  .max-w-4xl {
     padding-left: 1rem;
     padding-right: 1rem;
   }
   
-  .text-2xl {
-    font-size: 1.5rem;
+  .text-xl {
+    font-size: 1.25rem;
   }
   
-  .grid-cols-4 {
+  .grid-cols-2 {
     grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
+  }
+  
+  .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+    margin-left: 0.75rem;
+  }
+  
+  .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 1rem;
+  }
+}
+
+/* Enhanced medium screen experience */
+@media (max-width: 1024px) {
+  .max-w-4xl {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Enhanced responsive container */
+.max-w-4xl {
+  max-width: 56rem;
+}
+
+@media (min-width: 1280px) {
+  .max-w-4xl {
+    max-width: 64rem;
   }
 }
 
@@ -463,4 +489,35 @@ html.dark ::selection {
 
 html.dark .shadow-lg {
   box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -2px rgba(255, 255, 255, 0.05);
+}
+
+/* Enhanced responsive text handling */
+@media (max-width: 480px) {
+  .text-lg {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  .text-base {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+  
+  .leading-relaxed {
+    line-height: 1.5;
+  }
+}
+
+/* Enhanced mobile touch targets */
+@media (max-width: 640px) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
 }
