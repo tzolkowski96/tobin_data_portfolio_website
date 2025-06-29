@@ -34,9 +34,8 @@ const Hero: React.FC = () => {
           </div>
           
           <p className="text-lg leading-relaxed mb-4">
-            Data Professional with 4+ years of experience transforming complex datasets 
-            into actionable business insights. I enjoy working with Python, SQL, and machine learning 
-            to solve real-world problems.
+            Data professional focused on <strong>data analysis</strong>, <strong>SQL</strong>, and <strong>machine learning</strong>. 
+            With a growth mindset and commitment to continuous learning, I leverage data to drive insights and solve problems.
           </p>
           
           <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 space-x-4">
@@ -50,6 +49,13 @@ const Hero: React.FC = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Professional Quote */}
+      <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6 mb-12">
+        <blockquote className="text-center text-gray-600 dark:text-gray-400 italic">
+          "Continuously learning and growing as a data professional, turning data into actionable insights."
+        </blockquote>
       </div>
 
       {/* Key Metrics */}
@@ -74,69 +80,81 @@ const Hero: React.FC = () => {
 
       {/* Experience Timeline */}
       <div id="experience" className="mb-20">
-        <h2 className="text-xl font-semibold mb-8">Experience</h2>
+        <h2 className="text-xl font-semibold mb-8">Professional Journey</h2>
         
         <div className="space-y-6">
           <div className="border-l-2 border-gray-200 dark:border-gray-800 pl-6">
             <div className="flex items-center justify-between mb-2">
               <h3 className="font-medium">Data Analyst</h3>
-              <span className="text-sm text-gray-500">2023 - Present</span>
+              <span className="text-sm text-gray-500">July 2023 - Present</span>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 mb-2">Indiana University School of Medicine</p>
+            <p className="text-gray-600 dark:text-gray-400 mb-2">Indiana University School of Medicine Department of Medical and Molecular Genetics</p>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Transform biomedical datasets, develop ETL processes, ensure HIPAA compliance. 
-              Improved data quality by 35%.
+              Working with researchers to transform complex biomedical datasets into meaningful insights. 
+              Focused on ETL processes, bridging technical/clinical gaps, handling sensitive data, and collaboration.
             </p>
           </div>
 
           <div className="border-l-2 border-gray-200 dark:border-gray-800 pl-6">
             <div className="flex items-center justify-between mb-2">
               <h3 className="font-medium">Business Data Analyst Intern</h3>
-              <span className="text-sm text-gray-500">2022</span>
+              <span className="text-sm text-gray-500">July - Sept 2022</span>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 mb-2">Telkomsel</p>
+            <p className="text-gray-600 dark:text-gray-400 mb-2">Telkomsel, Jakarta, Indonesia</p>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Analyzed market data, built executive dashboards using Tableau, 
-              collaborated with marketing teams for campaign optimization.
+              Applied data analysis in a large-scale business environment. Gained experience with big data, 
+              marketing analytics, cross-functional teams, and presenting technical findings.
             </p>
           </div>
 
           <div className="border-l-2 border-gray-200 dark:border-gray-800 pl-6">
             <div className="flex items-center justify-between mb-2">
               <h3 className="font-medium">Data Manager Intern</h3>
-              <span className="text-sm text-gray-500">2021</span>
+              <span className="text-sm text-gray-500">June - Aug 2021</span>
             </div>
             <p className="text-gray-600 dark:text-gray-400 mb-2">University of Wisconsin-Madison</p>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Implemented data quality control measures, developed documentation, 
-              standardized data entry procedures.
+              Focused on structured data governance in an academic setting. Developed skills in data quality, 
+              documentation, standardization, and understanding user needs.
+            </p>
+          </div>
+
+          <div className="border-l-2 border-gray-200 dark:border-gray-800 pl-6">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-medium">IT Support Assistant</h3>
+              <span className="text-sm text-gray-500">Sept 2019 - April 2021</span>
+            </div>
+            <p className="text-gray-600 dark:text-gray-400 mb-2">University of Wisconsin-Madison</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              Gateway into the technical world, focusing on user support and assistive technologies. 
+              Developed troubleshooting skills and foundational database/automation concepts.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Skills Visualization */}
+      {/* Skills Visualization - Updated with realistic assessments */}
       <div id="skills" className="mb-20">
-        <h2 className="text-xl font-semibold mb-8">Core Skills</h2>
+        <h2 className="text-xl font-semibold mb-8">Core Technical Skills</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <h3 className="font-medium mb-4">Technical</h3>
+            <h3 className="font-medium mb-4">Programming & Data Analysis</h3>
             <div className="space-y-3">
               <div>
                 <div className="flex justify-between text-sm mb-1">
-                  <span>Python</span>
-                  <span className="text-gray-500">Advanced</span>
+                  <span>Python (Pandas, NumPy, Scikit-Learn)</span>
+                  <span className="text-gray-500">Intermediate</span>
                 </div>
                 <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
-                  <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '85%'}}></div>
+                  <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '75%'}}></div>
                 </div>
               </div>
               
               <div>
                 <div className="flex justify-between text-sm mb-1">
-                  <span>SQL</span>
-                  <span className="text-gray-500">Advanced</span>
+                  <span>SQL (MySQL, PostgreSQL)</span>
+                  <span className="text-gray-500">Intermediate</span>
                 </div>
                 <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
                   <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '80%'}}></div>
@@ -145,74 +163,80 @@ const Hero: React.FC = () => {
               
               <div>
                 <div className="flex justify-between text-sm mb-1">
-                  <span>Machine Learning</span>
-                  <span className="text-gray-500">Intermediate</span>
+                  <span>JavaScript, HTML, CSS</span>
+                  <span className="text-gray-500">Foundational</span>
                 </div>
                 <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
-                  <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '70%'}}></div>
+                  <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '50%'}}></div>
                 </div>
               </div>
               
               <div>
                 <div className="flex justify-between text-sm mb-1">
-                  <span>Tableau</span>
-                  <span className="text-gray-500">Advanced</span>
+                  <span>Machine Learning</span>
+                  <span className="text-gray-500">Foundational</span>
                 </div>
                 <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
-                  <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '85%'}}></div>
+                  <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '65%'}}></div>
                 </div>
               </div>
             </div>
           </div>
           
           <div>
-            <h3 className="font-medium mb-4">Soft Skills</h3>
+            <h3 className="font-medium mb-4">Visualization & Tools</h3>
             <div className="space-y-3">
               <div>
                 <div className="flex justify-between text-sm mb-1">
-                  <span>Data Storytelling</span>
-                  <span className="text-gray-500">Expert</span>
-                </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
-                  <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '90%'}}></div>
-                </div>
-              </div>
-              
-              <div>
-                <div className="flex justify-between text-sm mb-1">
-                  <span>Problem Solving</span>
-                  <span className="text-gray-500">Expert</span>
-                </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
-                  <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '88%'}}></div>
-                </div>
-              </div>
-              
-              <div>
-                <div className="flex justify-between text-sm mb-1">
-                  <span>Communication</span>
-                  <span className="text-gray-500">Advanced</span>
-                </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
-                  <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '82%'}}></div>
-                </div>
-              </div>
-              
-              <div>
-                <div className="flex justify-between text-sm mb-1">
-                  <span>Leadership</span>
+                  <span>Tableau</span>
                   <span className="text-gray-500">Intermediate</span>
                 </div>
                 <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
-                  <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '75%'}}></div>
+                  <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '80%'}}></div>
+                </div>
+              </div>
+              
+              <div>
+                <div className="flex justify-between text-sm mb-1">
+                  <span>Excel (Advanced)</span>
+                  <span className="text-gray-500">Proficient</span>
+                </div>
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+                  <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '85%'}}></div>
+                </div>
+              </div>
+              
+              <div>
+                <div className="flex justify-between text-sm mb-1">
+                  <span>Git/GitHub</span>
+                  <span className="text-gray-500">Intermediate</span>
+                </div>
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+                  <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '65%'}}></div>
+                </div>
+              </div>
+              
+              <div>
+                <div className="flex justify-between text-sm mb-1">
+                  <span>ETL/Data Pipelines</span>
+                  <span className="text-gray-500">Foundational</span>
+                </div>
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5">
+                  <div className="bg-black dark:bg-white h-1.5 rounded-full" style={{width: '60%'}}></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
+          <p className="text-sm text-gray-600 dark:text-gray-400 italic text-center">
+            Self-assessment based on project experience and continuous learning journey
+          </p>
+        </div>
       </div>
 
-      {/* Projects Section with Previews */}
+      {/* Featured Projects - Updated with accurate information */}
       <div id="projects" className="mb-20">
         <h2 className="text-xl font-semibold mb-8">Featured Projects</h2>
         
@@ -228,7 +252,8 @@ const Hero: React.FC = () => {
               <div className="flex-1">
                 <h3 className="font-medium mb-2">Employee Churn Prediction</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-3">
-                  Machine learning model achieving 98% accuracy in predicting employee turnover using Random Forest and feature engineering.
+                  Developed ML models with <strong>98% accuracy</strong> using Random Forest, Logistic Regression, 
+                  and Gradient Boosting. Identified key churn drivers and provided actionable HR recommendations.
                 </p>
                 <div className="flex items-center space-x-4 text-sm">
                   <a 
@@ -247,7 +272,7 @@ const Hero: React.FC = () => {
                   >
                     <ExternalLink size={14} className="mr-1" /> Demo
                   </a>
-                  <span className="text-gray-500">Python, Scikit-Learn</span>
+                  <span className="text-gray-500">Python • ML • Scikit-Learn</span>
                 </div>
               </div>
             </div>
@@ -262,9 +287,10 @@ const Hero: React.FC = () => {
                 </svg>
               </div>
               <div className="flex-1">
-                <h3 className="font-medium mb-2">Traffic Accident Analytics</h3>
+                <h3 className="font-medium mb-2">Traffic Accident Analytics Engine</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-3">
-                  Analysis of 7.7M US traffic records identifying patterns and risk factors using statistical validation and geospatial visualization.
+                  Analysis of <strong>7.7M US traffic records</strong> with statistical validation (chi-square, ANOVA). 
+                  Random Forest models achieving 78% accuracy with memory optimization.
                 </p>
                 <div className="flex items-center space-x-4 text-sm">
                   <a 
@@ -275,7 +301,38 @@ const Hero: React.FC = () => {
                   >
                     <Github size={14} className="mr-1" /> Code
                   </a>
-                  <span className="text-gray-500">Python, Big Data, Geospatial</span>
+                  <span className="text-gray-500">Python • Big Data • Geospatial</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:border-gray-300 dark:hover:border-gray-700 transition-colors">
+            <div className="flex items-start space-x-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+              </div>
+              <div className="flex-1">
+                <h3 className="font-medium mb-2">World Life Expectancy Analysis</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-3">
+                  Advanced SQL analysis achieving <strong>93.41% data quality</strong>. Identified 12.36 year development gap 
+                  and quantified COVID-19 impact across 183 countries.
+                </p>
+                <div className="flex items-center space-x-4 text-sm">
+                  <a 
+                    href="https://github.com/tzolkowski96/tzolkowski96/tree/main/world_life_expectancy"
+                    target="_blank"
+                    rel="noopener noreferrer" 
+                    className="text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+                  >
+                    <Github size={14} className="mr-1" /> Code
+                  </a>
+                  <span className="text-gray-500">SQL • Data Cleaning • Health Data</span>
                 </div>
               </div>
             </div>
@@ -291,9 +348,10 @@ const Hero: React.FC = () => {
                 </svg>
               </div>
               <div className="flex-1">
-                <h3 className="font-medium mb-2">Customer Segmentation Analysis</h3>
+                <h3 className="font-medium mb-2">UFood Customer Analysis</h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-3">
-                  Marketing analytics through K-means clustering and A/B testing for targeted customer engagement strategies.
+                  Marketing analytics using K-means clustering and A/B testing for customer segmentation. 
+                  Complete marketing strategy framework with CLV analysis.
                 </p>
                 <div className="flex items-center space-x-4 text-sm">
                   <a 
@@ -312,7 +370,35 @@ const Hero: React.FC = () => {
                   >
                     <ExternalLink size={14} className="mr-1" /> Demo
                   </a>
-                  <span className="text-gray-500">Python, Clustering, Marketing</span>
+                  <span className="text-gray-500">Python • Marketing • Clustering</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:border-gray-300 dark:hover:border-gray-700 transition-colors">
+            <div className="flex items-start space-x-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <div className="flex-1">
+                <h3 className="font-medium mb-2">Web Data Insights Explorer</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-3">
+                  Versatile Flask application for web scraping with pattern-based extraction, NLP sentiment analysis, 
+                  and multi-format visualizations. Ethical scraping with robots.txt compliance.
+                </p>
+                <div className="flex items-center space-x-4 text-sm">
+                  <a 
+                    href="https://github.com/tzolkowski96/tzolkowski96/tree/main/advanced_web_scraping_toolkit"
+                    target="_blank"
+                    rel="noopener noreferrer" 
+                    className="text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+                  >
+                    <Github size={14} className="mr-1" /> Code
+                  </a>
+                  <span className="text-gray-500">Python • Flask • Web Scraping • NLP</span>
                 </div>
               </div>
             </div>
@@ -326,59 +412,105 @@ const Hero: React.FC = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline"
           >
-            View all projects on GitHub <ExternalLink size={16} className="ml-1" />
+            View all 14+ projects on GitHub <ExternalLink size={16} className="ml-1" />
           </a>
         </div>
       </div>
 
-      {/* About Section */}
+      {/* About Section - Updated with accurate education and background */}
       <div id="about" className="mb-20">
         <h2 className="text-xl font-semibold mb-8">About</h2>
         
         <div className="space-y-6">
+          <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6">
+            <p className="text-gray-600 dark:text-gray-400 italic mb-4">
+              "I believe in continuous learning and practical application. Each project represents both 
+              a learning opportunity and a chance to solve real-world problems with data."
+            </p>
+          </div>
+          
           <p className="text-gray-600 dark:text-gray-400">
-            I hold a Master's in Information Science from UW-Madison with a focus on data analytics and machine learning. 
-            Currently working as a Data Analyst at Indiana University School of Medicine, where I develop ETL processes 
-            and ensure HIPAA compliance for biomedical research data.
+            My path into data science wasn't traditional. Starting with Communication Science at RIT, I later transferred to 
+            UW-Madison for International Studies. During my undergraduate years I discovered a passion for data analysis, 
+            initially through class projects and self-exploration with Excel.
+          </p>
+          
+          <p className="text-gray-600 dark:text-gray-400">
+            This interest grew, leading me to teach myself SQL and eventually pursue a Master's in Information Science at 
+            UW-Madison, which formalized my skills. Real growth came from hands-on projects: predicting employee churn, 
+            analyzing student performance data, and building complex data pipelines.
           </p>
           
           <div>
-            <h3 className="font-medium mb-3">Education</h3>
-            <div className="space-y-2">
-              <div>
+            <h3 className="font-medium mb-3">Educational Background</h3>
+            <div className="space-y-3">
+              <div className="border-l-4 border-gray-300 dark:border-gray-600 pl-4">
                 <div className="font-medium">Master of Science, Information Science</div>
                 <div className="text-gray-600 dark:text-gray-400">University of Wisconsin-Madison</div>
+                <div className="text-sm text-gray-500 dark:text-gray-500">Focus: Data Analytics, Machine Learning, Information Systems</div>
               </div>
-              <div>
+              <div className="border-l-4 border-gray-300 dark:border-gray-600 pl-4">
                 <div className="font-medium">Bachelor of Arts, International Studies</div>
                 <div className="text-gray-600 dark:text-gray-400">University of Wisconsin-Madison</div>
+                <div className="text-sm text-gray-500 dark:text-gray-500">Concentration: Research Methods, Data Analysis</div>
+              </div>
+              <div className="border-l-4 border-gray-300 dark:border-gray-600 pl-4">
+                <div className="font-medium">Communication Science Studies (2 years)</div>
+                <div className="text-gray-600 dark:text-gray-400">Rochester Institute of Technology</div>
               </div>
             </div>
+            <p className="text-sm text-gray-500 dark:text-gray-500 mt-3 italic">
+              Technical skills primarily built through self-directed learning and hands-on project work, 
+              augmented by strategic use of AI tools for efficient development.
+            </p>
           </div>
           
           <div>
             <h3 className="font-medium mb-3">Certifications</h3>
             <ul className="space-y-2 text-gray-600 dark:text-gray-400">
               <li>• <a href="https://www.coursera.org/account/accomplishments/specialization/certificate/A8Z4GGXNDYQY" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Google Advanced Data Analytics</a> (Coursera, 2023)</li>
-              <li>• <a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/91a2d7ba601b5a8fe3cfe1d0b59fb1ac0b78afa8" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Data Analyst in Tableau</a> (DataCamp, 2022-2023)</li>
-              <li>• <a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/d33a33e25d3aca10ae9433080651ae16f35cb32d" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Data Analyst in SQL</a> (DataCamp, 2022-2023)</li>
+              <li>• <a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/91a2d7ba601b5a8fe3cfe1d0b59fb1ac0b78afa8" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Data Analyst in Tableau Track</a> (DataCamp, 2022-2023)</li>
+              <li>• <a href="https://www.datacamp.com/completed/statement-of-accomplishment/track/d33a33e25d3aca10ae9433080651ae16f35cb32d" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Data Analyst in SQL Track</a> (DataCamp, 2022-2023)</li>
             </ul>
+          </div>
+
+          <div>
+            <h3 className="font-medium mb-3">Current Learning Focus</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <p className="text-gray-600 dark:text-gray-400 mb-2"><strong>JavaScript & TypeScript:</strong> Building interactive data visualizations</p>
+                <p className="text-gray-600 dark:text-gray-400 mb-2"><strong>Advanced Statistics:</strong> Deepening mathematical foundations</p>
+              </div>
+              <div>
+                <p className="text-gray-600 dark:text-gray-400 mb-2"><strong>PostgreSQL & MSSQL:</strong> Expanding database expertise</p>
+                <p className="text-gray-600 dark:text-gray-400"><strong>MLOps:</strong> Production machine learning systems</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Testimonials Section */}
-      <div id="testimonials" className="mb-20">
-        <h2 className="text-xl font-semibold mb-8">Testimonials</h2>
+      {/* Available For Section */}
+      <div className="mb-20">
+        <h2 className="text-xl font-semibold mb-6">Available For</h2>
         
-        <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6">
-          <blockquote className="text-gray-600 dark:text-gray-400 italic mb-4">
-            "Tobin consistently delivers high-quality data analysis and has been instrumental in improving our data processing workflows. His attention to detail and ability to translate complex findings into actionable insights makes him an invaluable team member."
-          </blockquote>
-          <cite className="text-sm font-medium text-black dark:text-white">
-            Dr. Sarah Johnson, Research Director
-            <span className="text-gray-500 dark:text-gray-400 font-normal"> - Indiana University School of Medicine</span>
-          </cite>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+            <h3 className="font-medium mb-2">Full-time Positions</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Data analysis and visualization roles</p>
+          </div>
+          <div className="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+            <h3 className="font-medium mb-2">Contract Projects</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Defined scope data projects</p>
+          </div>
+          <div className="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+            <h3 className="font-medium mb-2">Consulting</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">ML implementation and optimization</p>
+          </div>
+          <div className="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+            <h3 className="font-medium mb-2">Collaboration</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-400">Data pipeline development</p>
+          </div>
         </div>
       </div>
     </div>
