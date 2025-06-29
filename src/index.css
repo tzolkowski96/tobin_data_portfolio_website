@@ -2,10 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import Inter font with extended weights */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
-/* Base styles with large typography focus */
 html {
   scroll-behavior: smooth;
   font-family: 'Inter', system-ui, sans-serif;
@@ -13,644 +11,71 @@ html {
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  color: #000000;
-  line-height: 1.4;
-  background-color: #FFFFFF;
-  font-weight: 300;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 16px;
 }
 
-/* Dark mode */
-html.dark body {
+/* Clean, minimal design with proper contrast */
+html {
+  background-color: #ffffff;
+}
+
+html.dark {
   background-color: #000000;
-  color: #FFFFFF;
 }
 
-/* Large typography system */
-.display-1 {
-  font-size: clamp(4rem, 12vw, 12rem);
-  font-weight: 200;
-  line-height: 0.9;
-  letter-spacing: -0.06em;
+/* Smooth transitions for dark mode */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-.display-2 {
-  font-size: clamp(2.5rem, 6vw, 6rem);
-  font-weight: 200;
-  line-height: 0.9;
-  letter-spacing: -0.03em;
-}
-
-.display-3 {
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -0.02em;
-}
-
-.heading-1 {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.015em;
-}
-
-.heading-2 {
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-}
-
-.heading-3 {
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-  font-weight: 400;
-  line-height: 1.2;
-}
-
-.body-large {
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
-  font-weight: 300;
-  line-height: 1.5;
-  color: #525252;
-}
-
-.body-regular {
-  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
-  font-weight: 300;
-  line-height: 1.6;
-  color: #525252;
-}
-
-.body-small {
-  font-size: clamp(0.875rem, 1.2vw, 1rem);
-  font-weight: 300;
-  line-height: 1.5;
-  color: #737373;
-}
-
-.caption {
-  font-size: clamp(0.75rem, 1vw, 0.875rem);
-  font-weight: 400;
-  line-height: 1.4;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #737373;
-}
-
-html.dark .body-large,
-html.dark .body-regular {
-  color: #A3A3A3;
-}
-
-html.dark .body-small,
-html.dark .caption {
-  color: #737373;
-}
-
-/* Section backgrounds for dynamic contrast - BLACK AND WHITE ONLY */
-.section-light {
-  background-color: #FFFFFF;
-  color: #000000;
-}
-
-.section-dark {
-  background-color: #000000;
-  color: #FFFFFF;
-}
-
-.section-gray {
-  background-color: #FAFAFA;
-  color: #000000;
-}
-
-html.dark .section-light {
-  background-color: #000000;
-  color: #FFFFFF;
-}
-
-html.dark .section-dark {
-  background-color: #FFFFFF;
-  color: #000000;
-}
-
-html.dark .section-gray {
-  background-color: #0F0F0F;
-  color: #FFFFFF;
-}
-
-/* Large section headers */
-.section-header {
-  text-align: center;
-  margin-bottom: clamp(3rem, 8vw, 8rem);
-}
-
-.section-header h2 {
-  margin-bottom: clamp(1rem, 3vw, 2rem);
-}
-
-.section-header p {
-  max-width: 42rem;
-  margin: 0 auto;
-}
-
-/* Enhanced spacing system */
-.section-padding {
-  padding: clamp(4rem, 12vw, 12rem) clamp(1rem, 4vw, 2rem);
-}
-
-.container-large {
-  max-width: 90rem;
-  margin: 0 auto;
-  padding: 0 clamp(1rem, 4vw, 2rem);
-}
-
-.container-medium {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 0 clamp(1rem, 4vw, 2rem);
-}
-
-.container-small {
-  max-width: 48rem;
-  margin: 0 auto;
-  padding: 0 clamp(1rem, 4vw, 2rem);
-}
-
-/* Clean focus states - BLACK AND WHITE */
+/* Focus states for accessibility */
 :focus {
-  outline: 2px solid #000000;
-  outline-offset: 4px;
-}
-
-html.dark :focus {
-  outline-color: #FFFFFF;
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
 }
 
 :focus:not(:focus-visible) {
   outline: none;
 }
 
-/* Simple animations */
-.animate-fadeIn {
-  animation: fadeIn 0.8s ease-out forwards;
-  opacity: 0;
-}
-
-.animate-slideUp {
-  animation: slideUp 0.8s ease-out forwards;
-  opacity: 0;
-  transform: translateY(2rem);
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  to { 
-    opacity: 1; 
-    transform: translateY(0);
-  }
-}
-
-/* Minimal card design - BLACK AND WHITE */
-.minimal-card {
-  background-color: #FFFFFF;
-  border: 1px solid #E5E5E5;
-  padding: clamp(1.5rem, 4vw, 3rem);
-  transition: border-color 0.3s ease;
-}
-
-.minimal-card:hover {
-  border-color: #CCCCCC;
-}
-
-html.dark .minimal-card {
-  background-color: #000000;
-  border-color: #333333;
-}
-
-html.dark .minimal-card:hover {
-  border-color: #555555;
-}
-
-/* Large button styles - BLACK AND WHITE */
-.btn-large {
-  background-color: #000000;
-  color: #FFFFFF;
-  padding: clamp(1.25rem, 2vw, 1.75rem) clamp(2.5rem, 4vw, 3.5rem);
-  font-weight: 400;
-  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
-  border: none;
-  transition: opacity 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
-.btn-large:hover {
-  opacity: 0.8;
-}
-
-.btn-outline {
-  background-color: transparent;
-  color: #000000;
-  border: 2px solid #000000;
-  padding: clamp(1.25rem, 2vw, 1.75rem) clamp(2.5rem, 4vw, 3.5rem);
-  font-weight: 400;
-  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
-  transition: all 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
-.btn-outline:hover {
-  background-color: #000000;
-  color: #FFFFFF;
-}
-
-html.dark .btn-large {
-  background-color: #FFFFFF;
-  color: #000000;
-}
-
-html.dark .btn-outline {
-  color: #FFFFFF;
-  border-color: #FFFFFF;
-}
-
-html.dark .btn-outline:hover {
-  background-color: #FFFFFF;
-  color: #000000;
-}
-
-/* Profile image large */
-.profile-large {
-  width: clamp(12rem, 20vw, 18rem);
-  height: clamp(12rem, 20vw, 18rem);
-  border-radius: 50%;
-  border: 4px solid #E5E5E5;
-  margin: 0 auto clamp(2rem, 5vw, 4rem);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-html.dark .profile-large {
-  border-color: #333333;
-  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
-}
-
-/* Skills progress bars - BLACK AND WHITE */
-.progress-track-large {
-  background-color: #F5F5F5;
-  height: 4px;
-  overflow: hidden;
-  margin-top: 1rem;
-}
-
-.progress-bar-large {
-  background-color: #000000;
-  height: 4px;
-  transition: width 1s ease-out;
-}
-
-html.dark .progress-track-large {
-  background-color: #333333;
-}
-
-html.dark .progress-bar-large {
-  background-color: #FFFFFF;
-}
-
-/* Form styles - BLACK AND WHITE */
-.form-input-large {
-  width: 100%;
-  padding: clamp(1rem, 2vw, 1.5rem);
-  border: 2px solid #E5E5E5;
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
-  transition: border-color 0.3s ease;
-  background-color: #FFFFFF;
-  color: #000000;
-  font-weight: 300;
-}
-
-.form-input-large:focus {
-  outline: none;
-  border-color: #000000;
-}
-
-.form-input-large.error {
-  border-color: #000000;
-}
-
-html.dark .form-input-large {
-  background-color: #000000;
-  color: #FFFFFF;
-  border-color: #333333;
-}
-
-html.dark .form-input-large:focus {
-  border-color: #FFFFFF;
-}
-
-html.dark .form-input-large.error {
-  border-color: #FFFFFF;
-}
-
-.form-label-large {
-  display: block;
-  font-size: clamp(0.875rem, 1.2vw, 1rem);
-  font-weight: 400;
-  color: #000000;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-html.dark .form-label-large {
-  color: #FFFFFF;
-}
-
-/* Skip to content */
-.skip-to-content {
-  position: absolute;
-  top: -200px;
-  left: 0;
-  background: #000000;
-  color: #FFFFFF;
-  padding: 1rem 1.5rem;
-  z-index: 9999;
-  transition: top 0.3s;
-  font-weight: 400;
-  font-size: 1rem;
-}
-
-.skip-to-content:focus {
-  top: 0;
-}
-
-html.dark .skip-to-content {
-  background: #FFFFFF;
-  color: #000000;
-}
-
-/* Tags - BLACK AND WHITE */
-.tag-large {
-  background-color: #F5F5F5;
-  color: #737373;
-  padding: 0.75rem 1.25rem;
-  font-size: clamp(0.75rem, 1vw, 0.875rem);
-  font-weight: 400;
-  border: 1px solid #E5E5E5;
-  display: inline-block;
-  margin: 0.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-html.dark .tag-large {
-  background-color: #1A1A1A;
-  color: #A3A3A3;
-  border-color: #333333;
-}
-
-/* Status indicators - BLACK AND WHITE */
-.status-available {
-  background-color: #F5F5F5;
-  color: #000000;
-  border: 2px solid #E5E5E5;
-}
-
-html.dark .status-available {
-  background-color: #1A1A1A;
-  color: #FFFFFF;
-  border-color: #333333;
-}
-
-.status-dot {
-  width: 0.75rem;
-  height: 0.75rem;
-  background-color: #000000;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
-}
-
-html.dark .status-dot {
-  background-color: #FFFFFF;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
-/* Section styles */
-section {
-  scroll-margin-top: 5rem;
-}
-
-/* Mobile menu - BLACK AND WHITE */
-#mobile-menu {
-  background-color: #FFFFFF;
-  border-left: 2px solid #E5E5E5;
-}
-
-html.dark #mobile-menu {
-  background-color: #000000;
-  border-left-color: #333333;
-}
-
-/* Large project cards - BLACK AND WHITE */
-.project-card-large {
-  border: 2px solid #E5E5E5;
-  padding: clamp(2rem, 4vw, 3rem);
-  transition: border-color 0.3s ease;
-  background-color: #FFFFFF;
-  position: relative;
-  overflow: hidden;
-}
-
-.project-card-large::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #000000, transparent);
-  transition: left 0.5s ease;
-}
-
-.project-card-large:hover {
-  border-color: #CCCCCC;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.project-card-large:hover::before {
-  left: 100%;
-}
-
-html.dark .project-card-large {
-  background-color: #000000;
-  border-color: #333333;
-}
-
-html.dark .project-card-large:hover {
-  border-color: #555555;
-  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
-}
-
-html.dark .project-card-large::before {
-  background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
-}
-
-/* Enhanced animations for bold design */
-@keyframes slideInFromLeft {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes scaleIn {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.animate-slideInFromLeft {
-  animation: slideInFromLeft 0.8s ease-out forwards;
-  opacity: 0;
-}
-
-.animate-scaleIn {
-  animation: scaleIn 0.6s ease-out forwards;
-  opacity: 0;
-}
-
-/* Enhanced hover effects for buttons */
-.btn-large,
-.btn-outline {
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.btn-large::before,
-.btn-outline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s ease;
-  z-index: -1;
-}
-
-.btn-large:hover::before,
-.btn-outline:hover::before {
-  left: 100%;
-}
-
-html.dark .btn-large::before,
-html.dark .btn-outline::before {
-  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.2), transparent);
-}
-
-/* Form validation states - BLACK AND WHITE */
-.form-success {
-  background-color: #F5F5F5;
-  color: #000000;
-  border: 2px solid #CCCCCC;
-}
-
-.form-error {
-  background-color: #F5F5F5;
-  color: #000000;
-  border: 2px solid #000000;
-}
-
-html.dark .form-success {
-  background-color: #1A1A1A;
-  color: #FFFFFF;
-  border-color: #555555;
-}
-
-html.dark .form-error {
-  background-color: #1A1A1A;
-  color: #FFFFFF;
-  border-color: #FFFFFF;
-}
-
-/* Dark mode overrides - ensure proper contrast */
-html.dark .section-light .body-large,
-html.dark .section-light .body-regular,
-html.dark .section-light .body-small {
-  color: #525252;
-}
-
-html.dark .section-dark .body-large,
-html.dark .section-dark .body-regular {
-  color: #A3A3A3;
-}
-
-html.dark .section-dark .body-small,
-html.dark .section-dark .caption {
-  color: #737373;
-}
-
-/* Responsive adjustments */
-@media (max-width: 640px) {
-  .section-padding {
-    padding: clamp(3rem, 10vw, 8rem) 1rem;
-  }
-  
-  .section-header {
-    margin-bottom: clamp(2rem, 6vw, 4rem);
-  }
-  
-  .minimal-card,
-  .project-card-large {
-    padding: clamp(1.5rem, 4vw, 2rem);
-  }
-}
-
-/* Scrollbar - BLACK AND WHITE */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F5F5F5;
+  background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CCCCCC;
+  background: #c1c1c1;
+  border-radius: 3px;
 }
 
 html.dark ::-webkit-scrollbar-track {
-  background: #1A1A1A;
+  background: #1f1f1f;
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background: #555555;
+  background: #4a4a4a;
+}
+
+/* Ensure links are accessible */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Section scroll margins for navigation */
+section,
+[id] {
+  scroll-margin-top: 2rem;
 }
 
 /* Print styles */
@@ -660,140 +85,8 @@ html.dark ::-webkit-scrollbar-thumb {
     color: black !important;
   }
   
-  .section-dark {
-    background: white !important;
-    color: black !important;
-  }
-  
-  header, button, .print-hide {
+  header,
+  footer {
     display: none !important;
   }
-}
-
-/* Additional utility classes for black and white design */
-.text-primary {
-  color: #000000;
-}
-
-.text-secondary {
-  color: #737373;
-}
-
-.bg-primary {
-  background-color: #000000;
-}
-
-.bg-secondary {
-  background-color: #F5F5F5;
-}
-
-.border-primary {
-  border-color: #000000;
-}
-
-.border-secondary {
-  border-color: #E5E5E5;
-}
-
-html.dark .text-primary {
-  color: #FFFFFF;
-}
-
-html.dark .text-secondary {
-  color: #A3A3A3;
-}
-
-html.dark .bg-primary {
-  background-color: #FFFFFF;
-}
-
-html.dark .bg-secondary {
-  background-color: #1A1A1A;
-}
-
-html.dark .border-primary {
-  border-color: #FFFFFF;
-}
-
-html.dark .border-secondary {
-  border-color: #333333;
-}
-
-/* Icon containers for maintaining visual hierarchy without color */
-.icon-container {
-  width: 3rem;
-  height: 3rem;
-  border: 2px solid #E5E5E5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #FAFAFA;
-}
-
-html.dark .icon-container {
-  border-color: #333333;
-  background-color: #1A1A1A;
-}
-
-/* Remove all colored elements and ensure black/white contrast */
-* {
-  /* Force all colors to be black, white, or gray variants */
-  border-color: currentColor;
-}
-
-/* Ensure all interactive elements have proper black/white states */
-button:hover,
-a:hover,
-.interactive:hover {
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-}
-
-/* Override any remaining color classes */
-.text-blue-600,
-.text-blue-400,
-.text-green-600,
-.text-green-400,
-.text-purple-600,
-.text-purple-400,
-.text-indigo-600,
-.text-indigo-400,
-.text-red-600,
-.text-red-400,
-.text-yellow-600,
-.text-yellow-400 {
-  color: #000000 !important;
-}
-
-html.dark .text-blue-600,
-html.dark .text-blue-400,
-html.dark .text-green-600,
-html.dark .text-green-400,
-html.dark .text-purple-600,
-html.dark .text-purple-400,
-html.dark .text-indigo-600,
-html.dark .text-indigo-400,
-html.dark .text-red-600,
-html.dark .text-red-400,
-html.dark .text-yellow-600,
-html.dark .text-yellow-400 {
-  color: #FFFFFF !important;
-}
-
-.bg-blue-50,
-.bg-green-50,
-.bg-purple-50,
-.bg-indigo-50,
-.bg-red-50,
-.bg-yellow-50 {
-  background-color: #F5F5F5 !important;
-}
-
-html.dark .bg-blue-50,
-html.dark .bg-green-50,
-html.dark .bg-purple-50,
-html.dark .bg-indigo-50,
-html.dark .bg-red-50,
-html.dark .bg-yellow-50 {
-  background-color: #1A1A1A !important;
 }

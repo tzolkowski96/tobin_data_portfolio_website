@@ -1,207 +1,176 @@
-import React, { useEffect, useState } from 'react';
-import { ArrowDown, TrendingUp, Database, BarChart3, Brain } from 'lucide-react';
+import React from 'react';
+import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
 
 const Hero: React.FC = () => {
-  const [animatedStats, setAnimatedStats] = useState({
-    experience: 0,
-    projects: 0,
-    dataPoints: 0,
-    accuracy: 0
-  });
-
-  const finalStats = {
-    experience: 4,
-    projects: 14,
-    dataPoints: 7.7,
-    accuracy: 98
-  };
-
-  useEffect(() => {
-    const duration = 2000; // 2 seconds
-    const steps = 60;
-    const interval = duration / steps;
-
-    let currentStep = 0;
-    const timer = setInterval(() => {
-      currentStep++;
-      const progress = currentStep / steps;
-      
-      setAnimatedStats({
-        experience: Math.round(finalStats.experience * progress),
-        projects: Math.round(finalStats.projects * progress),
-        dataPoints: Number((finalStats.dataPoints * progress).toFixed(1)),
-        accuracy: Math.round(finalStats.accuracy * progress)
-      });
-
-      if (currentStep >= steps) {
-        clearInterval(timer);
-        setAnimatedStats(finalStats);
-      }
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const scrollToNext = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section className="section-light section-padding min-h-screen flex items-center relative overflow-hidden">
-      {/* Background Data Visualization - Black and White */}
-      <div className="absolute inset-0 opacity-3 pointer-events-none">
-        <div className="absolute top-10 left-10 w-32 h-32">
-          <BarChart3 size={128} className="text-gray-900 dark:text-white" />
+    <div className="max-w-2xl mx-auto px-6 py-16">
+      
+      {/* Main Content */}
+      <div className="space-y-8">
+        <div>
+          <p className="text-lg leading-relaxed">
+            Hey, I'm a Data Professional with 4+ years of experience transforming complex datasets 
+            into actionable business insights. I enjoy working with Python, SQL, and machine learning 
+            to solve real-world problems.
+          </p>
         </div>
-        <div className="absolute top-20 right-20 w-24 h-24">
-          <TrendingUp size={96} className="text-gray-900 dark:text-white" />
+
+        <div>
+          <p className="text-base leading-relaxed text-gray-600 dark:text-gray-400">
+            This portfolio showcases my expertise in data analytics, machine learning, and visualization. 
+            I focus on the <em>results</em> and <em>impact</em> of data-driven solutions.
+          </p>
         </div>
-        <div className="absolute bottom-20 left-1/4 w-20 h-20">
-          <Database size={80} className="text-gray-900 dark:text-white" />
-        </div>
-        <div className="absolute bottom-32 right-1/3 w-28 h-28">
-          <Brain size={112} className="text-gray-900 dark:text-white" />
-        </div>
-      </div>
 
-      <div className="container-large relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Main Content - Left Side */}
-          <div className="lg:col-span-8">
-            
-            {/* Availability Badge - Black and White */}
-            <div className="animate-fadeIn mb-8">
-              <div className="inline-flex items-center status-available px-6 py-3">
-                <div className="status-dot mr-3"></div>
-                <span className="caption font-medium">Available for new opportunities</span>
-              </div>
-            </div>
-            
-            {/* Main Heading - BOLD */}
-            <div className="animate-slideUp mb-8" style={{animationDelay: '0.2s'}}>
-              <h1 className="font-light leading-none mb-6">
-                <span className="display-1 text-gray-900 dark:text-white block">TOBIN</span>
-                <span className="display-1 text-gray-900 dark:text-white block">ZOLKOWSKI</span>
-                <span className="heading-1 text-gray-600 dark:text-gray-400 block mt-4">Data Professional</span>
-              </h1>
-              
-              <div className="w-32 h-1 bg-gray-900 dark:bg-white mb-8"></div>
-              
-              <p className="body-large max-w-2xl leading-relaxed">
-                <strong>Transforming complex data into actionable business insights</strong> through advanced analytics, 
-                machine learning, and strategic visualization. Continuously learning and delivering measurable results 
-                for data-driven decision making.
-              </p>
-            </div>
-            
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 mb-12 animate-slideUp" style={{animationDelay: '0.4s'}}>
-              <a href="#projects" className="btn-large">View Portfolio</a>
-              <a href="#contact" className="btn-outline">Discuss Opportunities</a>
-              <button 
-                onClick={() => window.open('mailto:contact@example.com', '_blank')}
-                className="btn-outline"
-              >
-                Download CV
-              </button>
-            </div>
-
-            {/* Quick Skills Tags */}
-            <div className="animate-fadeIn" style={{animationDelay: '0.6s'}}>
-              <div className="flex flex-wrap gap-3">
-                <span className="tag-large font-medium">Python & SQL</span>
-                <span className="tag-large font-medium">Machine Learning</span>
-                <span className="tag-large font-medium">Tableau & Looker</span>
-                <span className="tag-large font-medium">ETL Pipelines</span>
-                <span className="tag-large font-medium">Statistical Analysis</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Stats & Profile - Right Side */}
-          <div className="lg:col-span-4">
-            
-            {/* Profile Image */}
-            <div className="animate-fadeIn mb-8" style={{animationDelay: '0.3s'}}>
-              <div className="profile-large mx-auto overflow-hidden">
-                <img 
-                  src="/profile-image.jpg" 
-                  alt="Tobin Zolkowski - Data Professional" 
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = "https://via.placeholder.com/256x256/000000/FFFFFF?text=TZ";
-                  }}
-                  loading="eager" 
-                />
-              </div>
-            </div>
-
-            {/* Animated Stats */}
-            <div className="animate-slideUp" style={{animationDelay: '0.5s'}}>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center p-6 border-2 border-gray-200 dark:border-gray-800">
-                  <div className="heading-1 text-gray-900 dark:text-white mb-2">{animatedStats.experience}+</div>
-                  <div className="caption text-gray-600 dark:text-gray-400">Years Experience</div>
-                </div>
-                
-                <div className="text-center p-6 border-2 border-gray-200 dark:border-gray-800">
-                  <div className="heading-1 text-gray-900 dark:text-white mb-2">{animatedStats.projects}+</div>
-                  <div className="caption text-gray-600 dark:text-gray-400">Data Projects</div>
-                </div>
-                
-                <div className="text-center p-6 border-2 border-gray-200 dark:border-gray-800">
-                  <div className="heading-1 text-gray-900 dark:text-white mb-2">{animatedStats.dataPoints}M+</div>
-                  <div className="caption text-gray-600 dark:text-gray-400">Records Analyzed</div>
-                </div>
-                
-                <div className="text-center p-6 border-2 border-gray-200 dark:border-gray-800">
-                  <div className="heading-1 text-gray-900 dark:text-white mb-2">{animatedStats.accuracy}%</div>
-                  <div className="caption text-gray-600 dark:text-gray-400">ML Accuracy</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Key Achievements - Black and White */}
-            <div className="mt-8 animate-fadeIn" style={{animationDelay: '0.7s'}}>
-              <div className="minimal-card">
-                <h3 className="heading-3 text-gray-900 dark:text-white mb-4">Recent Achievements</h3>
-                <ul className="space-y-2 body-small">
-                  <li className="flex items-center">
-                    <div className="w-4 h-4 mr-3 bg-gray-900 dark:bg-white"></div>
-                    <span>98% accuracy in employee churn prediction</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-4 h-4 mr-3 bg-gray-900 dark:bg-white"></div>
-                    <span>Analyzed 7.7M traffic accident records</span>
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-4 h-4 mr-3 bg-gray-900 dark:bg-white"></div>
-                    <span>35% improvement in data quality</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-fadeIn" style={{animationDelay: '0.8s'}}>
-          <button 
-            onClick={scrollToNext}
-            className="p-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors group"
-            aria-label="Scroll to next section"
+        <div>
+          <a 
+            href="https://github.com/tzolkowski96" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline"
           >
-            <ArrowDown size={24} className="group-hover:transform group-hover:translate-y-1 transition-transform" />
-          </button>
+            View my projects <ExternalLink size={16} className="ml-1" />
+          </a>{' '}
+          on GitHub.
         </div>
       </div>
-    </section>
+
+      {/* Projects Section */}
+      <div id="projects" className="mt-20">
+        <h2 className="text-xl font-semibold mb-8">Selected Projects</h2>
+        
+        <div className="space-y-8">
+          <div className="border-l-2 border-gray-200 dark:border-gray-800 pl-6">
+            <h3 className="font-medium mb-2">Employee Churn Prediction</h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-3">
+              Machine learning model achieving 98% accuracy in predicting employee turnover using Random Forest and feature engineering.
+            </p>
+            <div className="flex items-center space-x-4 text-sm">
+              <a 
+                href="https://github.com/tzolkowski96/tzolkowski96/tree/main/Employee-Churn-Prediction"
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+              >
+                <Github size={14} className="mr-1" /> Code
+              </a>
+              <a 
+                href="https://tzolkowski96.github.io/Salifort-Motors-Project/"
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+              >
+                <ExternalLink size={14} className="mr-1" /> Demo
+              </a>
+              <span className="text-gray-500">Python, Scikit-Learn</span>
+            </div>
+          </div>
+
+          <div className="border-l-2 border-gray-200 dark:border-gray-800 pl-6">
+            <h3 className="font-medium mb-2">Traffic Accident Analytics</h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-3">
+              Analysis of 7.7M US traffic records identifying patterns and risk factors using statistical validation and geospatial visualization.
+            </p>
+            <div className="flex items-center space-x-4 text-sm">
+              <a 
+                href="https://github.com/tzolkowski96/tzolkowski96/tree/main/us_accidents_analysis"
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+              >
+                <Github size={14} className="mr-1" /> Code
+              </a>
+              <span className="text-gray-500">Python, Big Data, Geospatial</span>
+            </div>
+          </div>
+
+          <div className="border-l-2 border-gray-200 dark:border-gray-800 pl-6">
+            <h3 className="font-medium mb-2">Customer Segmentation Analysis</h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-3">
+              Marketing analytics through K-means clustering and A/B testing for targeted customer engagement strategies.
+            </p>
+            <div className="flex items-center space-x-4 text-sm">
+              <a 
+                href="https://github.com/tzolkowski96/tzolkowski96/tree/main/ufood_analysis"
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+              >
+                <Github size={14} className="mr-1" /> Code
+              </a>
+              <a 
+                href="https://tzolkowski96.github.io/analyst-builder-food-marketing-project/"
+                target="_blank"
+                rel="noopener noreferrer" 
+                className="text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+              >
+                <ExternalLink size={14} className="mr-1" /> Demo
+              </a>
+              <span className="text-gray-500">Python, Clustering, Marketing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* About Section */}
+      <div id="about" className="mt-20">
+        <h2 className="text-xl font-semibold mb-8">About</h2>
+        
+        <div className="space-y-6">
+          <p className="text-gray-600 dark:text-gray-400">
+            I hold a Master's in Information Science from UW-Madison with a focus on data analytics and machine learning. 
+            Currently working as a Data Analyst at Indiana University School of Medicine, where I develop ETL processes 
+            and ensure HIPAA compliance for biomedical research data.
+          </p>
+          
+          <div>
+            <h3 className="font-medium mb-3">Certifications</h3>
+            <ul className="space-y-2 text-gray-600 dark:text-gray-400">
+              <li>• Google Advanced Data Analytics (Coursera, 2023)</li>
+              <li>• Data Analyst in Tableau (DataCamp, 2022-2023)</li>
+              <li>• Data Analyst in SQL (DataCamp, 2022-2023)</li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="font-medium mb-3">Core Skills</h3>
+            <p className="text-gray-600 dark:text-gray-400">
+              Python (Pandas, Scikit-Learn) • SQL • Machine Learning • Tableau • Data Visualization • 
+              Statistical Analysis • ETL Pipelines • HIPAA Compliance
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact Section */}
+      <div id="contact" className="mt-20 pt-8 border-t border-gray-200 dark:border-gray-800">
+        <div className="flex items-center space-x-6">
+          <span className="text-gray-600 dark:text-gray-400">Connect:</span>
+          <a 
+            href="https://github.com/tzolkowski96" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+          >
+            <Github size={18} className="mr-2" /> GitHub
+          </a>
+          <a 
+            href="https://www.linkedin.com/in/tobin-zolkowski-844873200/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+          >
+            <Linkedin size={18} className="mr-2" /> LinkedIn
+          </a>
+          <a 
+            href="mailto:contact@example.com"
+            className="text-blue-600 dark:text-blue-400 hover:underline flex items-center"
+          >
+            <Mail size={18} className="mr-2" /> Email
+          </a>
+        </div>
+      </div>
+    </div>
   );
 };
 
