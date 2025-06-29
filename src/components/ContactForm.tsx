@@ -52,17 +52,17 @@ const ContactForm: React.FC = () => {
 
   if (status.isSubmitted) {
     return (
-      <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6">
+      <div className="minimal-card p-6 border-green-200 dark:border-green-800">
         <div className="flex items-center mb-4">
           <Check size={20} className="text-green-600 dark:text-green-400 mr-3" />
           <div>
             <h3 className="font-medium text-green-800 dark:text-green-200">Message sent successfully!</h3>
-            <p className="text-sm text-green-600 dark:text-green-400">I'll get back to you within 24 hours.</p>
+            <p className="text-small text-green-600 dark:text-green-400">I'll get back to you within 24 hours.</p>
           </div>
         </div>
         <button
           onClick={resetForm}
-          className="text-sm text-green-600 dark:text-green-400 hover:underline"
+          className="text-small text-green-600 dark:text-green-400 hover:opacity-70"
         >
           Send another message
         </button>
@@ -74,7 +74,7 @@ const ContactForm: React.FC = () => {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium mb-2">
+          <label htmlFor="name" className="block text-small font-medium mb-2">
             Name
           </label>
           <input
@@ -82,13 +82,13 @@ const ContactForm: React.FC = () => {
             id="name"
             name="name"
             required
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white"
             placeholder="Your name"
           />
         </div>
         
         <div>
-          <label htmlFor="email" className="block text-sm font-medium mb-2">
+          <label htmlFor="email" className="block text-small font-medium mb-2">
             Email
           </label>
           <input
@@ -96,14 +96,14 @@ const ContactForm: React.FC = () => {
             id="email"
             name="email"
             required
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white"
             placeholder="your@email.com"
           />
         </div>
       </div>
       
       <div>
-        <label htmlFor="subject" className="block text-sm font-medium mb-2">
+        <label htmlFor="subject" className="block text-small font-medium mb-2">
           Subject
         </label>
         <input
@@ -111,13 +111,13 @@ const ContactForm: React.FC = () => {
           id="subject"
           name="subject"
           required
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white"
           placeholder="Project inquiry"
         />
       </div>
       
       <div>
-        <label htmlFor="message" className="block text-sm font-medium mb-2">
+        <label htmlFor="message" className="block text-small font-medium mb-2">
           Message
         </label>
         <textarea
@@ -125,19 +125,18 @@ const ContactForm: React.FC = () => {
           name="message"
           rows={4}
           required
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white"
           placeholder="Tell me about your project or opportunity..."
         />
       </div>
 
-      {/* Hidden honeypot field for spam protection */}
       <input type="text" name="_gotcha" style={{ display: 'none' }} />
 
       {status.error && (
-        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+        <div className="minimal-card p-4 border-red-200 dark:border-red-800">
           <div className="flex items-center">
             <AlertCircle size={20} className="text-red-600 dark:text-red-400 mr-3" />
-            <p className="text-sm text-red-600 dark:text-red-400">{status.error}</p>
+            <p className="text-small text-red-600 dark:text-red-400">{status.error}</p>
           </div>
         </div>
       )}
@@ -145,11 +144,10 @@ const ContactForm: React.FC = () => {
       <button
         type="submit"
         disabled={status.isSubmitting}
-        className="w-full inline-flex items-center justify-center px-4 py-2 bg-black dark:bg-white text-white dark:text-black rounded-md hover:opacity-80 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+        className="minimal-button w-full disabled:opacity-50"
       >
         {status.isSubmitting ? (
           <>
-            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white dark:border-black mr-2"></div>
             Sending...
           </>
         ) : (

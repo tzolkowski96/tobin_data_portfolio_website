@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    // Check for saved theme preference or default to 'light'
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -29,10 +28,6 @@ const Header: React.FC = () => {
     }
   };
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
-
   const navItems = [
     { href: '#experience', label: 'Experience' },
     { href: '#skills', label: 'Skills' },
@@ -42,21 +37,21 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 sticky top-0 bg-white/80 dark:bg-black/80 backdrop-blur-sm z-50">
+    <header className="max-w-3xl mx-auto container-responsive py-6 sticky top-0 bg-white/90 dark:bg-black/90 backdrop-blur-sm z-50">
       <div className="flex justify-between items-center">
-        <h1 className="text-xl sm:text-2xl font-semibold">
-          <a href="#" className="hover:opacity-80 transition-opacity">
+        <h1 className="text-xl font-semibold">
+          <a href="#" className="hover:opacity-70">
             Tobin Zolkowski
           </a>
         </h1>
         
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
+        <nav className="hidden lg:flex items-center space-x-8">
           {navItems.map((item) => (
             <a 
               key={item.href}
               href={item.href} 
-              className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+              className="text-small text-gray-600 dark:text-gray-400 hover:opacity-70"
             >
               {item.label}
             </a>
@@ -64,10 +59,10 @@ const Header: React.FC = () => {
           
           <button
             onClick={toggleDarkMode}
-            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors ml-4"
+            className="text-gray-600 dark:text-gray-400 hover:opacity-70"
             aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           >
-            {darkMode ? '☀️' : '🌙'}
+            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
           </button>
         </nav>
 
@@ -75,18 +70,18 @@ const Header: React.FC = () => {
         <div className="lg:hidden flex items-center space-x-4">
           <button
             onClick={toggleDarkMode}
-            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+            className="text-gray-600 dark:text-gray-400 hover:opacity-70"
             aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           >
-            {darkMode ? '☀️' : '🌙'}
+            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           
           <button
-            onClick={toggleMobileMenu}
-            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="text-gray-600 dark:text-gray-400 hover:opacity-70"
             aria-label="Toggle mobile menu"
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
@@ -99,7 +94,7 @@ const Header: React.FC = () => {
               <a 
                 key={item.href}
                 href={item.href} 
-                className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-center py-2"
+                className="text-gray-600 dark:text-gray-400 hover:opacity-70 text-center py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
