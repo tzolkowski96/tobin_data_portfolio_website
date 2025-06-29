@@ -15,30 +15,59 @@ interface BlogPost {
 const TechnicalBlog: React.FC = () => {
   const blogPosts: BlogPost[] = [
     {
-      title: "From Drag and Drop to Code: My Tableau to LookML Journey",
-      excerpt: "A personal journey exploring the transition from visual BI tools to code-based analytics with LookML.",
-      readTime: "8 min",
-      date: "2024-03-15",
-      url: "https://medium.com/@grateful_aqua_goat_147/from-drag-and-drop-to-code-my-tableau-to-lookml-journey-fde0165ada94",
-      tags: ["Tableau", "LookML", "Data Visualization"],
+      title: "Honestly, Our Humanity is RAG's Secret Ingredient (And We Can't Forget It)",
+      excerpt: "Man, it's a crazy time in the data world, right? We've got these insane tools, tons of data, and this feeling like we can tackle anything…",
+      readTime: "6 min",
+      date: "2025-05-18",
+      url: "https://medium.com/@grateful_aqua_goat_147",
+      tags: ["RAG", "AI", "Data Science"],
       isExternal: true,
       featured: true
     },
     {
-      title: "Building Effective ML Pipelines",
-      excerpt: "Key insights from developing a machine learning model that achieved 98% accuracy in predicting employee turnover.",
+      title: "The Reality Distortion Field: When Vision Twists Data (And Why It's Important)",
+      excerpt: "Exploring how vision and bias can distort data interpretation and why maintaining objectivity is crucial in analytics.",
       readTime: "12 min",
-      date: "2024-02-28",
-      url: "#",
-      tags: ["Machine Learning", "Python", "Data Science"]
+      date: "2025-04-27",
+      url: "https://medium.com/@grateful_aqua_goat_147",
+      tags: ["Data Science", "Analytics", "Bias"],
+      isExternal: true
     },
     {
-      title: "SQL Performance Optimization",
-      excerpt: "Practical techniques for optimizing SQL queries when working with large datasets.",
-      readTime: "10 min",
-      date: "2024-02-15",
-      url: "#",
-      tags: ["SQL", "Performance", "Big Data"]
+      title: "Finding My Programming Niche: A Python Love Story (and a Shoutout to R)",
+      excerpt: "My journey discovering Python as my go-to programming language and why it clicked for data analysis.",
+      readTime: "4 min",
+      date: "2025-04-19",
+      url: "https://medium.com/@grateful_aqua_goat_147",
+      tags: ["Python", "Programming", "Career"],
+      isExternal: true
+    },
+    {
+      title: "When Tableau Met LookML: My Brain's Identity Crisis",
+      excerpt: "Trading drag-and-drop for code taught me to think in two languages (and I survived to tell about it).",
+      readTime: "9 min",
+      date: "2025-03-16",
+      url: "https://medium.com/@grateful_aqua_goat_147",
+      tags: ["Tableau", "LookML", "Data Visualization"],
+      isExternal: true
+    },
+    {
+      title: "How Excel Made Me a Better Programmer",
+      excerpt: "How mastering \"boring\" spreadsheets transformed my entire data analysis skill set.",
+      readTime: "4 min",
+      date: "2025-02-22",
+      url: "https://medium.com/@grateful_aqua_goat_147",
+      tags: ["Excel", "Programming", "Data Analysis"],
+      isExternal: true
+    },
+    {
+      title: "I Learned to Analyze Data More Quickly Because I Was Speaking French",
+      excerpt: "My midnight eureka moment that made my language barrier a career advantage.",
+      readTime: "4 min",
+      date: "2025-02-15",
+      url: "https://medium.com/@grateful_aqua_goat_147",
+      tags: ["Career", "Learning", "Personal Growth"],
+      isExternal: true
     }
   ];
 
