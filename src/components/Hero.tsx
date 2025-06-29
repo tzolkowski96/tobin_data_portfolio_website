@@ -81,26 +81,31 @@ const Hero: React.FC = () => {
               <div className="text-small text-gray-500">Jul 2023 - Present</div>
             </div>
             <div className="text-gray-600 dark:text-gray-400 mb-3 font-medium">
-              Indiana University School of Medicine Department of Medical and Molecular Genetics
+              Indiana University School of Medicine Medical & Molecular Genetics Department | Remote
             </div>
-            <p className="text-gray-600 dark:text-gray-400">
-              Working with researchers to transform complex biomedical datasets into meaningful insights. 
-              Focused on ETL processes, bridging technical/clinical gaps, handling sensitive data, and collaboration.
-            </p>
+            <ul className="text-gray-600 dark:text-gray-400 space-y-2 text-small">
+              <li>• Orchestrated ETL pipelines processing terabytes of imaging data for Michael J. Fox Foundation-funded Parkinson's Progression Markers Initiative (PPMI)</li>
+              <li>• Reduced manual data handling by 25% through secure API integration between REDCap, Laboratory of Neuro Imaging (LONI), and OpenSpecimen</li>
+              <li>• Improved data completion rates by 30% via AWS-hosted automated communication workflows for 4,000+ participants</li>
+              <li>• Developed interactive Folium geospatial dashboards optimizing participant travel logistics across 50+ research sites</li>
+              <li>• Maintained HIPAA compliance while synchronizing clinical, imaging, and biospecimen data using Python, SQL, and SSIS</li>
+            </ul>
           </div>
 
           <div className="minimal-card p-6">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3">
               <h3>Business Data Analyst Intern</h3>
-              <div className="text-small text-gray-500">Jul 2022 - Sept 2022</div>
+              <div className="text-small text-gray-500">Jul 2022 - Sep 2022</div>
             </div>
             <div className="text-gray-600 dark:text-gray-400 mb-3 font-medium">
-              Telkomsel
+              Telkomsel (Indonesia's largest telecommunications company) | Jakarta, Indonesia
             </div>
-            <p className="text-gray-600 dark:text-gray-400">
-              Applied data analysis in a large-scale business environment. Gained experience with big data, 
-              marketing analytics, cross-functional teams, and presenting technical findings.
-            </p>
+            <ul className="text-gray-600 dark:text-gray-400 space-y-2 text-small">
+              <li>• Contributed to analysis identifying $340M revenue opportunities through Tableau dashboard for HVC subscriber segmentation</li>
+              <li>• Optimized ETL processes improving data processing efficiency by 30% for executive reporting</li>
+              <li>• Created automated reporting dashboards tracking KPIs and market trends</li>
+              <li>• Pioneered A/B testing framework</li>
+            </ul>
           </div>
 
           <div className="minimal-card p-6">
@@ -109,26 +114,28 @@ const Hero: React.FC = () => {
               <div className="text-small text-gray-500">Jun 2021 - Aug 2021</div>
             </div>
             <div className="text-gray-600 dark:text-gray-400 mb-3 font-medium">
-              University of Wisconsin-Madison
+              University of Wisconsin-Madison | Madison, WI
             </div>
-            <p className="text-gray-600 dark:text-gray-400">
-              Focused on structured data governance in an academic setting. Developed skills in data quality, 
-              documentation, standardization, and understanding user needs.
-            </p>
+            <ul className="text-gray-600 dark:text-gray-400 space-y-2 text-small">
+              <li>• Documented MySQL database with 500+ elements, reducing lookup time by 15% for 1,200+ users</li>
+              <li>• Streamlined FERPA-compliant data processes, decreasing data entry errors by 10%</li>
+              <li>• Supported research data management and quality assurance initiatives</li>
+            </ul>
           </div>
 
           <div className="minimal-card p-6">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3">
               <h3>IT Support Assistant</h3>
-              <div className="text-small text-gray-500">Sept 2019 - April 2021</div>
+              <div className="text-small text-gray-500">Sep 2019 - Apr 2021</div>
             </div>
             <div className="text-gray-600 dark:text-gray-400 mb-3 font-medium">
-              University of Wisconsin-Madison
+              University of Wisconsin-Madison | Madison, WI
             </div>
-            <p className="text-gray-600 dark:text-gray-400">
-              Gateway into the technical world, focusing on user support and assistive technologies. 
-              Developed troubleshooting skills and foundational database/automation concepts.
-            </p>
+            <ul className="text-gray-600 dark:text-gray-400 space-y-2 text-small">
+              <li>• Managed help desk service request database and created Excel analytics for technology usage patterns</li>
+              <li>• Provided technical support and troubleshooting for university systems</li>
+              <li>• Developed foundational skills in database management and automation concepts</li>
+            </ul>
           </div>
         </div>
       </section>
