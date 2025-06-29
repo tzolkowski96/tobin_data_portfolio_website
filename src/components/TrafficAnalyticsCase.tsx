@@ -79,7 +79,7 @@ const TrafficAnalyticsCase: React.FC<TrafficAnalyticsCaseProps> = ({ isExpanded,
               <div className="space-y-2">
                 <p><strong>Statistical Validation:</strong></p>
                 <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
-                  <li>Chi-square test: χ² = 96,229.39, p < 0.001</li>
+                  <li>Chi-square test: χ² = 96,229.39, p &lt; 0.001</li>
                   <li>ANOVA for weather-duration analysis</li>
                   <li>Cross-validation and performance metrics</li>
                   <li>Feature importance ranking</li>
