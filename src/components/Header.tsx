@@ -37,7 +37,7 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="max-w-3xl mx-auto container-responsive py-6 sticky top-0 bg-white/90 dark:bg-black/90 backdrop-blur-sm z-50">
+    <header className="max-w-3xl mx-auto container-responsive py-6 sticky top-0 bg-white/95 dark:bg-black/95 backdrop-blur-sm z-50">
       <div className="flex justify-between items-center">
         <h1 className="text-xl font-semibold">
           <a href="#" className="hover:opacity-70">
@@ -62,7 +62,7 @@ const Header: React.FC = () => {
             className="text-gray-600 dark:text-gray-400 hover:opacity-70"
             aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           >
-            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+            {darkMode ? <Sun size={16} /> : <Moon size={16} />}
           </button>
         </nav>
 
@@ -73,7 +73,7 @@ const Header: React.FC = () => {
             className="text-gray-600 dark:text-gray-400 hover:opacity-70"
             aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           >
-            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+            {darkMode ? <Sun size={16} /> : <Moon size={16} />}
           </button>
           
           <button
@@ -81,7 +81,7 @@ const Header: React.FC = () => {
             className="text-gray-600 dark:text-gray-400 hover:opacity-70"
             aria-label="Toggle mobile menu"
           >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>

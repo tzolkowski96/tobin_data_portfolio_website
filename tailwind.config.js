@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Minimalist black, white, and gray palette
+        // Pure minimalist palette
         gray: {
           50: '#FAFAFA',
           100: '#F5F5F5',
@@ -23,7 +23,6 @@ export default {
       },
       fontFamily: {
         'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        'mono': ['SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', 'Consolas', 'monospace'],
       },
       fontSize: {
         'small': ['0.875rem', { lineHeight: '1.5' }],
@@ -31,17 +30,7 @@ export default {
       },
       spacing: {
         '18': '4.5rem',
-        '88': '22rem',
       },
-      animation: {
-        'fadeIn': 'fadeIn 0.3s ease-out',
-      },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0', transform: 'translateY(10px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        }
-      }
     },
   },
   plugins: [],

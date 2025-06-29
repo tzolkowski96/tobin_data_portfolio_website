@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Calendar, Clock, ExternalLink, ArrowRight, BookOpen } from 'lucide-react';
 
 interface BlogPost {
@@ -56,7 +56,7 @@ const TechnicalBlog: React.FC = () => {
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
-        <h2>Technical Writing</h2>
+        <h2>Writing</h2>
         <a 
           href="https://medium.com/@grateful_aqua_goat_147" 
           target="_blank" 
@@ -64,7 +64,7 @@ const TechnicalBlog: React.FC = () => {
           className="text-small text-gray-600 dark:text-gray-400 hover:opacity-70 flex items-center"
         >
           View all 
-          <ExternalLink size={14} className="ml-1" />
+          <ExternalLink size={12} className="ml-1" />
         </a>
       </div>
       <div className="section-divider"></div>
@@ -92,16 +92,16 @@ const TechnicalBlog: React.FC = () => {
           
           <div className="flex items-center space-x-4 text-small text-gray-500 mb-4">
             <div className="flex items-center">
-              <Calendar size={14} className="mr-1" />
+              <Calendar size={12} className="mr-1" />
               {formatDate(featuredPost.date)}
             </div>
             <div className="flex items-center">
-              <Clock size={14} className="mr-1" />
+              <Clock size={12} className="mr-1" />
               {featuredPost.readTime}
             </div>
           </div>
 
-          <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
             {featuredPost.excerpt}
           </p>
 
@@ -123,7 +123,7 @@ const TechnicalBlog: React.FC = () => {
               rel="noopener noreferrer"
               className="text-small text-gray-600 dark:text-gray-400 hover:opacity-70 flex items-center"
             >
-              Read article <ArrowRight size={14} className="ml-1" />
+              Read article <ArrowRight size={12} className="ml-1" />
             </a>
           </div>
         </div>
@@ -157,18 +157,18 @@ const TechnicalBlog: React.FC = () => {
                 
                 <div className="flex items-center space-x-4 text-small text-gray-500 mb-3">
                   <div className="flex items-center">
-                    <Calendar size={14} className="mr-1" />
+                    <Calendar size={12} className="mr-1" />
                     {formatDate(post.date)}
                   </div>
                   <div className="flex items-center">
-                    <Clock size={14} className="mr-1" />
+                    <Clock size={12} className="mr-1" />
                     {post.readTime}
                   </div>
                 </div>
               </div>
             </div>
 
-            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
               {post.excerpt}
             </p>
 
@@ -191,11 +191,11 @@ const TechnicalBlog: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-small text-gray-600 dark:text-gray-400 hover:opacity-70 flex items-center"
                 >
-                  Read article <ArrowRight size={14} className="ml-1" />
+                  Read article <ArrowRight size={12} className="ml-1" />
                 </a>
               ) : (
                 <span className="text-small text-gray-400 flex items-center">
-                  Coming soon <ArrowRight size={14} className="ml-1" />
+                  Coming soon <ArrowRight size={12} className="ml-1" />
                 </span>
               )}
             </div>
@@ -206,11 +206,11 @@ const TechnicalBlog: React.FC = () => {
       {/* Newsletter Signup */}
       <div className="minimal-card p-8 text-center">
         <div className="flex justify-center mb-4">
-          <BookOpen size={24} />
+          <BookOpen size={20} className="text-gray-600 dark:text-gray-400" />
         </div>
         
         <h3 className="mb-2">Stay Updated</h3>
-        <p className="text-gray-600 dark:text-gray-400 text-small mb-6 max-w-md mx-auto leading-relaxed">
+        <p className="text-gray-600 dark:text-gray-400 text-small mb-6 max-w-md mx-auto">
           Subscribe to my newsletter for insights on data science, project deep-dives, and lessons learned 
           from real-world analytics work.
         </p>
@@ -222,7 +222,7 @@ const TechnicalBlog: React.FC = () => {
           className="minimal-button"
         >
           <BookOpen size={16} className="mr-2" />
-          Subscribe on Substack
+          Subscribe
         </a>
         
         <div className="text-small text-gray-500 mt-4">

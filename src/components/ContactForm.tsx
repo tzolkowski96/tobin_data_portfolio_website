@@ -54,7 +54,7 @@ const ContactForm: React.FC = () => {
     return (
       <div className="minimal-card p-6 border-green-200 dark:border-green-800">
         <div className="flex items-center mb-4">
-          <Check size={20} className="text-green-600 dark:text-green-400 mr-3" />
+          <Check size={16} className="text-green-600 dark:text-green-400 mr-3" />
           <div>
             <h3 className="font-medium text-green-800 dark:text-green-200">Message sent successfully!</h3>
             <p className="text-small text-green-600 dark:text-green-400">I'll get back to you within 24 hours.</p>
@@ -82,7 +82,7 @@ const ContactForm: React.FC = () => {
             id="name"
             name="name"
             required
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white"
+            className="w-full px-3 py-2 border border-gray-200 dark:border-gray-700 rounded bg-white dark:bg-gray-900 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white text-small"
             placeholder="Your name"
           />
         </div>
@@ -96,7 +96,7 @@ const ContactForm: React.FC = () => {
             id="email"
             name="email"
             required
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white"
+            className="w-full px-3 py-2 border border-gray-200 dark:border-gray-700 rounded bg-white dark:bg-gray-900 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white text-small"
             placeholder="your@email.com"
           />
         </div>
@@ -111,7 +111,7 @@ const ContactForm: React.FC = () => {
           id="subject"
           name="subject"
           required
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white"
+          className="w-full px-3 py-2 border border-gray-200 dark:border-gray-700 rounded bg-white dark:bg-gray-900 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white text-small"
           placeholder="Project inquiry"
         />
       </div>
@@ -125,7 +125,7 @@ const ContactForm: React.FC = () => {
           name="message"
           rows={4}
           required
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white"
+          className="w-full px-3 py-2 border border-gray-200 dark:border-gray-700 rounded bg-white dark:bg-gray-900 text-black dark:text-white focus:outline-none focus:border-black dark:focus:border-white text-small"
           placeholder="Tell me about your project or opportunity..."
         />
       </div>
@@ -135,7 +135,7 @@ const ContactForm: React.FC = () => {
       {status.error && (
         <div className="minimal-card p-4 border-red-200 dark:border-red-800">
           <div className="flex items-center">
-            <AlertCircle size={20} className="text-red-600 dark:text-red-400 mr-3" />
+            <AlertCircle size={16} className="text-red-600 dark:text-red-400 mr-3" />
             <p className="text-small text-red-600 dark:text-red-400">{status.error}</p>
           </div>
         </div>
