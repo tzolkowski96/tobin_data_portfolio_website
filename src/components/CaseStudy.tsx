@@ -17,8 +17,8 @@ const CaseStudy: React.FC<CaseStudyProps> = ({ isExpanded, onToggle }) => {
           <div className="flex-1">
             <h3 className="font-semibold text-lg mb-2">Case Study: Employee Churn Prediction</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-3">
-              A comprehensive machine learning solution achieving <strong>98% accuracy</strong> in predicting employee turnover, 
-              resulting in 35% reduction in HR recruitment costs.
+              A machine learning project achieving <strong>98% accuracy</strong> in predicting employee turnover for Salifort Motors. 
+              Identified key churn drivers and provided actionable HR recommendations.
             </p>
           </div>
         </div>
@@ -111,7 +111,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({ isExpanded, onToggle }) => {
               <div>
                 <p className="text-gray-600 dark:text-gray-400 mb-2"><strong>Business Impact:</strong></p>
                 <ul className="text-gray-600 dark:text-gray-400 space-y-1">
-                  <li>35% reduction in recruitment costs</li>
+                  <li>Identified key churn drivers</li>
                   <li>Early intervention capabilities</li>
                   <li>Data-driven HR decisions</li>
                 </ul>

@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
           <div className="flex-1">
             <h1 className="mb-4">Tobin Zolkowski</h1>
             <p className="text-large text-gray-600 dark:text-gray-400 mb-6 max-w-2xl">
-              Senior Data Analyst specializing in machine learning, predictive analytics, and business intelligence
+              Data Professional focused on analysis, SQL, and machine learning with a growth mindset and commitment to continuous learning
             </p>
             
             <div className="flex items-center space-x-6 text-small text-gray-500 dark:text-gray-500 mb-8">
@@ -60,8 +60,8 @@ const Hero: React.FC = () => {
             <div className="text-small text-gray-600 dark:text-gray-400">Records Analyzed</div>
           </div>
           <div>
-            <div className="text-2xl font-semibold mb-1">35%</div>
-            <div className="text-small text-gray-600 dark:text-gray-400">Cost Reduction</div>
+            <div className="text-2xl font-semibold mb-1">93.41%</div>
+            <div className="text-small text-gray-600 dark:text-gray-400">Data Quality</div>
           </div>
           <div>
             <div className="text-2xl font-semibold mb-1">4+</div>
@@ -81,25 +81,25 @@ const Hero: React.FC = () => {
               <div className="text-small text-gray-500">Jul 2023 - Present</div>
             </div>
             <div className="text-gray-600 dark:text-gray-400 mb-3 font-medium">
-              Indiana University School of Medicine
+              Indiana University School of Medicine Department of Medical and Molecular Genetics
             </div>
             <p className="text-gray-600 dark:text-gray-400">
-              Transforming complex biomedical datasets into meaningful insights through data mining and statistical analysis. 
-              Developing ETL pipelines improving data quality by 35%. Expert in healthcare analytics and regulatory compliance.
+              Working with researchers to transform complex biomedical datasets into meaningful insights. 
+              Focused on ETL processes, bridging technical/clinical gaps, handling sensitive data, and collaboration.
             </p>
           </div>
 
           <div className="minimal-card p-6">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3">
               <h3>Business Data Analyst Intern</h3>
-              <div className="text-small text-gray-500">Jul 2022 - Sep 2022</div>
+              <div className="text-small text-gray-500">Jul 2022 - Sept 2022</div>
             </div>
             <div className="text-gray-600 dark:text-gray-400 mb-3 font-medium">
               Telkomsel
             </div>
             <p className="text-gray-600 dark:text-gray-400">
-              Applied business intelligence and data visualization in enterprise telecommunications environment. 
-              Built executive KPI dashboards using Tableau and advanced analytics.
+              Applied data analysis in a large-scale business environment. Gained experience with big data, 
+              marketing analytics, cross-functional teams, and presenting technical findings.
             </p>
           </div>
 
@@ -112,8 +112,22 @@ const Hero: React.FC = () => {
               University of Wisconsin-Madison
             </div>
             <p className="text-gray-600 dark:text-gray-400">
-              Implemented data governance frameworks and quality assurance protocols for research data. 
-              Developed data standardization procedures and metadata management systems.
+              Focused on structured data governance in an academic setting. Developed skills in data quality, 
+              documentation, standardization, and understanding user needs.
+            </p>
+          </div>
+
+          <div className="minimal-card p-6">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3">
+              <h3>IT Support Assistant</h3>
+              <div className="text-small text-gray-500">Sept 2019 - April 2021</div>
+            </div>
+            <div className="text-gray-600 dark:text-gray-400 mb-3 font-medium">
+              University of Wisconsin-Madison
+            </div>
+            <p className="text-gray-600 dark:text-gray-400">
+              Gateway into the technical world, focusing on user support and assistive technologies. 
+              Developed troubleshooting skills and foundational database/automation concepts.
             </p>
           </div>
         </div>
@@ -129,10 +143,10 @@ const Hero: React.FC = () => {
             <h3 className="mb-6">Data Science & ML</h3>
             <div className="space-y-4">
               {[
-                { name: 'Python (Pandas, NumPy, Scikit-Learn)', level: 90 },
-                { name: 'SQL (MySQL, PostgreSQL, BigQuery)', level: 95 },
-                { name: 'Machine Learning & MLOps', level: 85 },
-                { name: 'Statistical Analysis', level: 90 }
+                { name: 'Python (Pandas, NumPy, Scikit-Learn)', level: 75 },
+                { name: 'SQL (MySQL, PostgreSQL)', level: 80 },
+                { name: 'Machine Learning', level: 60 },
+                { name: 'Statistical Analysis', level: 70 }
               ].map((skill) => (
                 <div key={skill.name}>
                   <div className="flex justify-between mb-2">
@@ -154,10 +168,10 @@ const Hero: React.FC = () => {
             <h3 className="mb-6">Business Intelligence</h3>
             <div className="space-y-4">
               {[
-                { name: 'Tableau & Power BI', level: 90 },
-                { name: 'Excel (Advanced)', level: 95 },
-                { name: 'Git/GitHub', level: 85 },
-                { name: 'ETL/Data Engineering', level: 80 }
+                { name: 'Tableau & Looker', level: 75 },
+                { name: 'Excel (Advanced)', level: 85 },
+                { name: 'Git/GitHub', level: 75 },
+                { name: 'ETL/Data Engineering', level: 65 }
               ].map((skill) => (
                 <div key={skill.name}>
                   <div className="flex justify-between mb-2">
@@ -178,7 +192,7 @@ const Hero: React.FC = () => {
 
         {/* Methodologies */}
         <div className="mt-16">
-          <h3 className="mb-8">Core Methodologies</h3>
+          <h3 className="mb-8">Key Focus Areas</h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div className="minimal-card p-6 text-center">
               <BarChart size={20} className="mx-auto mb-4 text-gray-600 dark:text-gray-400" />
@@ -186,8 +200,8 @@ const Hero: React.FC = () => {
               <ul className="text-small text-gray-600 dark:text-gray-400 space-y-1">
                 <li>Hypothesis Testing</li>
                 <li>Regression Analysis</li>
-                <li>ANOVA</li>
-                <li>Bayesian Statistics</li>
+                <li>A/B Testing</li>
+                <li>EDA & Validation</li>
               </ul>
             </div>
             
@@ -195,10 +209,10 @@ const Hero: React.FC = () => {
               <Brain size={20} className="mx-auto mb-4 text-gray-600 dark:text-gray-400" />
               <h4 className="font-medium mb-3">Machine Learning</h4>
               <ul className="text-small text-gray-600 dark:text-gray-400 space-y-1">
-                <li>Supervised Learning</li>
+                <li>Classification & Clustering</li>
                 <li>Feature Engineering</li>
                 <li>Model Validation</li>
-                <li>Hyperparameter Tuning</li>
+                <li>Performance Evaluation</li>
               </ul>
             </div>
             
@@ -207,9 +221,9 @@ const Hero: React.FC = () => {
               <h4 className="font-medium mb-3">Data Engineering</h4>
               <ul className="text-small text-gray-600 dark:text-gray-400 space-y-1">
                 <li>ETL Pipelines</li>
-                <li>Data Warehousing</li>
-                <li>API Integration</li>
-                <li>Performance Optimization</li>
+                <li>Data Cleaning</li>
+                <li>Pipeline Concepts</li>
+                <li>Database Optimization</li>
               </ul>
             </div>
           </div>
@@ -234,26 +248,33 @@ const Hero: React.FC = () => {
 
           {[
             {
-              title: "Global Health Data Intelligence",
-              description: "Advanced SQL analytics achieving 93.41% data quality. Identified 12.36 year development gap through demographic analysis and quantified COVID-19 impact across 183 countries.",
-              tags: ["SQL", "Statistical Analysis", "Healthcare"],
+              title: "World Life Expectancy Analysis",
+              description: "Advanced SQL data cleaning and analysis of global life expectancy data (2.9k records, 183 countries, 15 years). Achieved 93.41% data quality and quantified 12.36 year development gap.",
+              tags: ["SQL", "Data Quality", "Time-Series Analysis"],
               github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/world_life_expectancy",
               icon: <BarChart size={16} />
             },
             {
-              title: "Customer Intelligence & Marketing Analytics", 
-              description: "Machine learning customer segmentation using K-means clustering and A/B testing frameworks. Comprehensive marketing attribution analysis with CLV modeling.",
+              title: "UFood Customer Analysis", 
+              description: "Customer segmentation using K-means clustering and A/B testing for food delivery app optimization. Comprehensive analysis including customer journey mapping and CLV insights.",
               tags: ["Python", "Machine Learning", "Customer Analytics"],
               github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/ufood_analysis",
               demo: "https://tzolkowski96.github.io/analyst-builder-food-marketing-project/",
               icon: <Target size={16} />
             },
             {
-              title: "Automated Data Intelligence Platform",
-              description: "End-to-end Flask application for automated web data extraction with NLP, sentiment analysis, and real-time business intelligence dashboards.",
+              title: "Web Data Insights Explorer",
+              description: "Versatile Flask application for non-technical users to extract, analyze, and visualize web data. Features pattern-based extraction, NLP sentiment analysis, and ethical scraping practices.",
               tags: ["Python", "Flask", "NLP", "Business Intelligence"],
               github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/advanced_web_scraping_toolkit",
               icon: <Globe size={16} />
+            },
+            {
+              title: "US Household Income Analysis",
+              description: "Statistical analysis of US demographic data (32k+ records, 50 states) with weighted quality scoring. Identified 30% regional income gap and created reusable quality framework.",
+              tags: ["SQL", "Statistical Analysis", "Data Quality"],
+              github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/us-household-income-analysis",
+              icon: <BarChart size={16} />
             }
           ].map((project, index) => (
             <div key={project.title} className="minimal-card p-6">
@@ -331,6 +352,24 @@ const Hero: React.FC = () => {
               a learning opportunity and a chance to solve real-world problems with data."
             </p>
           </div>
+
+          <div className="minimal-card p-6">
+            <h3 className="mb-4">My Journey in Tech</h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
+              My path into data science wasn't traditional. Starting with Communication Science at RIT, I later 
+              transferred to UW-Madison for International Studies. It was during my undergraduate years I discovered 
+              a passion for data analysis, initially through class projects and self-exploration with Excel.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">
+              This interest grew, leading me to teach myself SQL and eventually pursue a Master's in Information 
+              Science at UW-Madison. Real growth came from hands-on projects: predicting employee churn, analyzing 
+              large datasets, and building data processing systems.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400">
+              My diverse background offers a unique perspective, helping translate technical results into actionable 
+              business strategies. I embrace AI tools to accelerate learning and tackle complex challenges faster.
+            </p>
+          </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div>
@@ -345,6 +384,11 @@ const Hero: React.FC = () => {
                   <div className="font-medium">Bachelor of Arts, International Studies</div>
                   <div className="text-gray-600 dark:text-gray-400">University of Wisconsin-Madison</div>
                   <div className="text-small text-gray-500">Research Methods, Quantitative Analysis</div>
+                </div>
+                <div className="border-l-2 border-gray-200 dark:border-gray-700 pl-4">
+                  <div className="font-medium">Communication Science Studies</div>
+                  <div className="text-gray-600 dark:text-gray-400">Rochester Institute of Technology</div>
+                  <div className="text-small text-gray-500">2 years</div>
                 </div>
               </div>
             </div>
@@ -395,10 +439,10 @@ const Hero: React.FC = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
-            { title: "Senior Data Analyst Roles", desc: "Advanced analytics and statistical modeling", icon: <Code size={16} /> },
-            { title: "Data Science Projects", desc: "ML and predictive analytics consulting", icon: <Brain size={16} /> },
+            { title: "Data Analyst Roles", desc: "Analysis, visualization, and statistical modeling", icon: <Code size={16} /> },
+            { title: "Data Science Projects", desc: "ML model implementation and evaluation", icon: <Brain size={16} /> },
             { title: "Business Intelligence", desc: "Dashboard development and data strategy", icon: <BarChart size={16} /> },
-            { title: "Data Engineering", desc: "ETL pipelines and data architecture", icon: <Database size={16} /> }
+            { title: "Data Engineering Tasks", desc: "ETL pipeline development and optimization", icon: <Database size={16} /> }
           ].map((item) => (
             <div key={item.title} className="minimal-card p-4">
               <div className="flex items-center mb-2">
