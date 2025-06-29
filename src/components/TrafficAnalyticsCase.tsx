@@ -139,7 +139,7 @@ const TrafficAnalyticsCase: React.FC<TrafficAnalyticsCaseProps> = ({ isExpanded,
                     <li>Level 2: ~6M accidents (dominant)</li>
                     <li>Level 3: ~1.3M accidents</li>
                     <li>Level 4: ~0.2M accidents</li>
-                    <li>Level 1: <0.1M accidents</li>
+                    <li>Level 1: {'<0.1M'} accidents</li>
                   </ul>
                 </div>
               </div>
