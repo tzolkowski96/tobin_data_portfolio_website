@@ -25,12 +25,12 @@ html.dark {
   background-color: #000000;
 }
 
-/* Smooth transitions for dark mode */
+/* Enhanced smooth transitions */
 * {
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* Focus states for accessibility */
+/* Enhanced focus states for accessibility */
 :focus {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
@@ -40,18 +40,24 @@ html.dark {
   outline: none;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar with enhanced styling */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #c1c1c1;
-  border-radius: 3px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
 }
 
 html.dark ::-webkit-scrollbar-track {
@@ -62,10 +68,15 @@ html.dark ::-webkit-scrollbar-thumb {
   background: #4a4a4a;
 }
 
-/* Ensure links are accessible */
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #6a6a6a;
+}
+
+/* Enhanced link styling */
 a {
   color: inherit;
   text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 a:hover {
@@ -78,13 +89,15 @@ section,
   scroll-margin-top: 6rem;
 }
 
-/* Smooth animations for skill bars */
+/* Enhanced skill bar animations */
 @keyframes fillBar {
   from {
     width: 0;
+    opacity: 0.5;
   }
   to {
     width: var(--target-width);
+    opacity: 1;
   }
 }
 
@@ -92,21 +105,21 @@ section,
   animation: fillBar 1.5s ease-out forwards;
 }
 
-/* Hover effects for project cards */
+/* Enhanced hover effects for project cards */
 .project-card {
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 html.dark .project-card:hover {
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
 }
 
-/* Loading animation for form submission */
+/* Enhanced loading animation */
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -117,69 +130,146 @@ html.dark .project-card:hover {
   animation: spin 1s linear infinite;
 }
 
-/* Sticky header backdrop blur */
+/* Enhanced backdrop blur */
 .backdrop-blur-sm {
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* Print styles */
-@media print {
-  body {
-    background: white !important;
-    color: black !important;
+/* Smooth animations for elements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  header,
-  footer {
-    display: none !important;
-  }
-  
-  .no-print {
-    display: none !important;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Responsive design improvements */
-@media (max-width: 768px) {
-  .grid-cols-4 {
-    grid-template-columns: repeat(2, 1fr);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .grid-cols-2 {
-    grid-template-columns: 1fr;
+  to {
+    opacity: 1;
   }
 }
 
-/* Enhanced focus for better accessibility */
-.focus-visible:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-/* Improved contrast for better readability */
-.text-gray-600 {
-  color: #4b5563;
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
-html.dark .text-gray-400 {
-  color: #9ca3af;
+/* Enhanced animations for case study expansion */
+@keyframes slide-in-from-top {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 2000px;
+  }
 }
 
-/* Button hover states */
-button:hover {
-  opacity: 0.8;
+.animate-in {
+  animation-duration: 0.4s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
 }
 
-/* Form input styling */
+.slide-in-from-top {
+  animation-name: slide-in-from-top;
+}
+
+/* Enhanced code syntax highlighting */
+pre {
+  background: #1a1a1a;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+html.dark pre {
+  background: #0f0f0f;
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.05);
+}
+
+/* Enhanced interactive elements */
+.group:hover .group-hover\:translate-x-1 {
+  transform: translateX(0.25rem);
+}
+
+.group:hover .group-hover\:text-blue-600 {
+  color: #2563eb;
+}
+
+html.dark .group:hover .group-hover\:text-blue-400 {
+  color: #60a5fa;
+}
+
+/* Enhanced accessibility for interactive charts */
+svg circle:focus {
+  outline: 3px solid #3b82f6;
+  outline-offset: 3px;
+}
+
+/* Enhanced gradient backgrounds */
+.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-from), var(--tw-gradient-to));
+}
+
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to));
+}
+
+/* Enhanced button states */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+/* Enhanced form elements */
 input:focus,
 textarea:focus {
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  transform: scale(1.01);
 }
 
 /* Image loading optimization */
 img {
   max-width: 100%;
   height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Enhanced hover states for images */
+img:hover {
+  transform: scale(1.02);
 }
 
 /* Prevent layout shift */
@@ -204,67 +294,173 @@ img {
   }
 }
 
-/* Animation for case study expansion */
-@keyframes slide-in-from-top {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
+/* Enhanced typography with better contrast */
+.text-gray-600 {
+  color: #4b5563;
+}
+
+html.dark .text-gray-400 {
+  color: #9ca3af;
+}
+
+/* Enhanced card hover effects */
+.hover\:shadow-lg:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+html.dark .hover\:shadow-lg:hover {
+  box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -2px rgba(255, 255, 255, 0.05);
+}
+
+/* Enhanced micro-interactions */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+.hover\:scale-110:hover {
+  transform: scale(1.1);
+}
+
+.hover\:scale-125:hover {
+  transform: scale(1.25);
+}
+
+/* Enhanced transition timings */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Enhanced animation delays */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  header,
+  footer {
+    display: none !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .border {
+    border: 1px solid #000 !important;
+  }
+  
+  .bg-gray-50,
+  .bg-gray-100,
+  .bg-gray-900 {
+    background: #f9f9f9 !important;
   }
 }
 
-.animate-in {
-  animation-duration: 0.3s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: forwards;
+/* Enhanced loading states */
+.loading {
+  position: relative;
+  overflow: hidden;
 }
 
-.slide-in-from-top {
-  animation-name: slide-in-from-top;
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  animation: shimmer 1.5s infinite;
 }
 
-/* Code syntax highlighting */
-pre {
-  background: #1a1a1a;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
+@keyframes shimmer {
+  100% {
+    left: 100%;
+  }
 }
 
-/* Interactive elements hover states */
-.group:hover .group-hover\:translate-x-1 {
-  transform: translateX(0.25rem);
+/* Enhanced accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
-.group:hover .group-hover\:text-blue-600 {
-  color: #2563eb;
+/* Enhanced focus indicators */
+.focus-visible:focus {
+  outline: 3px solid #3b82f6;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-html.dark .group:hover .group-hover\:text-blue-400 {
-  color: #60a5fa;
+/* Enhanced selection styles */
+::selection {
+  background-color: #3b82f6;
+  color: white;
 }
 
-/* Improved accessibility for interactive charts */
-svg circle:focus {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
+html.dark ::selection {
+  background-color: #60a5fa;
+  color: black;
 }
 
-/* Gradient backgrounds for enhanced visual appeal */
-.bg-gradient-to-br {
-  background-image: linear-gradient(to bottom right, var(--tw-gradient-from), var(--tw-gradient-to));
+/* Enhanced spacing utilities */
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 1.5rem;
 }
 
-/* Enhanced button styles */
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 2rem;
 }
 
-/* Newsletter signup styling */
-.bg-gradient-to-r {
-  background-image: linear-gradient(to right, var(--tw-gradient-from), var(--tw-gradient-to));
+/* Enhanced border utilities */
+.border-l-4 {
+  border-left-width: 4px;
+}
+
+.border-l-8 {
+  border-left-width: 8px;
+}
+
+/* Enhanced shadow utilities */
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+html.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -2px rgba(255, 255, 255, 0.05);
 }
