@@ -24,24 +24,25 @@ const ContactForm: React.FC = () => {
     try {
       const response = await fetch('https://formspree.io/f/myzggjel', {
         method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
+        body: formData
       });
 
       if (response.ok) {
         setStatus({ isSubmitting: false, isSubmitted: true, error: null });
         form.reset();
       } else {
-        const data = await response.json();
-        throw new Error(data.errors?.[0]?.message || 'Failed to send message');
+        if (response.status === 422) {
+          const data = await response.json();
+          throw new Error(data.errors?.map((e: any) => e.message).join(', ') || 'Validation error');
+        } else {
+          throw new Error('Failed to send message. Please try again.');
+        }
       }
     } catch (error) {
       setStatus({ 
         isSubmitting: false, 
         isSubmitted: false, 
-        error: error instanceof Error ? error.message : 'Failed to send message. Please try again.' 
+        error: error instanceof Error ? error.message : 'Network error. Please check your connection and try again.' 
       });
     }
   };
