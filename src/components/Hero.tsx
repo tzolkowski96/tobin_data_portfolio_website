@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
 
       {/* Experience Timeline */}
       <div id="experience" className="mb-20">
-        <h2 className="text-xl font-semibold mb-8">Professional Journey</h2>
+        <h2 className="text-xl font-semibold mb-8">Professional Experience</h2>
         
         <div className="space-y-6">
           <div className="border-l-2 border-gray-200 dark:border-gray-800 pl-6">
@@ -88,34 +88,36 @@ const Hero: React.FC = () => {
               <h3 className="font-medium">Data Analyst</h3>
               <span className="text-sm text-gray-500">July 2023 - Present</span>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 mb-2">Indiana University School of Medicine Department of Medical and Molecular Genetics</p>
+            <p className="text-gray-600 dark:text-gray-400 mb-2">Indiana University School of Medicine | Department of Medical and Molecular Genetics</p>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Working with researchers to transform complex biomedical datasets into meaningful insights. 
-              Focused on ETL processes, bridging technical/clinical gaps, handling sensitive data, and collaboration.
+              Transforming complex biomedical datasets into meaningful insights. Developing ETL processes 
+              improving data quality by 35%. Bridging technical and clinical requirements while ensuring 
+              HIPAA compliance in all data handling.
             </p>
           </div>
 
           <div className="border-l-2 border-gray-200 dark:border-gray-800 pl-6">
             <div className="flex items-center justify-between mb-2">
               <h3 className="font-medium">Business Data Analyst Intern</h3>
-              <span className="text-sm text-gray-500">July - Sept 2022</span>
+              <span className="text-sm text-gray-500">July 2022 - Sept 2022</span>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 mb-2">Telkomsel, Jakarta, Indonesia</p>
+            <p className="text-gray-600 dark:text-gray-400 mb-2">Telkomsel | Indonesia's largest telecommunications company</p>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Applied data analysis in a large-scale business environment. Gained experience with big data, 
-              marketing analytics, cross-functional teams, and presenting technical findings.
+              Applied data analysis in large-scale business environment. Built executive decision-making 
+              dashboards using Tableau. Collaborated with marketing teams to optimize campaigns and created 
+              reports influencing strategic business decisions.
             </p>
           </div>
 
           <div className="border-l-2 border-gray-200 dark:border-gray-800 pl-6">
             <div className="flex items-center justify-between mb-2">
               <h3 className="font-medium">Data Manager Intern</h3>
-              <span className="text-sm text-gray-500">June - Aug 2021</span>
+              <span className="text-sm text-gray-500">June 2021 - Aug 2021</span>
             </div>
             <p className="text-gray-600 dark:text-gray-400 mb-2">University of Wisconsin-Madison</p>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Focused on structured data governance in an academic setting. Developed skills in data quality, 
-              documentation, standardization, and understanding user needs.
+              Implemented data quality control measures and developed comprehensive documentation for data management. 
+              Standardized data entry procedures and created training materials for research assistants.
             </p>
           </div>
 
@@ -126,8 +128,9 @@ const Hero: React.FC = () => {
             </div>
             <p className="text-gray-600 dark:text-gray-400 mb-2">University of Wisconsin-Madison</p>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Gateway into the technical world, focusing on user support and assistive technologies. 
-              Developed troubleshooting skills and foundational database/automation concepts.
+              Provided technical support for faculty, staff, and students. Specialized in assistive technologies
+              and maintained inventory databases. Implemented automation solutions and developed technical 
+              documentation and user guides.
             </p>
           </div>
         </div>
