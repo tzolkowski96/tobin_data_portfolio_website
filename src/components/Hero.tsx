@@ -1,5 +1,8 @@
 import React from 'react';
 import { Github, Linkedin, Mail, ExternalLink, Download, MapPin, Calendar } from 'lucide-react';
+import CaseStudy from './CaseStudy';
+import SkillsVisualization from './SkillsVisualization';
+import TechnicalBlog from './TechnicalBlog';
 
 const Hero: React.FC = () => {
   return (
@@ -244,6 +247,17 @@ const Hero: React.FC = () => {
         <h2 className="text-xl font-semibold mb-8">Featured Projects</h2>
         
         <div className="space-y-8">
+          {/* Case Study Component */}
+          {(() => {
+            const [caseStudyExpanded, setCaseStudyExpanded] = React.useState(false);
+            return (
+              <CaseStudy 
+                isExpanded={caseStudyExpanded} 
+                onToggle={() => setCaseStudyExpanded(!caseStudyExpanded)} 
+              />
+            );
+          })()}
+
           <div className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:border-gray-300 dark:hover:border-gray-700 transition-colors">
             <div className="flex items-start space-x-4">
               <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -420,53 +434,16 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
+      {/* Interactive Skills Visualization */}
+      <div className="mb-20">
+        <h2 className="text-xl font-semibold mb-8">Skills Visualization</h2>
+        <SkillsVisualization />
+      </div>
+
       {/* About Section - Updated with accurate education and background */}
       {/* Featured Writing */}
       <div className="mb-20">
-        <h2 className="text-xl font-semibold mb-8">Featured Writing</h2>
-        
-        <div className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:border-gray-300 dark:hover:border-gray-700 transition-colors">
-          <div className="flex items-start space-x-4">
-            <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <line x1="10" y1="9" x2="8" y2="9"></line>
-              </svg>
-            </div>
-            <div className="flex-1">
-              <h3 className="font-medium mb-2">From Drag and Drop to Code: My Tableau to LookML Journey</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-3">
-                A personal journey exploring the transition from visual BI tools to code-based analytics with LookML.
-                This article discusses the learning process, challenges, and benefits of expanding beyond drag-and-drop tools.
-              </p>
-              <div className="flex items-center space-x-4 text-sm">
-                <a 
-                  href="https://medium.com/@grateful_aqua_goat_147/from-drag-and-drop-to-code-my-tableau-to-lookml-journey-fde0165ada94"
-                  target="_blank"
-                  rel="noopener noreferrer" 
-                  className="text-blue-600 dark:text-blue-400 hover:underline flex items-center"
-                >
-                  <ExternalLink size={14} className="mr-1" /> Read Article
-                </a>
-                <span className="text-gray-500">Tableau • LookML • Data Visualization</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="mt-8 text-center">
-          <a 
-            href="https://medium.com/@grateful_aqua_goat_147" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline"
-          >
-            View all articles on Medium <ExternalLink size={16} className="ml-1" />
-          </a>
-        </div>
+        <TechnicalBlog />
       </div>
 
       <div id="about" className="mb-20">
