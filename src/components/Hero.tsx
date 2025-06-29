@@ -12,6 +12,63 @@ const Hero: React.FC = () => {
       
       {/* Profile Section */}
       <div className="mb-20">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:space-x-8 mb-8">
+          <div className="flex-shrink-0 mb-6 sm:mb-0">
+            <img 
+              src="/1741090918274.jpeg" 
+              alt="Tobin Zolkowski"
+              className="w-32 h-32 rounded-full object-cover border border-gray-200 dark:border-gray-800"
+            />
+          </div>
+          
+          <div className="flex-1">
+            <h1 className="mb-4">Tobin Zolkowski</h1>
+            <p className="text-large text-gray-600 dark:text-gray-400 mb-6 max-w-2xl">
+              Senior Data Analyst specializing in machine learning, predictive analytics, and business intelligence
+            </p>
+            
+            <div className="flex items-center space-x-6 text-small text-gray-500 dark:text-gray-500 mb-8">
+              <div className="flex items-center">
+                <MapPin size={14} className="mr-1.5" />
+                Madison, WI
+              </div>
+              <div className="flex items-center">
+                <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                Available for opportunities
+              </div>
+            </div>
+
+            <a 
+              href="/Tobin_Zolkowski_Data_Professional_Resume_2025.pdf" 
+              download
+              className="minimal-button"
+            >
+              <Download size={16} className="mr-2" />
+              Download Resume
+            </a>
+          </div>
+        </div>
+
+        {/* Key Metrics */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+          <div>
+            <div className="text-2xl font-semibold mb-1">98%</div>
+            <div className="text-small text-gray-600 dark:text-gray-400">Model Accuracy</div>
+          </div>
+          <div>
+            <div className="text-2xl font-semibold mb-1">7.7M</div>
+            <div className="text-small text-gray-600 dark:text-gray-400">Records Analyzed</div>
+          </div>
+          <div>
+            <div className="text-2xl font-semibold mb-1">35%</div>
+            <div className="text-small text-gray-600 dark:text-gray-400">Cost Reduction</div>
+          </div>
+          <div>
+            <div className="text-2xl font-semibold mb-1">4+</div>
+            <div className="text-small text-gray-600 dark:text-gray-400">Years Experience</div>
+          </div>
+        </div>
+      </div>
         <div className="mb-8">
           <h1 className="mb-4">Tobin Zolkowski</h1>
           <p className="text-large text-gray-600 dark:text-gray-400 mb-6 max-w-2xl">
