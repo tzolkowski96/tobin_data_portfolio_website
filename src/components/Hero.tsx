@@ -13,8 +13,8 @@ const Hero: React.FC = () => {
     <div className="max-w-2xl mx-auto px-6 py-16">
       
       {/* Enhanced Profile Section */}
-      <div className="flex items-start space-x-6 mb-12 group">
-        <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-200 dark:border-gray-800 flex-shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:border-gray-400 dark:group-hover:border-gray-600">
+      <div className="flex flex-col sm:flex-row items-start space-y-6 sm:space-y-0 sm:space-x-6 mb-12 group">
+        <div className="w-24 h-24 mx-auto sm:mx-0 rounded-full overflow-hidden border-2 border-gray-200 dark:border-gray-800 flex-shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:border-gray-400 dark:group-hover:border-gray-600">
           <img 
             src="/profile-image.jpg" 
             alt="Tobin Zolkowski" 
@@ -28,8 +28,8 @@ const Hero: React.FC = () => {
         </div>
         
         <div className="flex-1">
-          <div className="flex items-center justify-between mb-4">
-            <h1 className="text-2xl font-semibold transition-colors duration-300 hover:text-gray-600 dark:hover:text-gray-300">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 space-y-3 sm:space-y-0">
+            <h1 className="text-xl sm:text-2xl font-semibold transition-colors duration-300 hover:text-gray-600 dark:hover:text-gray-300 text-center sm:text-left">
               Tobin Zolkowski
             </h1>
             <a 
@@ -42,42 +42,43 @@ const Hero: React.FC = () => {
             </a>
           </div>
           
-          <p className="text-lg leading-relaxed mb-6 transition-colors duration-300">
+          <p className="text-base sm:text-lg leading-relaxed mb-6 transition-colors duration-300 text-center sm:text-left">
             <strong>Senior Data Analyst</strong> specializing in <strong>machine learning</strong>, <strong>predictive analytics</strong>, and <strong>business intelligence</strong>. 
             Expert in <strong>Python</strong>, <strong>SQL</strong>, and <strong>data engineering</strong> with proven track record of delivering actionable insights.
           </p>
           
           {/* Key Achievements Highlight */}
           <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4 mb-6 border border-gray-200 dark:border-gray-800">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-center">
               <div className="group hover:scale-105 transition-transform duration-300">
-                <div className="text-xl font-bold text-black dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300">98%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">ML Model Accuracy</div>
+                <div className="text-lg sm:text-xl font-bold text-black dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300">98%</div>
+                <div className="text-xs text-gray-600 dark:text-gray-400 leading-tight">ML Model Accuracy</div>
               </div>
               <div className="group hover:scale-105 transition-transform duration-300">
-                <div className="text-xl font-bold text-black dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300">7.7M</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">Records Analyzed</div>
+                <div className="text-lg sm:text-xl font-bold text-black dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300">7.7M</div>
+                <div className="text-xs text-gray-600 dark:text-gray-400 leading-tight">Records Analyzed</div>
               </div>
               <div className="group hover:scale-105 transition-transform duration-300">
-                <div className="text-xl font-bold text-black dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300">35%</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">Cost Reduction</div>
+                <div className="text-lg sm:text-xl font-bold text-black dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300">35%</div>
+                <div className="text-xs text-gray-600 dark:text-gray-400 leading-tight">Cost Reduction</div>
               </div>
               <div className="group hover:scale-105 transition-transform duration-300">
-                <div className="text-xl font-bold text-black dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300">4+</div>
-                <div className="text-xs text-gray-600 dark:text-gray-400">Years Experience</div>
+                <div className="text-lg sm:text-xl font-bold text-black dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors duration-300">4+</div>
+                <div className="text-xs text-gray-600 dark:text-gray-400 leading-tight">Years Experience</div>
               </div>
             </div>
           </div>
           
-          <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 space-x-4">
-            <div className="flex items-center hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300">
+          <div className="flex flex-col sm:flex-row items-center text-sm text-gray-600 dark:text-gray-400 space-y-2 sm:space-y-0 sm:space-x-4">
+            <div className="flex items-center hover:text-gray-800 dark:hover:text-gray-200 transition-colors duration-300 justify-center sm:justify-start">
               <MapPin size={14} className="mr-1" />
               Madison, WI
             </div>
-            <div className="flex items-center group">
+            <div className="flex items-center group justify-center sm:justify-start">
               <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
               <Calendar size={14} className="mr-1" />
-              Open to Data Science & Analytics Roles
+              <span className="hidden sm:inline">Open to Data Science & Analytics Roles</span>
+              <span className="sm:hidden">Available</span>
             </div>
           </div>
         </div>
@@ -100,7 +101,7 @@ const Hero: React.FC = () => {
         <div className="space-y-6">
           <div className="border-l-2 border-gray-200 dark:border-gray-800 pl-6 relative transition-all duration-300 hover:border-gray-400 dark:hover:border-gray-600 group">
             <div className="absolute w-3 h-3 bg-gray-900 dark:bg-white rounded-full -left-[7px] top-2 transition-transform duration-300 group-hover:scale-125"></div>
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 space-y-1 sm:space-y-0">
               <h3 className="font-medium transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">Data Analyst</h3>
               <span className="text-sm text-gray-500">July 2023 - Present</span>
             </div>
@@ -114,7 +115,7 @@ const Hero: React.FC = () => {
 
           <div className="border-l-2 border-gray-200 dark:border-gray-800 pl-6 relative transition-all duration-300 hover:border-gray-400 dark:hover:border-gray-600 group">
             <div className="absolute w-3 h-3 bg-gray-900 dark:bg-white rounded-full -left-[7px] top-2 transition-transform duration-300 group-hover:scale-125"></div>
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 space-y-1 sm:space-y-0">
               <h3 className="font-medium transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">Business Data Analyst Intern</h3>
               <span className="text-sm text-gray-500">July 2022 - Sept 2022</span>
             </div>
@@ -128,7 +129,7 @@ const Hero: React.FC = () => {
 
           <div className="border-l-2 border-gray-200 dark:border-gray-800 pl-6 relative transition-all duration-300 hover:border-gray-400 dark:hover:border-gray-600 group">
             <div className="absolute w-3 h-3 bg-gray-900 dark:bg-white rounded-full -left-[7px] top-2 transition-transform duration-300 group-hover:scale-125"></div>
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 space-y-1 sm:space-y-0">
               <h3 className="font-medium transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">Data Manager Intern</h3>
               <span className="text-sm text-gray-500">June 2021 - Aug 2021</span>
             </div>
@@ -142,7 +143,7 @@ const Hero: React.FC = () => {
 
           <div className="border-l-2 border-gray-200 dark:border-gray-800 pl-6 relative transition-all duration-300 hover:border-gray-400 dark:hover:border-gray-600 group">
             <div className="absolute w-3 h-3 bg-gray-900 dark:bg-white rounded-full -left-[7px] top-2 transition-transform duration-300 group-hover:scale-125"></div>
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 space-y-1 sm:space-y-0">
               <h3 className="font-medium transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">IT Support Assistant</h3>
               <span className="text-sm text-gray-500">Sept 2019 - April 2021</span>
             </div>
@@ -166,7 +167,7 @@ const Hero: React.FC = () => {
           <div className="absolute bottom-0 left-0 w-12 h-0.5 bg-gray-900 dark:bg-white"></div>
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
           <div className="space-y-6">
             <h3 className="font-medium mb-4">Data Science & Machine Learning</h3>
             <div className="space-y-4">
@@ -232,10 +233,10 @@ const Hero: React.FC = () => {
 
         <div className="mt-8 p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-colors duration-300">
           <div className="text-center">
-            <p className="text-sm text-gray-600 dark:text-gray-400 italic mb-2">
+            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 italic mb-2">
               Proficiency levels based on real-world project implementation and business impact
             </p>
-            <div className="flex justify-center space-x-6 text-xs text-gray-500 dark:text-gray-500">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-6 text-xs text-gray-500 dark:text-gray-500">
               <span>• <strong>Advanced Analytics</strong></span>
               <span>• <strong>Statistical Modeling</strong></span>
               <span>• <strong>Data Architecture</strong></span>
@@ -252,7 +253,7 @@ const Hero: React.FC = () => {
           <div className="absolute bottom-0 left-0 w-12 h-0.5 bg-gray-900 dark:bg-white"></div>
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {[
             {
               category: "Statistical Analysis",
@@ -290,12 +291,12 @@ const Hero: React.FC = () => {
 
         <div className="mt-8 bg-gray-50 dark:bg-gray-900 rounded-lg p-6 border border-gray-200 dark:border-gray-800">
           <h4 className="font-medium mb-4 text-center">Industry Applications & Domain Expertise</h4>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 text-center text-xs sm:text-sm">
             {[
               "Healthcare Analytics", "Telecommunications", "Employee Analytics", "Traffic Safety",
               "Marketing Analytics", "Risk Assessment", "Predictive Maintenance", "Customer Segmentation"
             ].map((domain, index) => (
-              <div key={domain} className="bg-white dark:bg-gray-800 p-3 rounded border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 hover:scale-105 group">
+              <div key={domain} className="bg-white dark:bg-gray-800 p-2 sm:p-3 rounded border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 hover:scale-105 group">
                 <span className="text-gray-600 dark:text-gray-400 group-hover:text-gray-800 dark:group-hover:text-gray-200 transition-colors duration-300">
                   {domain}
                 </span>
@@ -362,14 +363,14 @@ const Hero: React.FC = () => {
                     {project.description}
                   </p>
                   <div className="flex items-center justify-between">
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1 sm:gap-2">
                       {project.tags.map((tag) => (
-                        <span key={tag} className="text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-2 py-1 rounded transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <span key={tag} className="text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-1.5 sm:px-2 py-1 rounded transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700">
                           {tag}
                         </span>
                       ))}
                     </div>
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-2 sm:space-x-3 flex-shrink-0 ml-2">
                       <a 
                         href={project.github}
                         target="_blank"
@@ -453,7 +454,7 @@ const Hero: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             <div className="space-y-4">
               <h3 className="font-medium mb-3">Educational Background</h3>
               <div className="space-y-3">
@@ -543,7 +544,7 @@ const Hero: React.FC = () => {
           <div className="absolute bottom-0 left-0 w-12 h-0.5 bg-gray-900 dark:bg-white"></div>
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
             { title: "Senior Data Analyst Roles", desc: "Advanced analytics, BI, and statistical modeling", icon: "💼" },
             { title: "Data Science Projects", desc: "Machine learning and predictive analytics consulting", icon: "📋" },
@@ -562,7 +563,7 @@ const Hero: React.FC = () => {
 
         <div className="mt-8 bg-gray-50 dark:bg-gray-900 rounded-lg p-6 border border-gray-200 dark:border-gray-800">
           <h4 className="font-medium mb-4 text-center">Core Value Proposition</h4>
-          <div className="text-center space-y-2 text-sm text-gray-600 dark:text-gray-400">
+          <div className="text-center space-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
             <p>✓ <strong>Proven Track Record:</strong> 98% model accuracy, 35% cost reduction, 7.7M+ records analyzed</p>
             <p>✓ <strong>Technical Excellence:</strong> Advanced Python, SQL, machine learning, and statistical analysis</p>
             <p>✓ <strong>Business Impact:</strong> Translating complex data into actionable insights and strategic value</p>

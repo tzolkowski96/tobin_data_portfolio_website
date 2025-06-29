@@ -32,7 +32,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white overflow-x-hidden">
       <Header />
       <main>
         <Hero />

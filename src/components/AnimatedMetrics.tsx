@@ -92,14 +92,14 @@ const AnimatedMetrics: React.FC = () => {
   };
 
   return (
-    <div id="animated-metrics" className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 p-6 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 hover:shadow-lg group">
+    <div id="animated-metrics" className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-12 p-4 sm:p-6 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 hover:shadow-lg group">
       {metrics.map((metric, index) => (
         <div key={metric.label} className="text-center group/item">
-          <div className="flex justify-center mb-2 transition-transform duration-300 group-hover/item:scale-110 group-hover/item:text-blue-600 dark:group-hover/item:text-blue-400">
+          <div className="flex justify-center mb-1 sm:mb-2 transition-transform duration-300 group-hover/item:scale-110 group-hover/item:text-blue-600 dark:group-hover/item:text-blue-400">
             {metric.icon}
           </div>
           <div 
-            className="text-2xl font-semibold text-black dark:text-white transition-all duration-300 group-hover/item:text-blue-600 dark:group-hover/item:text-blue-400"
+            className="text-xl sm:text-2xl font-semibold text-black dark:text-white transition-all duration-300 group-hover/item:text-blue-600 dark:group-hover/item:text-blue-400"
             style={{
               transform: isVisible ? 'scale(1)' : 'scale(0.8)',
               opacity: isVisible ? 1 : 0.5,
@@ -108,17 +108,17 @@ const AnimatedMetrics: React.FC = () => {
           >
             {formatValue(animatedValues[index], metric.suffix)}{metric.suffix}
           </div>
-          <div className="text-xs text-gray-600 dark:text-gray-400 font-medium mb-1 leading-tight">
+          <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1 leading-tight">
             {metric.label}
           </div>
-          <div className="text-xs text-gray-500 dark:text-gray-500 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 leading-tight">
+          <div className="text-xs text-gray-500 dark:text-gray-500 opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 leading-tight hidden sm:block">
             {metric.description}
           </div>
         </div>
       ))}
       
-      <div className="col-span-2 md:col-span-4 mt-4 pt-4 border-t border-gray-200 dark:border-gray-800">
-        <p className="text-xs text-gray-500 dark:text-gray-500 text-center italic">
+      <div className="col-span-2 sm:col-span-4 mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-200 dark:border-gray-800">
+        <p className="text-xs text-gray-500 dark:text-gray-500 text-center italic leading-tight">
           Key Performance Indicators demonstrating measurable business impact and technical excellence
         </p>
       </div>

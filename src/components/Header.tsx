@@ -42,21 +42,21 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="max-w-2xl mx-auto px-6 py-8 sticky top-0 bg-white/80 dark:bg-black/80 backdrop-blur-sm z-50">
+    <header className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 sticky top-0 bg-white/80 dark:bg-black/80 backdrop-blur-sm z-50">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-semibold">
+        <h1 className="text-xl sm:text-2xl font-semibold">
           <a href="#" className="hover:opacity-80 transition-opacity">
             Tobin Zolkowski
           </a>
         </h1>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
+        <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
           {navItems.map((item) => (
             <a 
               key={item.href}
               href={item.href} 
-              className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+              className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
             >
               {item.label}
             </a>
@@ -72,7 +72,7 @@ const Header: React.FC = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center space-x-4">
+        <div className="lg:hidden flex items-center space-x-4">
           <button
             onClick={toggleDarkMode}
             className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
@@ -93,13 +93,13 @@ const Header: React.FC = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <nav className="md:hidden mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
+        <nav className="lg:hidden mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
           <div className="flex flex-col space-y-4">
             {navItems.map((item) => (
               <a 
                 key={item.href}
                 href={item.href} 
-                className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-center py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
