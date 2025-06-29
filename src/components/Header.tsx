@@ -1,7 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    // Check for saved theme preference or default to 'light'
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      setDarkMode(true);
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
 
   const toggleDarkMode = () => {
     const newDarkMode = !darkMode;
@@ -9,35 +22,92 @@ const Header: React.FC = () => {
     
     if (newDarkMode) {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   };
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const navItems = [
+    { href: '#experience', label: 'Experience' },
+    { href: '#skills', label: 'Skills' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#about', label: 'About' },
+    { href: '#contact', label: 'Contact' }
+  ];
+
   return (
-    <header className="max-w-2xl mx-auto px-6 py-8">
+    <header className="max-w-2xl mx-auto px-6 py-8 sticky top-0 bg-white/80 dark:bg-black/80 backdrop-blur-sm z-50">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-semibold">Tobin Zolkowski</h1>
+        <h1 className="text-2xl font-semibold">
+          <a href="#" className="hover:opacity-80 transition-opacity">
+            Tobin Zolkowski
+          </a>
+        </h1>
         
-        <nav className="flex items-center space-x-8">
-          <a href="#about" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
-            About
-          </a>
-          <a href="#projects" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
-            Projects
-          </a>
-          <a href="#contact" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors">
-            Contact
-          </a>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center space-x-6">
+          {navItems.map((item) => (
+            <a 
+              key={item.href}
+              href={item.href} 
+              className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+            >
+              {item.label}
+            </a>
+          ))}
           
           <button
             onClick={toggleDarkMode}
-            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors ml-4"
+            aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {darkMode ? '☀️' : '🌙'}
           </button>
         </nav>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden flex items-center space-x-4">
+          <button
+            onClick={toggleDarkMode}
+            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+            aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          >
+            {darkMode ? '☀️' : '🌙'}
+          </button>
+          
+          <button
+            onClick={toggleMobileMenu}
+            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+            aria-label="Toggle mobile menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Navigation */}
+      {mobileMenuOpen && (
+        <nav className="md:hidden mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
+          <div className="flex flex-col space-y-4">
+            {navItems.map((item) => (
+              <a 
+                key={item.href}
+                href={item.href} 
+                className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </nav>
+      )}
     </header>
   );
 };

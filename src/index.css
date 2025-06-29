@@ -75,7 +75,51 @@ a:hover {
 /* Section scroll margins for navigation */
 section,
 [id] {
-  scroll-margin-top: 2rem;
+  scroll-margin-top: 6rem;
+}
+
+/* Smooth animations for skill bars */
+@keyframes fillBar {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--target-width);
+  }
+}
+
+.skill-bar {
+  animation: fillBar 1.5s ease-out forwards;
+}
+
+/* Hover effects for project cards */
+.project-card {
+  transition: all 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+html.dark .project-card:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+/* Loading animation for form submission */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Sticky header backdrop blur */
+.backdrop-blur-sm {
+  backdrop-filter: blur(8px);
 }
 
 /* Print styles */
@@ -88,5 +132,74 @@ section,
   header,
   footer {
     display: none !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Responsive design improvements */
+@media (max-width: 768px) {
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Enhanced focus for better accessibility */
+.focus-visible:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Improved contrast for better readability */
+.text-gray-600 {
+  color: #4b5563;
+}
+
+html.dark .text-gray-400 {
+  color: #9ca3af;
+}
+
+/* Button hover states */
+button:hover {
+  opacity: 0.8;
+}
+
+/* Form input styling */
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Image loading optimization */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent layout shift */
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+/* Enhanced mobile experience */
+@media (max-width: 640px) {
+  .max-w-2xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+  
+  .grid-cols-4 {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
   }
 }
