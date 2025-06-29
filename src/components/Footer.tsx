@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
               rel="noopener noreferrer"
               className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
-              Medium
+              Medium Blog
             </a>
             <a 
               href="https://tobinzolkowski.substack.com/" 
@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
               rel="noopener noreferrer"
               className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
-              Substack
+              Newsletter
             </a>
           </div>
         </div>
