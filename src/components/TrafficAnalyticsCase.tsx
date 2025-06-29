@@ -156,7 +156,7 @@ const TrafficAnalyticsCase: React.FC<TrafficAnalyticsCaseProps> = ({ isExpanded,
                 <p className="text-gray-600 dark:text-gray-400 mb-2"><strong>Model Performance:</strong></p>
                 <ul className="text-gray-600 dark:text-gray-400 space-y-1">
                   <li>78% accuracy in severity prediction</li>
-                  <li>Statistical significance confirmed (p < 0.001)</li>
+                  <li>Statistical significance confirmed (p &lt; 0.001)</li>
                   <li>Robust cross-validation scores</li>
                 </ul>
               </div>
