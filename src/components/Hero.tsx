@@ -2,6 +2,7 @@ import React from 'react';
 import { Github, Linkedin, Download, MapPin, ArrowRight, Database, Code, BarChart, Target, Globe, Brain } from 'lucide-react';
 import CaseStudy from './CaseStudy';
 import TrafficAnalyticsCase from './TrafficAnalyticsCase';
+import WorldLifeExpectancyCase from './WorldLifeExpectancyCase';
 import TechnicalBlog from './TechnicalBlog';
 
 const Hero: React.FC = () => {
@@ -253,14 +254,12 @@ const Hero: React.FC = () => {
             onToggle={() => setExpandedCase(expandedCase === 'traffic' ? null : 'traffic')}
           />
 
+          <WorldLifeExpectancyCase
+            isExpanded={expandedCase === 'life-expectancy'}
+            onToggle={() => setExpandedCase(expandedCase === 'life-expectancy' ? null : 'life-expectancy')}
+          />
+
           {[
-            {
-              title: "World Life Expectancy Analysis",
-              description: "Advanced SQL data cleaning and analysis of global life expectancy data (2.9k records, 183 countries, 15 years). Achieved 93.41% data quality and quantified 12.36 year development gap.",
-              tags: ["SQL", "Data Quality", "Time-Series Analysis"],
-              github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/world_life_expectancy",
-              icon: <BarChart size={16} />
-            },
             {
               title: "UFood Customer Analysis", 
               description: "Customer segmentation using K-means clustering and A/B testing for food delivery app optimization. Comprehensive analysis including customer journey mapping and CLV insights.",
