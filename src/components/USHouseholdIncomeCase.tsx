@@ -224,7 +224,7 @@ const USHouseholdIncomeCase: React.FC<USHouseholdIncomeCaseProps> = ({ isExpande
                 <p className="text-gray-600 dark:text-gray-400 mb-2"><strong>Production Framework:</strong></p>
                 <ul className="text-gray-600 dark:text-gray-400 space-y-1">
                   <li>4 focused analytical procedures</li>
-                  <li>Executive dashboard in <45 seconds</li>
+                  <li>Executive dashboard in &lt;45 seconds</li>
                   <li>Parameterized stored procedures</li>
                   <li>Comprehensive error handling</li>
                 </ul>
