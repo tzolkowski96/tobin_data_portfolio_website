@@ -3,6 +3,7 @@ import { Github, Linkedin, Download, MapPin, ArrowRight, Database, Code, BarChar
 import CaseStudy from './CaseStudy';
 import TrafficAnalyticsCase from './TrafficAnalyticsCase';
 import WorldLifeExpectancyCase from './WorldLifeExpectancyCase';
+import UFoodCase from './UFoodCase';
 import TechnicalBlog from './TechnicalBlog';
 
 const Hero: React.FC = () => {
@@ -254,20 +255,17 @@ const Hero: React.FC = () => {
             onToggle={() => setExpandedCase(expandedCase === 'traffic' ? null : 'traffic')}
           />
 
+          <UFoodCase
+            isExpanded={expandedCase === 'ufood'}
+            onToggle={() => setExpandedCase(expandedCase === 'ufood' ? null : 'ufood')}
+          />
+
           <WorldLifeExpectancyCase
             isExpanded={expandedCase === 'life-expectancy'}
             onToggle={() => setExpandedCase(expandedCase === 'life-expectancy' ? null : 'life-expectancy')}
           />
 
           {[
-            {
-              title: "UFood Customer Analysis", 
-              description: "Customer segmentation using K-means clustering and A/B testing for food delivery app optimization. Comprehensive analysis including customer journey mapping and CLV insights.",
-              tags: ["Python", "Machine Learning", "Customer Analytics"],
-              github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/ufood_analysis",
-              demo: "https://tzolkowski96.github.io/analyst-builder-food-marketing-project/",
-              icon: <Target size={16} />
-            },
             {
               title: "Web Data Insights Explorer",
               description: "Versatile Flask application for non-technical users to extract, analyze, and visualize web data. Features pattern-based extraction, NLP sentiment analysis, and ethical scraping practices.",
