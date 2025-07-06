@@ -4,6 +4,7 @@ import CaseStudy from './CaseStudy';
 import TrafficAnalyticsCase from './TrafficAnalyticsCase';
 import WorldLifeExpectancyCase from './WorldLifeExpectancyCase';
 import UFoodCase from './UFoodCase';
+import USHouseholdIncomeCase from './USHouseholdIncomeCase';
 import TechnicalBlog from './TechnicalBlog';
 
 const Hero: React.FC = () => {
@@ -265,6 +266,11 @@ const Hero: React.FC = () => {
             onToggle={() => setExpandedCase(expandedCase === 'life-expectancy' ? null : 'life-expectancy')}
           />
 
+          <USHouseholdIncomeCase
+            isExpanded={expandedCase === 'us-income'}
+            onToggle={() => setExpandedCase(expandedCase === 'us-income' ? null : 'us-income')}
+          />
+
           {[
             {
               title: "Web Data Insights Explorer",
@@ -273,13 +279,6 @@ const Hero: React.FC = () => {
               github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/advanced_web_scraping_toolkit",
               icon: <Globe size={16} />
             },
-            {
-              title: "US Household Income Analysis",
-              description: "Statistical analysis of US demographic data (32k+ records, 50 states) with weighted quality scoring. Identified 30% regional income gap and created reusable quality framework.",
-              tags: ["SQL", "Statistical Analysis", "Data Quality"],
-              github: "https://github.com/tzolkowski96/tzolkowski96/tree/main/us-household-income-analysis",
-              icon: <BarChart size={16} />
-            }
           ].map((project, index) => (
             <div key={project.title} className="minimal-card p-6">
               <div className="flex items-start space-x-4">
