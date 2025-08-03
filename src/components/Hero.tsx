@@ -20,31 +20,31 @@ const Hero: React.FC = () => {
             <img 
               src="/1741090918274.jpeg" 
               alt="Tobin Zolkowski"
-              className="w-32 h-32 rounded-full object-cover border border-gray-200 dark:border-gray-800"
+              className="profile-image w-36 h-36 rounded-full object-cover border-2 border-gray-200 dark:border-gray-800 shadow-xl hover:shadow-2xl transition-all duration-500"
             />
           </div>
           
           <div className="flex-1">
-            <h1 className="mb-4">Tobin Zolkowski</h1>
-            <p className="text-large text-gray-600 dark:text-gray-400 mb-6 max-w-2xl">
+            <h1 className="mb-6 fade-in">Tobin Zolkowski</h1>
+            <p className="text-large text-gray-600 dark:text-gray-400 mb-8 max-w-2xl fade-in">
               Data Professional focused on analysis, SQL, and machine learning with a growth mindset and commitment to continuous learning
             </p>
             
-            <div className="flex items-center space-x-6 text-small text-gray-500 dark:text-gray-500 mb-8">
+            <div className="flex items-center space-x-6 text-small text-gray-500 dark:text-gray-500 mb-8 fade-in">
               <div className="flex items-center">
                 <MapPin size={14} className="mr-1.5" />
                 Madison, WI
               </div>
-              <div className="flex items-center">
-                <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+              <div className="status-indicator status-available">
+                <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
                 Available for opportunities
               </div>
             </div>
 
-            <a 
+            <a
               href="/Tobin_Zolkowski_Data_Professional_Resume_2025.pdf" 
               download
-              className="minimal-button"
+              className="minimal-button fade-in"
             >
               <Download size={16} className="mr-2" />
               Download Resume
@@ -53,21 +53,21 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Key Metrics */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
-          <div>
-            <div className="text-2xl font-semibold mb-1">98%</div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+          <div className="metric-card fade-in">
+            <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">98%</div>
             <div className="text-small text-gray-600 dark:text-gray-400">Model Accuracy</div>
           </div>
-          <div>
-            <div className="text-2xl font-semibold mb-1">7.7M</div>
+          <div className="metric-card fade-in">
+            <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">7.7M</div>
             <div className="text-small text-gray-600 dark:text-gray-400">Records Analyzed</div>
           </div>
-          <div>
-            <div className="text-2xl font-semibold mb-1">93.41%</div>
+          <div className="metric-card fade-in">
+            <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">93.41%</div>
             <div className="text-small text-gray-600 dark:text-gray-400">Data Quality</div>
           </div>
-          <div>
-            <div className="text-2xl font-semibold mb-1">4+</div>
+          <div className="metric-card fade-in">
+            <div className="text-3xl font-bold mb-2 bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">4+</div>
             <div className="text-small text-gray-600 dark:text-gray-400">Years Experience</div>
           </div>
         </div>
@@ -145,12 +145,12 @@ const Hero: React.FC = () => {
 
       {/* Skills */}
       <section id="skills" className="mb-20">
-        <h2 className="mb-4">Skills</h2>
+        <h2 className="mb-6">Skills</h2>
         <div className="section-divider"></div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
-            <h3 className="mb-6">Data Science & ML</h3>
+            <h3 className="mb-8">Data Science & ML</h3>
             <div className="space-y-4">
               {[
                 { name: 'Python (Pandas, NumPy, Scikit-Learn)', level: 75 },
@@ -159,15 +159,12 @@ const Hero: React.FC = () => {
                 { name: 'Statistical Analysis', level: 70 }
               ].map((skill) => (
                 <div key={skill.name}>
-                  <div className="flex justify-between mb-2">
+                  <div className="flex justify-between mb-3">
                     <span className="text-small font-medium">{skill.name}</span>
-                    <span className="text-small text-gray-500">{skill.level}%</span>
+                    <span className="text-xs text-gray-500 font-mono">{skill.level}%</span>
                   </div>
-                  <div className="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-1">
-                    <div 
-                      className="bg-black dark:bg-white h-1 rounded-full"
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{ width: `${skill.level}%` }}></div>
                   </div>
                 </div>
               ))}
@@ -175,7 +172,7 @@ const Hero: React.FC = () => {
           </div>
           
           <div>
-            <h3 className="mb-6">Business Intelligence</h3>
+            <h3 className="mb-8">Business Intelligence</h3>
             <div className="space-y-4">
               {[
                 { name: 'Tableau & Looker', level: 75 },
@@ -184,15 +181,12 @@ const Hero: React.FC = () => {
                 { name: 'ETL/Data Engineering', level: 65 }
               ].map((skill) => (
                 <div key={skill.name}>
-                  <div className="flex justify-between mb-2">
+                  <div className="flex justify-between mb-3">
                     <span className="text-small font-medium">{skill.name}</span>
-                    <span className="text-small text-gray-500">{skill.level}%</span>
+                    <span className="text-xs text-gray-500 font-mono">{skill.level}%</span>
                   </div>
-                  <div className="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-1">
-                    <div 
-                      className="bg-black dark:bg-white h-1 rounded-full"
-                      style={{ width: `${skill.level}%` }}
-                    ></div>
+                  <div className="skill-bar">
+                    <div className="skill-progress" style={{ width: `${skill.level}%` }}></div>
                   </div>
                 </div>
               ))}
@@ -202,11 +196,11 @@ const Hero: React.FC = () => {
 
         {/* Methodologies */}
         <div className="mt-16">
-          <h3 className="mb-8">Key Focus Areas</h3>
+          <h3 className="mb-10">Key Focus Areas</h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="minimal-card p-6 text-center">
-              <BarChart size={20} className="mx-auto mb-4 text-gray-600 dark:text-gray-400" />
-              <h4 className="font-medium mb-3">Statistical Analysis</h4>
+            <div className="minimal-card p-8 text-center group hover:scale-105">
+              <BarChart size={24} className="mx-auto mb-6 text-gray-600 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white transition-colors" />
+              <h4 className="font-semibold mb-4">Statistical Analysis</h4>
               <ul className="text-small text-gray-600 dark:text-gray-400 space-y-1">
                 <li>Hypothesis Testing</li>
                 <li>Regression Analysis</li>
@@ -215,9 +209,9 @@ const Hero: React.FC = () => {
               </ul>
             </div>
             
-            <div className="minimal-card p-6 text-center">
-              <Brain size={20} className="mx-auto mb-4 text-gray-600 dark:text-gray-400" />
-              <h4 className="font-medium mb-3">Machine Learning</h4>
+            <div className="minimal-card p-8 text-center group hover:scale-105">
+              <Brain size={24} className="mx-auto mb-6 text-gray-600 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white transition-colors" />
+              <h4 className="font-semibold mb-4">Machine Learning</h4>
               <ul className="text-small text-gray-600 dark:text-gray-400 space-y-1">
                 <li>Classification & Clustering</li>
                 <li>Feature Engineering</li>
@@ -226,9 +220,9 @@ const Hero: React.FC = () => {
               </ul>
             </div>
             
-            <div className="minimal-card p-6 text-center">
-              <Database size={20} className="mx-auto mb-4 text-gray-600 dark:text-gray-400" />
-              <h4 className="font-medium mb-3">Data Engineering</h4>
+            <div className="minimal-card p-8 text-center group hover:scale-105">
+              <Database size={24} className="mx-auto mb-6 text-gray-600 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white transition-colors" />
+              <h4 className="font-semibold mb-4">Data Engineering</h4>
               <ul className="text-small text-gray-600 dark:text-gray-400 space-y-1">
                 <li>ETL Pipelines</li>
                 <li>Data Cleaning</li>
