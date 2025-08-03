@@ -37,30 +37,29 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header className="max-w-3xl mx-auto container-responsive py-6 sticky top-0 bg-white/80 dark:bg-black/80 backdrop-blur-sm z-50 border-b border-transparent">
+    <header className="max-w-3xl mx-auto container-responsive py-6 sticky top-0 bg-white/95 dark:bg-black/95 backdrop-blur-sm z-50">
       <div className="flex justify-between items-center">
-        <h1 className="text-xl font-bold">
-          <a href="#" className="hover:opacity-80 transition-all duration-200">
+        <h1 className="text-xl font-semibold">
+          <a href="#" className="hover:opacity-70">
             Tobin Zolkowski
           </a>
         </h1>
         
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-10">
+        <nav className="hidden lg:flex items-center space-x-8">
           {navItems.map((item) => (
             <a 
               key={item.href}
               href={item.href} 
-              className="text-small text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all duration-200 relative group"
+              className="text-small text-gray-600 dark:text-gray-400 hover:opacity-70"
             >
-              <span className="relative z-10">{item.label}</span>
-              <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-black dark:bg-white scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+              {item.label}
             </a>
           ))}
           
           <button
             onClick={toggleDarkMode}
-            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all duration-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900"
+            className="text-gray-600 dark:text-gray-400 hover:opacity-70"
             aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {darkMode ? <Sun size={16} /> : <Moon size={16} />}
@@ -68,10 +67,10 @@ const Header: React.FC = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <div className="lg:hidden flex items-center space-x-3">
+        <div className="lg:hidden flex items-center space-x-4">
           <button
             onClick={toggleDarkMode}
-            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all duration-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900"
+            className="text-gray-600 dark:text-gray-400 hover:opacity-70"
             aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {darkMode ? <Sun size={16} /> : <Moon size={16} />}
@@ -79,7 +78,7 @@ const Header: React.FC = () => {
           
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all duration-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900"
+            className="text-gray-600 dark:text-gray-400 hover:opacity-70"
             aria-label="Toggle mobile menu"
           >
             {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -89,13 +88,13 @@ const Header: React.FC = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <nav className="lg:hidden mt-6 pt-6 border-t border-gray-200 dark:border-gray-800 backdrop-blur-lg">
+        <nav className="lg:hidden mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
           <div className="flex flex-col space-y-4">
             {navItems.map((item) => (
               <a 
                 key={item.href}
                 href={item.href} 
-                className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all duration-200 text-center py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900"
+                className="text-gray-600 dark:text-gray-400 hover:opacity-70 text-center py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
