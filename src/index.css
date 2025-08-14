@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 html {
   scroll-behavior: smooth;
@@ -17,20 +17,17 @@ body {
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
-/* Vercel-inspired color system */
+/* Vercel-inspired minimalist variables */
 :root {
   --background: #ffffff;
   --foreground: #000000;
   --muted: #666666;
   --muted-foreground: #888888;
   --border: #e5e5e5;
-  --accent: #0070f3;
-  --accent-foreground: #ffffff;
   --card: #fafafa;
   --card-hover: #f5f5f5;
-  --success: #0070f3;
-  --warning: #f5a623;
-  --error: #e00;
+  --accent: #000000;
+  --accent-foreground: #ffffff;
 }
 
 html.dark {
@@ -39,13 +36,10 @@ html.dark {
   --muted: #888888;
   --muted-foreground: #666666;
   --border: #333333;
-  --accent: #0070f3;
-  --accent-foreground: #ffffff;
   --card: #111111;
   --card-hover: #1a1a1a;
-  --success: #0070f3;
-  --warning: #f5a623;
-  --error: #e00;
+  --accent: #ffffff;
+  --accent-foreground: #000000;
 }
 
 html {
@@ -53,9 +47,9 @@ html {
   color: var(--foreground);
 }
 
-/* Smooth transitions for everything */
+/* Smooth transitions */
 * {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Enhanced focus states */
@@ -69,9 +63,9 @@ html {
   outline: none;
 }
 
-/* Vercel-style scrollbar */
+/* Minimalist scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -80,48 +74,49 @@ html {
 
 ::-webkit-scrollbar-thumb {
   background: var(--border);
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--muted);
 }
 
-/* Typography system */
+/* Typography system - Vercel style */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.2;
+  color: var(--foreground);
 }
 
 h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
   letter-spacing: -0.04em;
 }
 
 h2 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 600;
   letter-spacing: -0.03em;
 }
 
 h3 {
-  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
   font-weight: 600;
   letter-spacing: -0.02em;
 }
 
 p, .text-base {
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.7;
   font-weight: 400;
   color: var(--muted);
 }
 
 .text-large {
-  font-size: 1.125rem;
-  line-height: 1.5;
+  font-size: 1.25rem;
+  line-height: 1.6;
   font-weight: 400;
   color: var(--muted);
 }
@@ -133,52 +128,36 @@ p, .text-base {
   color: var(--muted-foreground);
 }
 
-/* Vercel-inspired components */
-.vercel-card {
+/* Vercel-inspired card component */
+.minimal-card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 2rem;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  overflow: hidden;
 }
 
-.vercel-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, transparent 0%, rgba(0, 112, 243, 0.03) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.vercel-card:hover {
+.minimal-card:hover {
   background: var(--card-hover);
-  border-color: var(--accent);
+  border-color: var(--foreground);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
-html.dark .vercel-card:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+html.dark .minimal-card:hover {
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.05);
 }
 
-.vercel-card:hover::before {
-  opacity: 1;
-}
-
-.vercel-button {
+/* Vercel-style button */
+.minimal-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.5rem;
   background: var(--foreground);
   color: var(--background);
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 0.875rem;
   font-weight: 500;
   border: none;
@@ -189,7 +168,7 @@ html.dark .vercel-card:hover {
   overflow: hidden;
 }
 
-.vercel-button::before {
+.minimal-button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -200,65 +179,57 @@ html.dark .vercel-card:hover {
   transition: left 0.5s;
 }
 
-.vercel-button:hover {
+.minimal-button:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.vercel-button:hover::before {
+html.dark .minimal-button:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.minimal-button:hover::before {
   left: 100%;
 }
 
-.vercel-button:active {
+.minimal-button:active {
   transform: translateY(0);
 }
 
-.vercel-button-secondary {
+.minimal-button-secondary {
   background: transparent;
   color: var(--foreground);
   border: 1px solid var(--border);
 }
 
-.vercel-button-secondary:hover {
+.minimal-button-secondary:hover {
   background: var(--card);
-  border-color: var(--accent);
+  border-color: var(--foreground);
 }
 
 /* Enhanced section divider */
 .section-divider {
-  width: 3rem;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-  margin: 2rem 0;
+  width: 4rem;
+  height: 1px;
+  background: var(--border);
+  margin: 3rem 0;
   border-radius: 1px;
 }
 
-/* Animated gradient background */
-.gradient-bg {
-  background: linear-gradient(135deg, 
-    var(--background) 0%, 
-    rgba(0, 112, 243, 0.02) 50%, 
-    var(--background) 100%);
-  background-size: 200% 200%;
-  animation: gradientShift 10s ease infinite;
+/* Subtle animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease forwards;
 }
 
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Floating animation */
-.float-animation {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-/* Stagger animation for cards */
 .stagger-animation {
   opacity: 0;
   transform: translateY(20px);
@@ -277,9 +248,36 @@ html.dark .vercel-card:hover {
   }
 }
 
-/* Pulse animation for status indicators */
-.pulse-animation {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+/* Floating animation */
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Status indicator */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--foreground);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
@@ -290,17 +288,17 @@ html.dark .vercel-card:hover {
 /* Enhanced skill bars */
 .skill-bar {
   width: 100%;
-  height: 6px;
+  height: 4px;
   background: var(--border);
-  border-radius: 3px;
+  border-radius: 2px;
   overflow: hidden;
   position: relative;
 }
 
 .skill-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent), #00d4ff);
-  border-radius: 3px;
+  background: var(--foreground);
+  border-radius: 2px;
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
@@ -316,6 +314,10 @@ html.dark .vercel-card:hover {
   animation: shimmer 2s infinite;
 }
 
+html.dark .skill-bar-fill::after {
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.4), transparent);
+}
+
 @keyframes shimmer {
   0% { left: -100%; }
   100% { left: 100%; }
@@ -327,40 +329,34 @@ input, textarea {
   background: var(--background);
   border: 1px solid var(--border);
   color: var(--foreground);
-  border-radius: 8px;
+  border-radius: 6px;
   padding: 0.75rem 1rem;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 input:focus, textarea:focus {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.1);
+  border-color: var(--foreground);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+html.dark input:focus, html.dark textarea:focus {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
 }
 
 input:hover, textarea:hover {
   border-color: var(--muted);
 }
 
-/* Status indicator */
-.status-indicator {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0.75rem;
-  background: rgba(0, 112, 243, 0.1);
-  color: var(--accent);
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 500;
+/* Backdrop blur for header */
+.backdrop-blur-minimal {
+  backdrop-filter: blur(8px) saturate(180%);
+  -webkit-backdrop-filter: blur(8px) saturate(180%);
+  background: rgba(255, 255, 255, 0.8);
 }
 
-.status-dot {
-  width: 6px;
-  height: 6px;
-  background: #00ff88;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
+html.dark .backdrop-blur-minimal {
+  background: rgba(0, 0, 0, 0.8);
 }
 
 /* Enhanced mobile responsiveness */
@@ -370,28 +366,28 @@ input:hover, textarea:hover {
     padding-right: 1rem;
   }
   
-  .vercel-card {
-    padding: 1rem;
+  .minimal-card {
+    padding: 1.5rem;
   }
   
   h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   
   .section-divider {
-    width: 2rem;
-    margin: 1.5rem 0;
+    width: 3rem;
+    margin: 2rem 0;
   }
 }
 
 @media (min-width: 641px) {
   .container-responsive {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
-/* Smooth page transitions */
+/* Page transitions */
 .page-transition {
   opacity: 0;
   transform: translateY(20px);
@@ -405,32 +401,6 @@ input:hover, textarea:hover {
   }
 }
 
-/* Enhanced backdrop blur */
-.backdrop-blur-enhanced {
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  background: rgba(255, 255, 255, 0.8);
-}
-
-html.dark .backdrop-blur-enhanced {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-/* Reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  .float-animation,
-  .pulse-animation,
-  .gradient-bg {
-    animation: none !important;
-  }
-}
-
 /* Enhanced link styling */
 a {
   color: inherit;
@@ -439,10 +409,9 @@ a {
 }
 
 a:hover {
-  color: var(--accent);
+  color: var(--foreground);
 }
 
-/* Subtle link underline animation */
 .link-underline {
   position: relative;
 }
@@ -454,7 +423,7 @@ a:hover {
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--accent);
+  background: var(--foreground);
   transition: width 0.3s ease;
 }
 
@@ -470,7 +439,7 @@ table {
 
 th, td {
   text-align: left;
-  padding: 0.75rem;
+  padding: 1rem;
   border-bottom: 1px solid var(--border);
 }
 
@@ -494,4 +463,160 @@ tr:hover {
 @keyframes loading {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .float-animation {
+    animation: none !important;
+  }
+}
+
+/* Subtle gradient background */
+.gradient-bg {
+  background: linear-gradient(135deg, 
+    var(--background) 0%, 
+    var(--card) 50%, 
+    var(--background) 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Metric cards */
+.metric-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.metric-card:hover {
+  background: var(--card-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+html.dark .metric-card:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.03);
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.metric-label {
+  font-size: 0.875rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Focus area cards */
+.focus-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.focus-card:hover {
+  background: var(--card-hover);
+  border-color: var(--foreground);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+html.dark .focus-card:hover {
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.05);
+}
+
+.focus-icon {
+  width: 3rem;
+  height: 3rem;
+  background: var(--foreground);
+  color: var(--background);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.focus-card:hover .focus-icon {
+  transform: scale(1.1);
+}
+
+/* Project cards */
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+  background: var(--card-hover);
+  border-color: var(--foreground);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+html.dark .project-card:hover {
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.05);
+}
+
+.project-icon {
+  width: 3rem;
+  height: 3rem;
+  background: var(--foreground);
+  color: var(--background);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover .project-icon {
+  transform: rotate(5deg) scale(1.05);
+}
+
+/* Tag styling */
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tag:hover {
+  background: var(--card-hover);
+  border-color: var(--foreground);
+  color: var(--foreground);
 }
