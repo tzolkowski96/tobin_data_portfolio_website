@@ -1,20 +1,25 @@
 # Portfolio Redirect
 
-This repository now serves as a redirect to my main portfolio website.
+⚠️ **This portfolio has moved!** ⚠️
 
-**New Portfolio Location:** https://tzolkowski96.github.io/portfolio/
+## New Location
 
-## About
+This repository now serves as a redirect to my updated portfolio:
 
-This site automatically redirects visitors to my updated portfolio hosted on GitHub Pages. The new portfolio contains all my latest projects, case studies, and professional information.
+**🔗 [https://tzolkowski96.github.io/portfolio/](https://tzolkowski96.github.io/portfolio/)**
 
-## Redirect Details
+## What's New
 
-- **Automatic redirect**: 3-second delay with immediate meta refresh
-- **Fallback**: Manual link available if redirect fails
-- **SEO**: Proper canonical tags and meta information for search engines
+The new portfolio features:
+- ✨ Updated projects and case studies
+- 🚀 Better performance and user experience  
+- 📱 Fully mobile-optimized design
+- 🔧 Latest technologies and frameworks
+
+## Automatic Redirect
+
+When you visit this site, you'll be automatically redirected to the new location in 5 seconds. If the redirect doesn't work, simply click the link provided on the page.
 
 ---
 
-**Tobin Zolkowski**  
-Data Professional | Machine Learning | Business Intelligence
+*Thank you for visiting! Please update your bookmarks to the new URL.*

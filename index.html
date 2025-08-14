@@ -1,98 +1,158 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Redirect Meta Tag -->
-    <meta http-equiv="refresh" content="0; url=https://tzolkowski96.github.io/portfolio/" />
+    <!-- Immediate redirect -->
+    <meta http-equiv="refresh" content="0; url=https://tzolkowski96.github.io/portfolio/">
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Tobin Zolkowski's portfolio has moved to a new location. You will be automatically redirected." />
-    <meta name="author" content="Tobin Zolkowski" />
+    <meta name="description" content="Tobin Zolkowski's portfolio has moved to a new location. Redirecting to the new site with updated projects and experience.">
+    <meta name="keywords" content="data scientist, data analyst, machine learning engineer, predictive analytics, business intelligence, Python, SQL, Tobin Zolkowski">
+    <meta name="author" content="Tobin Zolkowski">
     
     <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Tobin Zolkowski | Portfolio Moved" />
-    <meta property="og:description" content="Tobin Zolkowski's portfolio has moved to a new location." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tzolkowski96.github.io/portfolio/" />
+    <meta property="og:title" content="Tobin Zolkowski - Portfolio Moved">
+    <meta property="og:description" content="Portfolio has moved to a new location. Visit the new site for updated projects and experience.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tzolkowski96.github.io/portfolio/">
     
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://tzolkowski96.github.io/portfolio/" />
+    <!-- Canonical URL pointing to new location -->
+    <link rel="canonical" href="https://tzolkowski96.github.io/portfolio/">
     
-    <title>Redirecting... | Tobin Zolkowski</title>
+    <title>Redirecting to New Portfolio - Tobin Zolkowski</title>
     
     <style>
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        text-align: center;
-      }
-      .container {
-        max-width: 500px;
-        padding: 2rem;
-      }
-      h1 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        font-weight: 600;
-      }
-      p {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        opacity: 0.9;
-        line-height: 1.6;
-      }
-      .button {
-        display: inline-block;
-        padding: 12px 24px;
-        background: rgba(255, 255, 255, 0.2);
-        color: white;
-        text-decoration: none;
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        font-weight: 500;
-        transition: all 0.3s ease;
-      }
-      .button:hover {
-        background: rgba(255, 255, 255, 0.3);
-        transform: translateY(-2px);
-      }
-      .spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid rgba(255, 255, 255, 0.3);
-        border-top: 3px solid white;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        margin: 2rem auto;
-      }
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .redirect-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+        
+        .new-link {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.9);
+            color: #4a5568;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .new-link:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .countdown {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 1rem;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="container">
-      <h1>Portfolio Moved</h1>
-      <p>My portfolio has moved to a new location. You will be automatically redirected in a few seconds.</p>
-      <div class="spinner"></div>
-      <a href="https://tzolkowski96.github.io/portfolio/" class="button">Visit New Portfolio →</a>
+        <h1>Portfolio Moved! 📈</h1>
+        <p>My portfolio has moved to a new, improved location with updated projects and experience.</p>
+        
+        <div class="redirect-info">
+            <p><strong>You'll be automatically redirected in <span id="countdown">5</span> seconds...</strong></p>
+            <div class="spinner"></div>
+        </div>
+        
+        <p>If you're not redirected automatically, click the link below:</p>
+        <a href="https://tzolkowski96.github.io/portfolio/" class="new-link">
+            Visit New Portfolio →
+        </a>
+        
+        <div class="countdown">
+            <p>New features include:</p>
+            <p>✨ Updated projects • 🚀 Better performance • 📱 Mobile optimized</p>
+        </div>
     </div>
-    
+
     <script>
-      // Fallback redirect in case meta refresh doesn't work
-      setTimeout(function() {
-        window.location.href = 'https://tzolkowski96.github.io/portfolio/';
-      }, 3000);
+        // Countdown timer
+        let seconds = 5;
+        const countdownElement = document.getElementById('countdown');
+        
+        const timer = setInterval(() => {
+            seconds--;
+            countdownElement.textContent = seconds;
+            
+            if (seconds <= 0) {
+                clearInterval(timer);
+                window.location.href = 'https://tzolkowski96.github.io/portfolio/';
+            }
+        }, 1000);
+        
+        // Immediate redirect for users with JavaScript disabled
+        // (meta refresh will handle this, but this provides a backup)
+        setTimeout(() => {
+            window.location.href = 'https://tzolkowski96.github.io/portfolio/';
+        }, 5000);
     </script>
-  </body>
+</body>
 </html>
