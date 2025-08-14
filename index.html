@@ -2,31 +2,97 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Redirect Meta Tag -->
+    <meta http-equiv="refresh" content="0; url=https://tzolkowski96.github.io/portfolio/" />
+    
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Data Professional Tobin Zolkowski - Expert in machine learning, predictive analytics, Python, SQL, business intelligence. 98% model accuracy, 7.7M records analyzed, proven ROI." />
-    <meta name="keywords" content="data scientist, data analyst, machine learning engineer, predictive analytics, business intelligence, Python, SQL, statistical analysis, data engineering, ETL, Tableau, healthcare analytics, MLOps, data visualization, Tobin Zolkowski, Madison Wisconsin" />
+    <meta name="description" content="Tobin Zolkowski's portfolio has moved to a new location. You will be automatically redirected." />
     <meta name="author" content="Tobin Zolkowski" />
     
     <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="Tobin Zolkowski | Data Professional & Machine Learning Expert" />
-    <meta property="og:description" content="Data Professional specializing in machine learning, predictive analytics, and business intelligence. Expert in Python, SQL, and data engineering with proven track record of delivering actionable insights." />
+    <meta property="og:title" content="Tobin Zolkowski | Portfolio Moved" />
+    <meta property="og:description" content="Tobin Zolkowski's portfolio has moved to a new location." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tzolkowski.com" />
+    <meta property="og:url" content="https://tzolkowski96.github.io/portfolio/" />
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://tzolkowski.com" />
+    <link rel="canonical" href="https://tzolkowski96.github.io/portfolio/" />
     
-    <!-- Preconnect to external resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Redirecting... | Tobin Zolkowski</title>
     
-    <title>Tobin Zolkowski | Data Professional & Machine Learning Expert</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-align: center;
+      }
+      .container {
+        max-width: 500px;
+        padding: 2rem;
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+      p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+      .button {
+        display: inline-block;
+        padding: 12px 24px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+      .button:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+      }
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-top: 3px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 2rem auto;
+      }
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="container">
+      <h1>Portfolio Moved</h1>
+      <p>My portfolio has moved to a new location. You will be automatically redirected in a few seconds.</p>
+      <div class="spinner"></div>
+      <a href="https://tzolkowski96.github.io/portfolio/" class="button">Visit New Portfolio →</a>
+    </div>
+    
+    <script>
+      // Fallback redirect in case meta refresh doesn't work
+      setTimeout(function() {
+        window.location.href = 'https://tzolkowski96.github.io/portfolio/';
+      }, 3000);
+    </script>
   </body>
 </html>
