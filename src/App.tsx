@@ -49,31 +49,32 @@ export default function RedirectPage() {
     <>
       <style>{`
         @keyframes fade {
-          0% { opacity: 0; }
-          100% { opacity: 1; }
-        }
-        
-        .minimal-shadow {
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+          0% { opacity: 0; transform: translateY(10px); }
+          100% { opacity: 1; transform: translateY(0); }
         }
         
         .fade-in {
-          animation: fade 0.8s ease-out;
+          animation: fade 0.6s ease-out;
+        }
+        
+        .progress-bar {
+          transform-origin: left center;
+          will-change: width;
         }
       `}</style>
 
       <meta httpEquiv="refresh" content={`${countdown}; url=${targetUrl}`} />
 
-      <div className="flex items-center justify-center min-h-screen bg-white text-black p-4">
-        <div className="text-center max-w-sm w-full fade-in">
-          <h1 className="text-2xl font-light mb-8 tracking-widest uppercase">
-            Moved
+      <div className="flex items-center justify-center min-h-screen bg-white text-black p-8">
+        <div className="text-center max-w-xs w-full fade-in">
+          <h1 className="text-2xl font-light mb-12 tracking-widest uppercase">
+            Site Moved
           </h1>
           
-          <p className="text-sm text-gray-600 mb-8 font-light tracking-wide">
+          <p className="text-sm text-gray-600 mb-12 font-light tracking-wide">
             Redirecting in{" "}
             <span 
-              className="text-black font-normal tabular-nums"
+              className="text-black font-medium tabular-nums"
               aria-live="polite"
               aria-atomic="true"
             >
@@ -82,9 +83,9 @@ export default function RedirectPage() {
           </p>
 
           {/* Ultra minimal progress bar */}
-          <div className="relative w-full h-px bg-gray-200 mb-8">
+          <div className="relative w-full h-0.5 bg-gray-100 mb-12">
             <div
-              className="absolute left-0 top-0 h-full bg-black transition-all duration-1000 ease-linear"
+              className="absolute left-0 top-0 h-full bg-black transition-all duration-1000 ease-out progress-bar"
               style={{ width: `${progressPercentage}%` }}
               role="progressbar"
               aria-valuenow={progressPercentage}
@@ -95,20 +96,20 @@ export default function RedirectPage() {
           </div>
 
           {/* Minimal text links */}
-          <div className="flex gap-6 justify-center items-center text-xs">
+          <div className="flex gap-8 justify-center items-center text-xs">
             <button
               onClick={handlePauseToggle}
-              className="text-gray-400 hover:text-black transition-colors duration-200 uppercase tracking-wider"
+              className="text-gray-400 hover:text-black hover:underline underline-offset-4 transition-all duration-200 uppercase tracking-wider"
               aria-label={isPaused ? "Resume redirect" : "Pause redirect"}
             >
               {isPaused ? "Resume" : "Pause"}
             </button>
 
-            <span className="text-gray-200">|</span>
+            <span className="text-gray-300">·</span>
 
             <a
               href={targetUrl}
-              className="text-black hover:underline uppercase tracking-wider"
+              className="text-black hover:underline underline-offset-4 transition-all duration-200 uppercase tracking-wider font-medium"
             >
               Go Now
             </a>
@@ -122,10 +123,10 @@ export default function RedirectPage() {
           </div>
 
           <noscript>
-            <p className="mt-8 text-xs text-gray-500">
-              JavaScript disabled.{" "}
-              <a href={targetUrl} className="underline">
-                Continue manually
+            <p className="mt-12 text-xs text-gray-400 uppercase tracking-wider">
+              JavaScript disabled ·{" "}
+              <a href={targetUrl} className="text-black underline underline-offset-4">
+                Continue
               </a>
             </p>
           </noscript>
