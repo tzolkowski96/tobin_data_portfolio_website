@@ -1,45 +1,52 @@
-import React, { useEffect } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Footer from './components/Footer';
+import React, { useEffect, useState } from "react";
 
-function App() {
+export default function RedirectPage() {
+  const targetUrl: string = "https://tzolkowski96.github.io/portfolio/";
+  const [countdown, setCountdown] = useState<number>(5);
+
   useEffect(() => {
-    // Google Analytics 4
-    const GA_TRACKING_ID = 'G-XXXXXXXXXX'; // Replace with your actual GA4 tracking ID
-    
-    // Load Google Analytics script
-    const script1 = document.createElement('script');
-    script1.async = true;
-    script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`;
-    document.head.appendChild(script1);
+    const interval = setInterval(() => {
+      setCountdown((prev) => prev - 1);
+    }, 1000);
 
-    // Initialize Google Analytics
-    const script2 = document.createElement('script');
-    script2.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${GA_TRACKING_ID}');
-    `;
-    document.head.appendChild(script2);
+    const timer = setTimeout(() => {
+      window.location.href = targetUrl;
+    }, countdown * 1000);
 
-    // Cleanup function
     return () => {
-      document.head.removeChild(script1);
-      document.head.removeChild(script2);
+      clearInterval(interval);
+      clearTimeout(timer);
     };
-  }, []);
+  }, [countdown, targetUrl]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white overflow-x-hidden">
-      <Header />
-      <main>
-        <Hero />
-      </main>
-      <Footer />
+    <div className="flex items-center justify-center h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 text-gray-800">
+      <div className="text-center p-10 rounded-3xl shadow-2xl bg-white/90 backdrop-blur max-w-md w-full border border-gray-200">
+        <h1 className="text-4xl font-light mb-3 tracking-wide">I've Moved</h1>
+        <p className="text-base text-gray-600 mb-6">
+          My website has been relocated to a new home. You'll be redirected in {countdown} second{countdown !== 1 ? "s" : ""}.
+        </p>
+        <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden mb-4">
+          <div
+            className="bg-gradient-to-r from-gray-800 to-gray-600 h-2 transition-all duration-1000 ease-linear"
+            style={{ width: `${((5 - countdown + 1) / 5) * 100}%` }}
+          ></div>
+        </div>
+        <p className="text-sm text-gray-400 italic mb-2">
+          See you at my new place!
+        </p>
+        <a
+          href={targetUrl}
+          className="inline-block mt-2 text-gray-700 hover:text-black underline transition-colors"
+        >
+          Go now
+        </a>
+        <noscript>
+          <p className="mt-4 text-red-500 text-sm">
+            JavaScript is disabled. Please <a href={targetUrl} className="underline">click here</a> to continue.
+          </p>
+        </noscript>
+      </div>
     </div>
   );
 }
-
-export default App;

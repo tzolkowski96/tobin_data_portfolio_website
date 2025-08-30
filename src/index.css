@@ -1,11 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
-
 html {
-  scroll-behavior: smooth;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
@@ -14,55 +13,23 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
-}
-
-/* Pure minimalist design with perfect contrast */
-html {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-html.dark {
-  background-color: #000000;
-  color: #ffffff;
-}
-
-/* Subtle transitions only */
-* {
-  transition: opacity 0.15s ease;
+  margin: 0;
+  padding: 0;
 }
 
 /* Clean focus states */
 :focus {
-  outline: 1px solid #000000;
+  outline: 2px solid #374151;
   outline-offset: 2px;
-}
-
-html.dark :focus {
-  outline-color: #ffffff;
 }
 
 :focus:not(:focus-visible) {
   outline: none;
 }
 
-/* Minimal scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #e5e5e5;
-  border-radius: 2px;
-}
-
-html.dark ::-webkit-scrollbar-thumb {
-  background: #404040;
+/* Smooth transitions */
+* {
+  transition: all 0.2s ease;
 }
 
 /* Clean link styling */
@@ -72,133 +39,10 @@ a {
 }
 
 a:hover {
-  opacity: 0.7;
+  color: #000;
 }
 
-/* Section scroll margins */
-section,
-[id] {
-  scroll-margin-top: 4rem;
-}
-
-/* Clean backdrop blur */
-.backdrop-blur-sm {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-/* Mobile responsiveness */
-@media (max-width: 640px) {
-  .container-responsive {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
-
-@media (min-width: 641px) {
-  .container-responsive {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-
-/* Perfect typography system */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 1.2;
-}
-
-h1 {
-  font-size: 2rem;
-  font-weight: 600;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-h3 {
-  font-size: 1.125rem;
-  font-weight: 600;
-}
-
-p, .text-base {
-  font-size: 1rem;
-  line-height: 1.6;
-  font-weight: 400;
-}
-
-.text-large {
-  font-size: 1.125rem;
-  line-height: 1.5;
-  font-weight: 400;
-}
-
-.text-small {
-  font-size: 0.875rem;
-  line-height: 1.5;
-  font-weight: 400;
-}
-
-/* Ultra-minimalist components */
-.minimal-card {
-  border: 1px solid #f0f0f0;
-  border-radius: 8px;
-}
-
-.minimal-card:hover {
-  border-color: #e0e0e0;
-}
-
-html.dark .minimal-card {
-  border-color: #2a2a2a;
-}
-
-html.dark .minimal-card:hover {
-  border-color: #3a3a3a;
-}
-
-.minimal-button {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  background: #000000;
-  color: #ffffff;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border: none;
-  text-decoration: none;
-}
-
-.minimal-button:hover {
-  opacity: 0.8;
-}
-
-html.dark .minimal-button {
-  background: #ffffff;
-  color: #000000;
-}
-
-.section-divider {
-  width: 2rem;
-  height: 1px;
-  background: #000000;
-  margin-bottom: 2rem;
-}
-
-html.dark .section-divider {
-  background: #ffffff;
-}
-
-/* Clean input styling */
-input, textarea {
-  font-family: inherit;
-}
-
-/* Remove all unnecessary animations */
+/* Remove all unnecessary animations for reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
