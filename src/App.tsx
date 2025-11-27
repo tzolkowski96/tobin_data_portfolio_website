@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
+import { CONFIG } from "./config";
 
 export default function RedirectPage() {
-  const targetUrl = "https://tzolkowski96.github.io/portfolio/";
-  const [countdown, setCountdown] = useState(5);
+  const { targetUrl, redirectDelay } = CONFIG;
+  const [countdown, setCountdown] = useState(redirectDelay);
   const [isPaused, setIsPaused] = useState(false);
   const intervalRef = useRef<number | null>(null);
   const timeoutRef = useRef<number | null>(null);
@@ -42,93 +43,80 @@ export default function RedirectPage() {
       window.location.href = targetUrl;
     }
   };
-
-  const progressPercentage = ((5 - countdown) / 5) * 100;
+  const progressPercentage = ((redirectDelay - countdown) / redirectDelay) * 100;
 
   return (
     <>
       <style>{`
-        @keyframes fade {
+        @keyframes fade-in-up {
           0% { opacity: 0; transform: translateY(10px); }
           100% { opacity: 1; transform: translateY(0); }
         }
-        
-        .fade-in {
-          animation: fade 0.6s ease-out;
-        }
-        
-        .progress-bar {
-          transform-origin: left center;
-          will-change: width;
+        .animate-fade-in {
+          animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
       `}</style>
 
-      <meta httpEquiv="refresh" content={`${countdown}; url=${targetUrl}`} />
+      <div className="min-h-[100dvh] bg-gray-50 flex flex-col items-center justify-center p-4 font-sans">
+        <div className="w-full max-w-md flex flex-col items-center my-auto">
+          <div className="w-full bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden animate-fade-in">
+            
+            {/* Progress Bar */}
+            <div className="h-1 w-full bg-gray-50">
+              <div 
+                className="h-full bg-black transition-all duration-1000 ease-linear"
+                style={{ width: `${progressPercentage}%` }}
+                role="progressbar"
+                aria-valuenow={progressPercentage}
+                aria-valuemin={0}
+                aria-valuemax={100}
+              />
+            </div>
 
-      <div className="flex items-center justify-center min-h-screen bg-white text-black p-8">
-        <div className="text-center max-w-xs w-full fade-in">
-          <h1 className="text-2xl font-light mb-12 tracking-widest uppercase">
-            Site Moved
-          </h1>
-          
-          <p className="text-sm text-gray-600 mb-12 font-light tracking-wide">
-            Redirecting in{" "}
-            <span 
-              className="text-black font-medium tabular-nums"
-              aria-live="polite"
-              aria-atomic="true"
-            >
-              {countdown}
-            </span>
+            <div className="p-6 md:p-10">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-gray-50 rounded-full flex items-center justify-center mb-6 text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="md:w-6 md:h-6">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </div>
+
+              <h1 className="text-xl md:text-2xl font-semibold text-gray-900 mb-3 tracking-tight">
+                We've moved
+              </h1>
+              
+              <p className="text-sm md:text-base text-gray-500 mb-8 leading-relaxed">
+                The portfolio you are looking for has been migrated to a new address. Redirecting in <span className="font-medium text-gray-900 tabular-nums">{countdown}s</span>.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a 
+                  href={targetUrl}
+                  className="w-full sm:w-auto flex-1 inline-flex justify-center items-center px-4 py-3 md:py-2.5 bg-gray-900 text-white text-sm font-medium rounded-lg hover:bg-black transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 active:scale-[0.98]"
+                >
+                  Go to new site
+                </a>
+                <button
+                  onClick={handlePauseToggle}
+                  className="w-full sm:w-auto inline-flex justify-center items-center px-4 py-3 md:py-2.5 bg-white text-gray-700 text-sm font-medium rounded-lg border border-gray-200 hover:bg-gray-50 hover:text-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 active:scale-[0.98]"
+                >
+                  {isPaused ? "Resume" : "Pause"}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <p className="mt-8 text-sm text-gray-400 font-medium text-center">
+            <a href={targetUrl} className="hover:text-gray-600 transition-colors">
+              tzolkowski96.github.io
+            </a>
           </p>
 
-          {/* Ultra minimal progress bar */}
-          <div className="relative w-full h-0.5 bg-gray-100 mb-12">
-            <div
-              className="absolute left-0 top-0 h-full bg-black transition-all duration-1000 ease-out progress-bar"
-              style={{ width: `${progressPercentage}%` }}
-              role="progressbar"
-              aria-valuenow={progressPercentage}
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-label="Redirect progress"
-            />
-          </div>
-
-          {/* Minimal text links */}
-          <div className="flex gap-8 justify-center items-center text-xs">
-            <button
-              onClick={handlePauseToggle}
-              className="text-gray-400 hover:text-black hover:underline underline-offset-4 transition-all duration-200 uppercase tracking-wider"
-              aria-label={isPaused ? "Resume redirect" : "Pause redirect"}
-            >
-              {isPaused ? "Resume" : "Pause"}
-            </button>
-
-            <span className="text-gray-300">·</span>
-
-            <a
-              href={targetUrl}
-              className="text-black hover:underline underline-offset-4 transition-all duration-200 uppercase tracking-wider font-medium"
-            >
-              Go Now
-            </a>
-          </div>
-
-          {/* Screen reader announcement */}
-          <div className="sr-only" role="status" aria-live="polite">
-            {isPaused 
-              ? "Redirect paused. Click resume to continue or go now to redirect immediately."
-              : `Redirecting to new portfolio in ${countdown} seconds.`}
-          </div>
-
           <noscript>
-            <p className="mt-12 text-xs text-gray-400 uppercase tracking-wider">
-              JavaScript disabled ·{" "}
-              <a href={targetUrl} className="text-black underline underline-offset-4">
-                Continue
-              </a>
-            </p>
+              <div className="mt-4 text-center">
+                  <p className="text-sm text-gray-500">JavaScript is disabled.</p>
+                  <a href={targetUrl} className="text-black underline">Click here to continue</a>
+              </div>
           </noscript>
         </div>
       </div>

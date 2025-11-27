@@ -27,10 +27,10 @@ body {
   outline: none;
 }
 
-/* Smooth transitions */
-* {
+/* Smooth transitions - Removed global selector to prevent layout thrashing */
+/* * {
   transition: all 0.2s ease;
-}
+} */
 
 /* Clean link styling */
 a {
