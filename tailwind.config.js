@@ -21,6 +21,12 @@ export default {
         black: '#000000',
         white: '#FFFFFF',
       },
+      backgroundImage: {
+        'grid-pattern': "radial-gradient(circle at 1px 1px, #e5e5e5 1px, transparent 0)",
+      },
+      backgroundSize: {
+        'grid-pattern': '40px 40px',
+      },
       fontFamily: {
         'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
